@@ -1,0 +1,30 @@
+2015-10-09T11:38:26.713915000 0.410058s notice: Recursively removing directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data/tmp
+2015-10-09T11:38:26.715439000 0.411587s notice: Initializing directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-09T11:38:26.715535000 0.411677s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data' did not already exist or is empty.)
+2015-10-09T11:38:26.715573000 0.411716s notice: Running rethinkdb 2.1.4 (CLANG 7.0.0 (clang-700.0.72))...
+2015-10-09T11:38:26.721229000 0.417372s notice: Running on Darwin 15.0.0 x86_64
+2015-10-09T11:38:26.721269000 0.417411s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-09T11:38:26.836602000 0.532744s info: Automatically using cache size of 100 MB
+2015-10-09T11:38:26.836615000 0.532757s warn: Cache size does not leave much memory for server and query overhead (available memory: 1058 MB).
+2015-10-09T11:38:26.836632000 0.532774s warn: Cache size is very low and may impact performance.
+2015-10-09T11:38:26.837206000 0.533349s notice: Listening for intracluster connections on port 29015
+2015-10-09T11:38:26.838695000 0.534838s notice: Listening for client driver connections on port 28015
+2015-10-09T11:38:26.838891000 0.535033s notice: Listening for administrative HTTP connections on port 8080
+2015-10-09T11:38:26.838896000 0.535038s notice: Listening on addresses: 127.0.0.1, ::1
+2015-10-09T11:38:26.838897000 0.535039s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-10-09T11:38:26.838906000 0.535048s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-09T11:38:27.332795000 1.028937s notice: A newer version of the RethinkDB server is available: 2.1.5-2. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2015-10-09T11:40:47.918880000 141.616356s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Added replica on this server.
+2015-10-09T11:40:49.055745000 142.753241s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 1.
+2015-10-09T11:40:49.086083000 142.783579s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 1. Latest log index is 0.
+2015-10-09T11:41:27.436325000 181.134178s info: Table 589fed21-b101-4315-8af7-deff86410895: Added replica on this server.
+2015-10-09T11:41:29.365195000 183.063085s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 1.
+2015-10-09T11:41:29.390090000 183.087979s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 1. Latest log index is 0.
+2015-10-09T11:41:35.652920000 189.350866s info: Table 75ea37ed-a206-4468-bbc6-d7cc750523c4: Added replica on this server.
+2015-10-09T11:41:37.132671000 190.830618s info: Table 75ea37ed-a206-4468-bbc6-d7cc750523c4: Starting a new Raft election for term 1.
+2015-10-09T11:41:37.167677000 190.865623s info: Table 75ea37ed-a206-4468-bbc6-d7cc750523c4: This server is Raft leader for term 1. Latest log index is 0.
+2015-10-09T11:53:49.617780000 923.322730s notice: Removing file /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data/75ea37ed-a206-4468-bbc6-d7cc750523c4
+2015-10-09T11:53:49.617789000 923.322738s info: Table 75ea37ed-a206-4468-bbc6-d7cc750523c4: Deleted the table.
+2015-10-09T11:54:02.777004000 936.482085s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Added replica on this server.
+2015-10-09T11:54:04.135816000 937.840916s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 1.
+2015-10-09T11:54:04.161397000 937.866497s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 1. Latest log index is 0.
