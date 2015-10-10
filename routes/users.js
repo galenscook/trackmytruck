@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
+var token = require('../lib/token');
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -20,7 +21,7 @@ router.get('/new', function(request, response, next) {
 
 // Show User Profile
 
-router.get('/:id', function (request, response, next) {
+router.get('/:id', auth.authorize, function (request, response, next) {
   rdb.find('users', request.params.id)
   .then(function (user) {
     if(!user) {
@@ -48,6 +49,9 @@ router.post('/', function (request, response) {
     .then(function (result) {
       rdb.findBy('users', 'email', newUser.email)
       .then(function(users){
+        var currentUser = users[0]
+        currentUser.token = token.generate(currentUser)
+        console.log(response)
         response.redirect('/users/'+users[0].id)
       })
 
