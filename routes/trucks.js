@@ -2,24 +2,23 @@ var express = require('express');
 var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
-var token = require('../lib/token');
-
+var session = require('express-session')
 
 // View all trucks
 
 router.get('/', function(request, response, next){
+  console.log(session.userID);
   rdb.findAll('trucks')
   .then(function (trucks){
-    rdb.find('users', '9953d57b-b2d8-4894-b589-10b0d4571582')
+    rdb.find('users', session.userID)
     .then(function (user){
-      currentUser = user
-      rdb.favoritesIds(currentUser.id)
+      rdb.favoritesIds(user.id)
       .then(function(favorites){
         favoriteIds = []
         favorites.forEach(function(favorite){
           favoriteIds.push(favorite.truck_id)
         })
-      response.render('trucks/index', {allTrucks: trucks, currentUser: currentUser, favorites: favoriteIds});
+      response.render('trucks/index', {allTrucks: trucks, currentUser: user, favorites: favoriteIds});
       })
       });
     // response.render('trucks/index', {allTrucks: trucks})
