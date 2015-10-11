@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
-var token = require('../lib/token');
+
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
