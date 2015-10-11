@@ -71,7 +71,6 @@ router.get('/magic', function (request, response, next){
 // Show User Profile
 
 router.get('/:id', function (request, response, next) {
-  // console.log(session)
   rdb.find('users', request.params.id)
   .then(function (user) {
     if(!user) {
@@ -79,7 +78,15 @@ router.get('/:id', function (request, response, next) {
       notFoundError.status = 404;
       return next(notFoundError);
     }
-    response.render('users/show', {user: user});
+    // var favorites = rdb.favorites(user.id).toArray();
+    // console.log(favorites)
+    // response.render('users/show', {user: user, favorites: favorites})
+    rdb.favorites(user.id)
+    .then(function (favorites) {
+      console.log("MADE IT HERE")
+      response.render('users/show', {user: user, favorites: favorites});
+
+      })
   });
 });
 
@@ -100,9 +107,6 @@ router.post('/', function (request, response) {
     .then(function (result) {
       rdb.findBy('users', 'email', newUser.email)
       .then(function(users){
-        var currentUser = users[0]
-        // currentUser.token = token.generate(currentUser)
-        console.log(response)
         response.redirect('/users/'+users[0].id)
       })
 
