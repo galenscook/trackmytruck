@@ -6,12 +6,10 @@
   </head>
   <body>
     <h1><%= user.name %></h1>
-    <p>Welcome to <%= user.name %></p>
+    <p>Welcome, <%= user.name %>!</p>
     <p>Your email is <%= user.email %></p>
     <% favorites.forEach(function(favorite){ %>
       <p><%=favorite.name%></p>
       <% }) %>
-
-    
   </body>
 </html>
