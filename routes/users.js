@@ -57,9 +57,7 @@ router.post('/', function (request, response) {
     .then(function (result) {
       rdb.findBy('users', 'email', newUser.email)
       .then(function(users){
-        var currentUser = users[0]
-        currentUser.token = token.generate(currentUser)
-        console.log(response)
+
         response.redirect('/users/'+users[0].id)
       })
 

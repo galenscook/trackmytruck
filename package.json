@@ -15,6 +15,7 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "jwt-simple": "^0.3.1",
+    "method-override": "^2.3.5",
     "moment": "^2.10.6",
     "morgan": "~1.6.1",
     "rethinkdb": "^2.1.1",

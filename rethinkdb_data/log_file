@@ -31,3 +31,313 @@
 2015-10-10T17:09:03.100484000 51068.883304s info: Table 0591a2f5-42b8-425d-b415-f115f3bb3ad7: Added replica on this server.
 2015-10-10T17:09:04.240288000 51070.023124s info: Table 0591a2f5-42b8-425d-b415-f115f3bb3ad7: Starting a new Raft election for term 1.
 2015-10-10T17:09:04.269525000 51070.052362s info: Table 0591a2f5-42b8-425d-b415-f115f3bb3ad7: This server is Raft leader for term 1. Latest log index is 0.
+2015-10-10T19:19:51.305058000 58917.167652s notice: Removing file /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data/0591a2f5-42b8-425d-b415-f115f3bb3ad7
+2015-10-10T19:19:51.305067000 58917.167661s info: Table 0591a2f5-42b8-425d-b415-f115f3bb3ad7: Deleted the table.
+2015-10-10T19:26:05.259887000 59291.126310s notice: Server got SIGINT from pid 4716, uid 503; shutting down...
+2015-10-10T19:26:05.260155000 59291.126577s notice: Shutting down client connections...
+2015-10-10T19:26:05.260557000 59291.126979s notice: All client connections closed.
+2015-10-10T19:26:05.260569000 59291.126991s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-10-10T19:26:05.275765000 59291.142187s notice: Storage engine shut down.
+2015-10-10T19:26:16.839030000 0.374247s notice: Running rethinkdb 2.1.4 (CLANG 7.0.0 (clang-700.0.72))...
+2015-10-10T19:26:16.852711000 0.387925s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T19:26:16.852754000 0.387966s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T19:26:16.884732000 0.419944s info: Automatically using cache size of 100 MB
+2015-10-10T19:26:16.884742000 0.419954s warn: Cache size does not leave much memory for server and query overhead (available memory: 1009 MB).
+2015-10-10T19:26:16.884747000 0.419959s warn: Cache size is very low and may impact performance.
+2015-10-10T19:26:16.886867000 0.422079s notice: Listening for intracluster connections on port 29015
+2015-10-10T19:26:16.929814000 0.465026s notice: Listening for client driver connections on port 28015
+2015-10-10T19:26:16.929949000 0.465162s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T19:26:16.930910000 0.466122s notice: Listening on addresses: 127.0.0.1, 192.168.1.135, ::1, fe80::1%1, fe80::baf6:b1ff:fe14:9353%4, fe80::fc04:25ff:fe3a:1ce5%8
+2015-10-10T19:26:16.930917000 0.466129s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T19:26:17.415866000 0.951078s notice: A newer version of the RethinkDB server is available: 2.1.5-2. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2015-10-10T19:26:17.982228000 1.517460s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 2.
+2015-10-10T19:26:18.002573000 1.537805s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 2. Latest log index is 2.
+2015-10-10T19:26:18.464934000 2.000166s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 2.
+2015-10-10T19:26:18.490933000 2.026165s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 2. Latest log index is 2.
+2015-10-10T19:26:18.561569000 2.096800s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 2.
+2015-10-10T19:26:18.586740000 2.121972s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 2. Latest log index is 2.
+2015-10-10T19:26:46.744366000 30.279885s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56605, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:26:47.117920000 30.653438s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56606, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:26:47.975211000 31.510749s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56607, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:26:48.816633000 32.352170s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56610, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:26:50.422357000 33.957913s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56611, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:26:53.872081000 37.407675s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56614, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:26:56.606821000 40.142436s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56617, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:27:01.190849000 44.726520s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56622, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:27:03.668637000 47.204327s notice: Server got SIGINT from pid 4716, uid 503; shutting down...
+2015-10-10T19:27:03.668851000 47.204541s notice: Shutting down client connections...
+2015-10-10T19:27:03.668974000 47.204664s notice: All client connections closed.
+2015-10-10T19:27:03.668980000 47.204670s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-10-10T19:27:03.675929000 47.211619s notice: Storage engine shut down.
+2015-10-10T19:30:19.510858000 0.024658s notice: Running rethinkdb 2.1.4 (CLANG 7.0.0 (clang-700.0.72))...
+2015-10-10T19:30:19.520022000 0.033829s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T19:30:19.520068000 0.033865s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T19:30:19.568707000 0.082504s info: Automatically using cache size of 100 MB
+2015-10-10T19:30:19.568716000 0.082513s warn: Cache size does not leave much memory for server and query overhead (available memory: 979 MB).
+2015-10-10T19:30:19.568722000 0.082518s warn: Cache size is very low and may impact performance.
+2015-10-10T19:30:19.570758000 0.084555s notice: Listening for intracluster connections on port 29015
+2015-10-10T19:30:19.626515000 0.140312s notice: Listening for client driver connections on port 28015
+2015-10-10T19:30:19.626660000 0.140457s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T19:30:19.627654000 0.141450s notice: Listening on addresses: 127.0.0.1, 192.168.1.135, ::1, fe80::1%1, fe80::baf6:b1ff:fe14:9353%4, fe80::fc04:25ff:fe3a:1ce5%8
+2015-10-10T19:30:19.627662000 0.141459s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T19:30:20.006396000 0.520212s notice: A newer version of the RethinkDB server is available: 2.1.5-2. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2015-10-10T19:30:20.664689000 1.178505s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 3.
+2015-10-10T19:30:20.693215000 1.207031s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 3. Latest log index is 5.
+2015-10-10T19:30:20.855818000 1.369634s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 3.
+2015-10-10T19:30:20.875683000 1.389499s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 3. Latest log index is 5.
+2015-10-10T19:30:21.244566000 1.758382s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 3.
+2015-10-10T19:30:21.270646000 1.784462s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 3. Latest log index is 5.
+2015-10-10T19:30:25.468282000 5.982156s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56767, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:30:25.637726000 6.151600s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56768, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:30:26.081213000 6.595088s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56769, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:30:27.076860000 7.590734s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56770, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:30:28.235378000 8.749272s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56773, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:30:29.767221000 10.281133s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56774, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:30:31.926451000 12.440383s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56777, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:30:33.286508000 13.800459s notice: Server got SIGINT from pid 4716, uid 503; shutting down...
+2015-10-10T19:30:33.286759000 13.800710s notice: Shutting down client connections...
+2015-10-10T19:30:33.288670000 13.802622s notice: All client connections closed.
+2015-10-10T19:30:33.288681000 13.802632s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-10-10T19:30:33.297418000 13.811369s notice: Storage engine shut down.
+2015-10-10T19:31:16.363373000 0.344593s notice: Running rethinkdb 2.1.4 (CLANG 7.0.0 (clang-700.0.72))...
+2015-10-10T19:31:16.374523000 0.355740s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T19:31:16.374582000 0.355797s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T19:31:16.412400000 0.393615s info: Automatically using cache size of 100 MB
+2015-10-10T19:31:16.412409000 0.393624s warn: Cache size does not leave much memory for server and query overhead (available memory: 987 MB).
+2015-10-10T19:31:16.412421000 0.393636s warn: Cache size is very low and may impact performance.
+2015-10-10T19:31:16.415086000 0.396301s notice: Listening for intracluster connections on port 29015
+2015-10-10T19:31:16.466018000 0.447233s notice: Listening for client driver connections on port 28015
+2015-10-10T19:31:16.466154000 0.447369s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T19:31:16.466839000 0.448054s notice: Listening on addresses: 127.0.0.1, 192.168.1.135, ::1, fe80::1%1, fe80::baf6:b1ff:fe14:9353%4, fe80::fc04:25ff:fe3a:1ce5%8
+2015-10-10T19:31:16.466847000 0.448062s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T19:31:16.826577000 0.807792s notice: A newer version of the RethinkDB server is available: 2.1.5-2. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2015-10-10T19:31:17.513136000 1.494371s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 4.
+2015-10-10T19:31:17.520395000 1.501630s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 4.
+2015-10-10T19:31:17.538226000 1.519460s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 4. Latest log index is 8.
+2015-10-10T19:31:17.546984000 1.528218s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 4. Latest log index is 8.
+2015-10-10T19:31:17.763853000 1.745087s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 4.
+2015-10-10T19:31:17.790757000 1.771992s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 4. Latest log index is 8.
+2015-10-10T19:31:22.930327000 6.911619s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56816, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:31:22.942382000 6.923675s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56817, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:31:24.621313000 8.602606s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56818, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:31:27.077938000 11.059268s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56821, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:31:27.084486000 11.065816s warn: Remote node refused to connect with us, peer: [::ffff:192.168.0.88]:56822, reason: "unrecognized or incompatible version (local: 2.1.5, remote: 2.1.2)"
+2015-10-10T19:31:32.011503000 15.992873s notice: Server got SIGINT from pid 4716, uid 503; shutting down...
+2015-10-10T19:31:32.011862000 15.993232s notice: Shutting down client connections...
+2015-10-10T19:31:32.011985000 15.993354s notice: All client connections closed.
+2015-10-10T19:31:32.011991000 15.993360s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-10-10T19:31:32.024354000 16.005724s notice: Storage engine shut down.
+2015-10-10T19:36:50.906703000 0.455679s notice: Running rethinkdb 2.1.5-2 (CLANG 4.2 (clang-425.0.28))...
+2015-10-10T19:36:50.922177000 0.471149s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T19:36:50.922224000 0.471195s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T19:36:50.978863000 0.527834s info: Automatically using cache size of 100 MB
+2015-10-10T19:36:50.978871000 0.527841s warn: Cache size is larger than available memory.
+2015-10-10T19:36:50.978875000 0.527845s warn: Cache size is very low and may impact performance.
+2015-10-10T19:36:50.981047000 0.530018s notice: Listening for intracluster connections on port 29015
+2015-10-10T19:36:51.034882000 0.583854s notice: Listening for client driver connections on port 28015
+2015-10-10T19:36:51.034995000 0.583966s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T19:36:51.036088000 0.585059s notice: Listening on addresses: 127.0.0.1, 192.168.1.135, ::1, fe80::1%1, fe80::baf6:b1ff:fe14:9353%4, fe80::fc04:25ff:fe3a:1ce5%8
+2015-10-10T19:36:51.036096000 0.585067s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T19:36:52.452590000 2.001561s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 5.
+2015-10-10T19:36:52.478048000 2.027038s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 5. Latest log index is 12.
+2015-10-10T19:36:52.658487000 2.207477s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 5.
+2015-10-10T19:36:52.678976000 2.227966s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 5. Latest log index is 11.
+2015-10-10T19:36:52.874398000 2.423388s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 5.
+2015-10-10T19:36:52.895806000 2.444807s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 5. Latest log index is 11.
+2015-10-10T19:36:53.503143000 3.052134s error: Error in ./src/concurrency/watchable_map.tcc at line 98:
+2015-10-10T19:36:53.503228000 3.052218s error: Guarantee failed: [pair.second] key for entry_t already exists
+2015-10-10T19:36:53.503260000 3.052250s error: Backtrace:
+2015-10-10T19:36:53.520944000 3.069935s error: Sat Oct 10 19:36:53 2015\n\n1 [0x103fbc47b]: 0   rethinkdb                           0x0000000103fbc47b _Z11deserializeIL17cluster_version_t6EE16archive_result_tP13read_stream_tP17repli_timestamp_t + 539 at 0x103fbc47b ()\n2 [0x103b164ac]: 0   rethinkdb                           0x0000000103b164ac _ZN26callable_action_instance_tINSt3__16__bindIRFvNS0_8functionIFvvEEEEJRS4_EEEED0Ev + 3724 at 0x103b164ac ()\n3 [0x103b16ce7]: 0   rethinkdb                           0x0000000103b16ce7 _ZN26callable_action_instance_tINSt3__16__bindIRFvNS0_8functionIFvvEEEEJRS4_EEEED0Ev + 5831 at 0x103b16ce7 ()\n4 [0x103b160ca]: 0   rethinkdb                           0x0000000103b160ca _ZN26callable_action_instance_tINSt3__16__bindIRFvNS0_8functionIFvvEEEEJRS4_EEEED0Ev + 2730 at 0x103b160ca ()\n5 [0x103d7c91c]: 0   rethinkdb                           0x0000000103d7c91c _Z11deserializeIL17cluster_version_t6EE16archive_result_tP13read_stream_tP13name_string_t + 8204 at 0x103d7c91c ()\n6 [0x103d38668]: 0   rethinkdb                           0x0000000103d38668 _ZN19watchable_map_var_tINSt3__14pairI6uuid_uS2_EE14contract_ack_tE7entry_tC2EPS5_RKS3_RKS4_ + 232 at 0x103d38668 ()\n7 [0x103d37a00]: 0   rethinkdb                           0x0000000103d37a00 _ZN22minidir_read_manager_tINSt3__14pairI6uuid_uS2_EE14contract_ack_tE9on_updateEP8signal_tRK9peer_id_tRKS2_27fifo_enforcer_write_token_tbRKN5boost8optionalIS3_EERKNSF_IS4_EE + 1168 at 0x103d37a00 ()\n8 [0x103d390e6]: 0   rethinkdb                           0x0000000103d390e6 _ZNSt3__110__function6__funcINS_6__bindIM22minidir_read_manager_tINS_4pairI6uuid_uS5_EE14contract_ack_tEFvP8signal_tRK9peer_id_tRKS5_27fifo_enforcer_write_token_tbRKN5boost8optionalIS6_EERKNSI_IS7_EEEJPS8_RNS_12placeholders4__phILi1EEERNST_ILi2EEERNST_ILi3EEERNST_ILi4EEERNST_ILi5EEERNST_ILi6EEERNST_ILi7EEEEEENS_9allocatorIS18_EEFvSA_SB_S5_SG_bSJ_SM_EEclEOSA_OSB_OS5_OSG_ObOSJ_OSM_ + 86 at 0x103d390e6 ()\n9 [0x103d3938b]: 0   rethinkdb                           0x0000000103d3938b _ZN9mailbox_tIFv9peer_id_t6uuid_u27fifo_enforcer_write_token_tbN5boost8optionalINSt3__14pairIS1_S1_EEEENS4_I14contract_ack_tEEEE11read_impl_t4readEP13read_stream_tP8signal_t + 587 at 0x103d3938b ()\n10 [0x103fe8b23]: 0   rethinkdb                           0x0000000103fe8b23 _ZNKSt3__110__function6__funcIZN25directory_write_manager_tIiEC1EP22connectivity_cluster_thRK11clone_ptr_tI11watchable_tIiEEEUlvE_NS_9allocatorISC_EEFvvEE11target_typeEv + 4211 at 0x103fe8b23 ()\n11 [0x103fe8ebb]: 0   rethinkdb                           0x0000000103fe8ebb _ZNKSt3__110__function6__funcIZN25directory_write_manager_tIiEC1EP22connectivity_cluster_thRK11clone_ptr_tI11watchable_tIiEEEUlvE_NS_9allocatorISC_EEFvvEE11target_typeEv + 5131 at 0x103fe8ebb ()\n12 [0x103b0c7e8]: 0   rethinkdb                           0x0000000103b0c7e8 _ZN22threaded_context_ref_tC2Ev + 1304 at 0x103b0c7e8 ()
+2015-10-10T19:36:53.521399000 3.070390s error: Exiting.
+2015-10-10T19:53:23.467171000 0.430075s notice: Running rethinkdb 2.1.5-2 (CLANG 4.2 (clang-425.0.28))...
+2015-10-10T19:53:23.480936000 0.443837s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T19:53:23.480985000 0.443885s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T19:53:23.529186000 0.492086s info: Automatically using cache size of 100 MB
+2015-10-10T19:53:23.529194000 0.492093s warn: Cache size is larger than available memory.
+2015-10-10T19:53:23.529197000 0.492097s warn: Cache size is very low and may impact performance.
+2015-10-10T19:53:23.530825000 0.493725s notice: Listening for intracluster connections on port 29015
+2015-10-10T19:53:23.595132000 0.558032s notice: Listening for client driver connections on port 28015
+2015-10-10T19:53:23.595509000 0.558408s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T19:53:23.595510000 0.558410s notice: Listening on addresses: 127.0.0.1, ::1
+2015-10-10T19:53:23.595511000 0.558410s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-10-10T19:53:23.595512000 0.558411s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T19:53:24.809809000 1.772728s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 6.
+2015-10-10T19:53:24.831035000 1.793954s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 6. Latest log index is 14.
+2015-10-10T19:53:25.077709000 2.040628s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 6.
+2015-10-10T19:53:25.129678000 2.092597s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 6. Latest log index is 14.
+2015-10-10T19:53:25.483985000 2.446904s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 6.
+2015-10-10T19:53:25.497145000 2.460064s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 6. Latest log index is 15.
+2015-10-10T19:54:58.766939000 95.730817s notice: Server got SIGINT from pid 4716, uid 503; shutting down...
+2015-10-10T19:54:58.768658000 95.732536s notice: Shutting down client connections...
+2015-10-10T19:54:58.769034000 95.732912s notice: All client connections closed.
+2015-10-10T19:54:58.769041000 95.732919s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-10-10T19:54:58.781716000 95.745594s notice: Storage engine shut down.
+2015-10-10T19:55:33.636289000 0.297783s notice: Running rethinkdb 2.1.5-2 (CLANG 4.2 (clang-425.0.28))...
+2015-10-10T19:55:33.649959000 0.311449s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T19:55:33.650009000 0.311497s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T19:55:33.686440000 0.347929s info: Automatically using cache size of 100 MB
+2015-10-10T19:55:33.686448000 0.347936s warn: Cache size is larger than available memory.
+2015-10-10T19:55:33.686452000 0.347940s warn: Cache size is very low and may impact performance.
+2015-10-10T19:55:33.686925000 0.348413s notice: Listening for intracluster connections on port 29015
+2015-10-10T19:55:33.731963000 0.393451s notice: Listening for client driver connections on port 28015
+2015-10-10T19:55:33.732075000 0.393564s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T19:55:33.732077000 0.393565s notice: Listening on addresses: 127.0.0.1, ::1
+2015-10-10T19:55:33.732077001 0.393565s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-10-10T19:55:33.732086000 0.393574s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T19:55:34.810987000 1.472476s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 7.
+2015-10-10T19:55:34.833348000 1.494837s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 7. Latest log index is 17.
+2015-10-10T19:55:35.344596000 2.006104s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 7.
+2015-10-10T19:55:35.370405000 2.031912s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 7. Latest log index is 17.
+2015-10-10T19:55:35.388217000 2.049725s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 7.
+2015-10-10T19:55:35.406825000 2.068333s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 7. Latest log index is 18.
+2015-10-10T19:55:39.775138000 6.436684s notice: Server got SIGINT from pid 4716, uid 503; shutting down...
+2015-10-10T19:55:39.775373000 6.436918s notice: Shutting down client connections...
+2015-10-10T19:55:39.775530000 6.437076s notice: All client connections closed.
+2015-10-10T19:55:39.775537000 6.437082s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-10-10T19:55:39.782634000 6.444179s notice: Storage engine shut down.
+2015-10-10T19:55:49.549484000 0.004754s notice: Running rethinkdb 2.1.5-2 (CLANG 4.2 (clang-425.0.28))...
+2015-10-10T19:55:49.553671000 0.008938s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T19:55:49.553708000 0.008975s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T19:55:49.586954000 0.042221s info: Automatically using cache size of 100 MB
+2015-10-10T19:55:49.586964000 0.042230s warn: Cache size is larger than available memory.
+2015-10-10T19:55:49.586969000 0.042236s warn: Cache size is very low and may impact performance.
+2015-10-10T19:55:49.589008000 0.044275s notice: Listening for intracluster connections on port 29015
+2015-10-10T19:55:49.629443000 0.084710s notice: Listening for client driver connections on port 28015
+2015-10-10T19:55:49.629563000 0.084830s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T19:55:49.630416000 0.085682s notice: Listening on addresses: 127.0.0.1, 192.168.1.135, ::1, fe80::1%1, fe80::baf6:b1ff:fe14:9353%4, fe80::fc04:25ff:fe3a:1ce5%8
+2015-10-10T19:55:49.630426000 0.085692s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T19:55:51.147696000 1.602982s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 8.
+2015-10-10T19:55:51.164832000 1.620118s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 8. Latest log index is 20.
+2015-10-10T19:55:51.279842000 1.735128s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 8.
+2015-10-10T19:55:51.299278000 1.754565s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 8. Latest log index is 21.
+2015-10-10T19:55:51.471589000 1.926875s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 8.
+2015-10-10T19:55:51.487573000 1.942859s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 8. Latest log index is 20.
+2015-10-10T19:56:02.435665000 12.891066s error: Error in ./src/concurrency/watchable_map.tcc at line 98:
+2015-10-10T19:56:02.435704000 12.891105s error: Guarantee failed: [pair.second] key for entry_t already exists
+2015-10-10T19:56:02.435722000 12.891123s error: Backtrace:
+2015-10-10T19:56:02.458949000 12.914351s error: Sat Oct 10 19:56:02 2015\n\n1 [0x10cefb47b]: 0   rethinkdb                           0x000000010cefb47b _Z11deserializeIL17cluster_version_t6EE16archive_result_tP13read_stream_tP17repli_timestamp_t + 539 at 0x10cefb47b ()\n2 [0x10ca554ac]: 0   rethinkdb                           0x000000010ca554ac _ZN26callable_action_instance_tINSt3__16__bindIRFvNS0_8functionIFvvEEEEJRS4_EEEED0Ev + 3724 at 0x10ca554ac ()\n3 [0x10ca55ce7]: 0   rethinkdb                           0x000000010ca55ce7 _ZN26callable_action_instance_tINSt3__16__bindIRFvNS0_8functionIFvvEEEEJRS4_EEEED0Ev + 5831 at 0x10ca55ce7 ()\n4 [0x10ca550ca]: 0   rethinkdb                           0x000000010ca550ca _ZN26callable_action_instance_tINSt3__16__bindIRFvNS0_8functionIFvvEEEEJRS4_EEEED0Ev + 2730 at 0x10ca550ca ()\n5 [0x10ccbb91c]: 0   rethinkdb                           0x000000010ccbb91c _Z11deserializeIL17cluster_version_t6EE16archive_result_tP13read_stream_tP13name_string_t + 8204 at 0x10ccbb91c ()\n6 [0x10cc77668]: 0   rethinkdb                           0x000000010cc77668 _ZN19watchable_map_var_tINSt3__14pairI6uuid_uS2_EE14contract_ack_tE7entry_tC2EPS5_RKS3_RKS4_ + 232 at 0x10cc77668 ()\n7 [0x10cc76a00]: 0   rethinkdb                           0x000000010cc76a00 _ZN22minidir_read_manager_tINSt3__14pairI6uuid_uS2_EE14contract_ack_tE9on_updateEP8signal_tRK9peer_id_tRKS2_27fifo_enforcer_write_token_tbRKN5boost8optionalIS3_EERKNSF_IS4_EE + 1168 at 0x10cc76a00 ()\n8 [0x10cc780e6]: 0   rethinkdb                           0x000000010cc780e6 _ZNSt3__110__function6__funcINS_6__bindIM22minidir_read_manager_tINS_4pairI6uuid_uS5_EE14contract_ack_tEFvP8signal_tRK9peer_id_tRKS5_27fifo_enforcer_write_token_tbRKN5boost8optionalIS6_EERKNSI_IS7_EEEJPS8_RNS_12placeholders4__phILi1EEERNST_ILi2EEERNST_ILi3EEERNST_ILi4EEERNST_ILi5EEERNST_ILi6EEERNST_ILi7EEEEEENS_9allocatorIS18_EEFvSA_SB_S5_SG_bSJ_SM_EEclEOSA_OSB_OS5_OSG_ObOSJ_OSM_ + 86 at 0x10cc780e6 ()\n9 [0x10cc7838b]: 0   rethinkdb                           0x000000010cc7838b _ZN9mailbox_tIFv9peer_id_t6uuid_u27fifo_enforcer_write_token_tbN5boost8optionalINSt3__14pairIS1_S1_EEEENS4_I14contract_ack_tEEEE11read_impl_t4readEP13read_stream_tP8signal_t + 587 at 0x10cc7838b ()\n10 [0x10cf27b23]: 0   rethinkdb                           0x000000010cf27b23 _ZNKSt3__110__function6__funcIZN25directory_write_manager_tIiEC1EP22connectivity_cluster_thRK11clone_ptr_tI11watchable_tIiEEEUlvE_NS_9allocatorISC_EEFvvEE11target_typeEv + 4211 at 0x10cf27b23 ()\n11 [0x10cf27ebb]: 0   rethinkdb                           0x000000010cf27ebb _ZNKSt3__110__function6__funcIZN25directory_write_manager_tIiEC1EP22connectivity_cluster_thRK11clone_ptr_tI11watchable_tIiEEEUlvE_NS_9allocatorISC_EEFvvEE11target_typeEv + 5131 at 0x10cf27ebb ()\n12 [0x10ca4b7e8]: 0   rethinkdb                           0x000000010ca4b7e8 _ZN22threaded_context_ref_tC2Ev + 1304 at 0x10ca4b7e8 ()
+2015-10-10T19:56:02.460902000 12.916304s error: Exiting.
+2015-10-10T19:57:54.395444000 0.395651s notice: Running rethinkdb 2.1.5-2 (CLANG 4.2 (clang-425.0.28))...
+2015-10-10T19:57:54.408004000 0.408208s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T19:57:54.408048000 0.408250s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T19:57:54.442021000 0.442223s info: Automatically using cache size of 100 MB
+2015-10-10T19:57:54.442028000 0.442230s warn: Cache size is larger than available memory.
+2015-10-10T19:57:54.442035000 0.442237s warn: Cache size is very low and may impact performance.
+2015-10-10T19:57:54.442401000 0.442603s notice: Listening for intracluster connections on port 29015
+2015-10-10T19:57:54.479619000 0.479822s notice: Listening for client driver connections on port 28015
+2015-10-10T19:57:54.479727000 0.479929s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T19:57:54.479798000 0.480001s notice: Listening on addresses: 127.0.0.1, ::1
+2015-10-10T19:57:54.479799000 0.480001s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-10-10T19:57:54.479800000 0.480002s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T19:57:55.511928000 1.512149s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 9.
+2015-10-10T19:57:55.538826000 1.539048s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 9. Latest log index is 23.
+2015-10-10T19:57:55.714469000 1.714690s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 9.
+2015-10-10T19:57:55.733466000 1.733688s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 9. Latest log index is 24.
+2015-10-10T19:57:56.312358000 2.312580s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 9.
+2015-10-10T19:57:56.325551000 2.325773s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 9. Latest log index is 23.
+2015-10-10T19:58:45.820150000 51.820890s notice: Server got SIGINT from pid 4716, uid 503; shutting down...
+2015-10-10T19:58:45.820399000 51.821138s notice: Shutting down client connections...
+2015-10-10T19:58:45.820540000 51.821280s notice: All client connections closed.
+2015-10-10T19:58:45.820547000 51.821286s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-10-10T19:58:45.827258000 51.827997s notice: Storage engine shut down.
+2015-10-10T19:58:53.192083000 0.004441s notice: Running rethinkdb 2.1.5-2 (CLANG 4.2 (clang-425.0.28))...
+2015-10-10T19:58:53.195694000 0.008057s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T19:58:53.195741000 0.008095s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T19:58:53.229472000 0.041826s info: Automatically using cache size of 100 MB
+2015-10-10T19:58:53.229488000 0.041842s warn: Cache size is larger than available memory.
+2015-10-10T19:58:53.229493000 0.041846s warn: Cache size is very low and may impact performance.
+2015-10-10T19:58:53.231474000 0.043828s notice: Listening for intracluster connections on port 29015
+2015-10-10T19:58:53.274221000 0.086575s notice: Listening for client driver connections on port 28015
+2015-10-10T19:58:53.274331000 0.086685s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T19:58:53.275245000 0.087599s notice: Listening on addresses: 127.0.0.1, 192.168.1.135, ::1, fe80::1%1, fe80::baf6:b1ff:fe14:9353%4, fe80::fc04:25ff:fe3a:1ce5%8
+2015-10-10T19:58:53.275252000 0.087606s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T19:58:54.652505000 1.464859s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 10.
+2015-10-10T19:58:54.680581000 1.492935s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 10. Latest log index is 26.
+2015-10-10T19:58:54.852149000 1.664503s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 10.
+2015-10-10T19:58:54.872121000 1.684476s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 10. Latest log index is 26.
+2015-10-10T19:58:54.991748000 1.804122s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 10.
+2015-10-10T19:58:55.019723000 1.832097s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 10. Latest log index is 27.
+2015-10-10T19:59:21.809959000 28.622602s error: Error in ./src/concurrency/watchable_map.tcc at line 98:
+2015-10-10T19:59:21.810006000 28.622648s error: Guarantee failed: [pair.second] key for entry_t already exists
+2015-10-10T19:59:21.810028000 28.622670s error: Backtrace:
+2015-10-10T19:59:21.810988000 28.623630s error: Sat Oct 10 19:59:21 2015\n\n1 [0x10269f47b]: 0   rethinkdb                           0x000000010269f47b _Z11deserializeIL17cluster_version_t6EE16archive_result_tP13read_stream_tP17repli_timestamp_t + 539 at 0x10269f47b ()\n2 [0x1021f94ac]: 0   rethinkdb                           0x00000001021f94ac _ZN26callable_action_instance_tINSt3__16__bindIRFvNS0_8functionIFvvEEEEJRS4_EEEED0Ev + 3724 at 0x1021f94ac ()\n3 [0x1021f9ce7]: 0   rethinkdb                           0x00000001021f9ce7 _ZN26callable_action_instance_tINSt3__16__bindIRFvNS0_8functionIFvvEEEEJRS4_EEEED0Ev + 5831 at 0x1021f9ce7 ()\n4 [0x1021f90ca]: 0   rethinkdb                           0x00000001021f90ca _ZN26callable_action_instance_tINSt3__16__bindIRFvNS0_8functionIFvvEEEEJRS4_EEEED0Ev + 2730 at 0x1021f90ca ()\n5 [0x10245f91c]: 0   rethinkdb                           0x000000010245f91c _Z11deserializeIL17cluster_version_t6EE16archive_result_tP13read_stream_tP13name_string_t + 8204 at 0x10245f91c ()\n6 [0x10241b668]: 0   rethinkdb                           0x000000010241b668 _ZN19watchable_map_var_tINSt3__14pairI6uuid_uS2_EE14contract_ack_tE7entry_tC2EPS5_RKS3_RKS4_ + 232 at 0x10241b668 ()\n7 [0x10241aa00]: 0   rethinkdb                           0x000000010241aa00 _ZN22minidir_read_manager_tINSt3__14pairI6uuid_uS2_EE14contract_ack_tE9on_updateEP8signal_tRK9peer_id_tRKS2_27fifo_enforcer_write_token_tbRKN5boost8optionalIS3_EERKNSF_IS4_EE + 1168 at 0x10241aa00 ()\n8 [0x10241c0e6]: 0   rethinkdb                           0x000000010241c0e6 _ZNSt3__110__function6__funcINS_6__bindIM22minidir_read_manager_tINS_4pairI6uuid_uS5_EE14contract_ack_tEFvP8signal_tRK9peer_id_tRKS5_27fifo_enforcer_write_token_tbRKN5boost8optionalIS6_EERKNSI_IS7_EEEJPS8_RNS_12placeholders4__phILi1EEERNST_ILi2EEERNST_ILi3EEERNST_ILi4EEERNST_ILi5EEERNST_ILi6EEERNST_ILi7EEEEEENS_9allocatorIS18_EEFvSA_SB_S5_SG_bSJ_SM_EEclEOSA_OSB_OS5_OSG_ObOSJ_OSM_ + 86 at 0x10241c0e6 ()\n9 [0x10241c38b]: 0   rethinkdb                           0x000000010241c38b _ZN9mailbox_tIFv9peer_id_t6uuid_u27fifo_enforcer_write_token_tbN5boost8optionalINSt3__14pairIS1_S1_EEEENS4_I14contract_ack_tEEEE11read_impl_t4readEP13read_stream_tP8signal_t + 587 at 0x10241c38b ()\n10 [0x1026cbb23]: 0   rethinkdb                           0x00000001026cbb23 _ZNKSt3__110__function6__funcIZN25directory_write_manager_tIiEC1EP22connectivity_cluster_thRK11clone_ptr_tI11watchable_tIiEEEUlvE_NS_9allocatorISC_EEFvvEE11target_typeEv + 4211 at 0x1026cbb23 ()\n11 [0x1026cbebb]: 0   rethinkdb                           0x00000001026cbebb _ZNKSt3__110__function6__funcIZN25directory_write_manager_tIiEC1EP22connectivity_cluster_thRK11clone_ptr_tI11watchable_tIiEEEUlvE_NS_9allocatorISC_EEFvvEE11target_typeEv + 5131 at 0x1026cbebb ()\n12 [0x1021ef7e8]: 0   rethinkdb                           0x00000001021ef7e8 _ZN22threaded_context_ref_tC2Ev + 1304 at 0x1021ef7e8 ()
+2015-10-10T19:59:21.811758000 28.624400s error: Exiting.
+2015-10-10T20:05:00.273611000 0.499620s notice: Running rethinkdb 2.1.5-2 (CLANG 4.2 (clang-425.0.28))...
+2015-10-10T20:05:00.289107000 0.515113s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T20:05:00.289576000 0.515580s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T20:05:00.383772000 0.609776s info: Automatically using cache size of 100 MB
+2015-10-10T20:05:00.383781000 0.609785s warn: Cache size is larger than available memory.
+2015-10-10T20:05:00.383786000 0.609790s warn: Cache size is very low and may impact performance.
+2015-10-10T20:05:00.384329000 0.610334s notice: Listening for intracluster connections on port 29015
+2015-10-10T20:05:00.418425000 0.644429s notice: Listening for client driver connections on port 28015
+2015-10-10T20:05:00.418551000 0.644555s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T20:05:00.418555000 0.644559s notice: Listening on addresses: 127.0.0.1, ::1
+2015-10-10T20:05:00.418556000 0.644560s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-10-10T20:05:00.418565000 0.644569s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T20:05:01.758667000 1.984691s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 11.
+2015-10-10T20:05:01.777720000 2.003744s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 11. Latest log index is 29.
+2015-10-10T20:05:01.893984000 2.120008s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 11.
+2015-10-10T20:05:01.907140000 2.133164s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 11. Latest log index is 29.
+2015-10-10T20:05:02.274572000 2.500595s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 11.
+2015-10-10T20:05:02.343735000 2.569759s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 11. Latest log index is 30.
+2015-10-10T20:13:48.802277000 529.033656s notice: Server got SIGINT from pid 4716, uid 503; shutting down...
+2015-10-10T20:13:48.802587000 529.033966s notice: Shutting down client connections...
+2015-10-10T20:13:48.802697000 529.034075s notice: All client connections closed.
+2015-10-10T20:13:48.802701000 529.034080s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-10-10T20:13:48.809443000 529.040821s notice: Storage engine shut down.
+2015-10-10T20:13:57.069734000 0.343711s notice: Running rethinkdb 2.1.5-2 (CLANG 4.2 (clang-425.0.28))...
+2015-10-10T20:13:57.083846000 0.357819s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T20:13:57.083896000 0.357868s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T20:13:57.140700000 0.414673s info: Automatically using cache size of 100 MB
+2015-10-10T20:13:57.140710000 0.414682s warn: Cache size does not leave much memory for server and query overhead (available memory: 136 MB).
+2015-10-10T20:13:57.140719000 0.414691s warn: Cache size is very low and may impact performance.
+2015-10-10T20:13:57.141205000 0.415177s notice: Listening for intracluster connections on port 29015
+2015-10-10T20:13:57.175861000 0.449833s notice: Listening for client driver connections on port 28015
+2015-10-10T20:13:57.175977000 0.449949s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T20:13:57.175978000 0.449950s notice: Listening on addresses: 127.0.0.1, ::1
+2015-10-10T20:13:57.175979000 0.449951s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-10-10T20:13:57.176062000 0.450034s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T20:13:58.487654000 1.761627s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 12.
+2015-10-10T20:13:58.521769000 1.795742s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 12. Latest log index is 32.
+2015-10-10T20:13:58.696735000 1.970708s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 12.
+2015-10-10T20:13:58.711425000 1.985397s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 12. Latest log index is 33.
+2015-10-10T20:13:58.888477000 2.162468s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 12.
+2015-10-10T20:13:58.900867000 2.174858s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 12. Latest log index is 32.
+2015-10-10T20:17:17.413641000 200.689646s notice: Server got SIGINT from pid 4716, uid 503; shutting down...
+2015-10-10T20:17:17.413944000 200.689948s notice: Shutting down client connections...
+2015-10-10T20:17:17.414077000 200.690081s notice: All client connections closed.
+2015-10-10T20:17:17.414083000 200.690087s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-10-10T20:17:17.421297000 200.697301s notice: Storage engine shut down.
+2015-10-10T20:19:14.513513000 0.431525s notice: Running rethinkdb 2.1.5-2 (CLANG 4.2 (clang-425.0.28))...
+2015-10-10T20:19:14.529227000 0.447235s notice: Running on Darwin 15.0.0 x86_64
+2015-10-10T20:19:14.529286000 0.447293s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-10T20:19:14.578967000 0.496974s info: Automatically using cache size of 100 MB
+2015-10-10T20:19:14.578975000 0.496981s warn: Cache size is larger than available memory.
+2015-10-10T20:19:14.578984000 0.496991s warn: Cache size is very low and may impact performance.
+2015-10-10T20:19:14.579967000 0.497974s notice: Listening for intracluster connections on port 29015
+2015-10-10T20:19:14.639074000 0.557081s notice: Listening for client driver connections on port 28015
+2015-10-10T20:19:14.639263000 0.557270s notice: Listening for administrative HTTP connections on port 8080
+2015-10-10T20:19:14.639266000 0.557272s notice: Listening on addresses: 127.0.0.1, ::1
+2015-10-10T20:19:14.639266001 0.557273s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-10-10T20:19:14.639371000 0.557377s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-10T20:19:15.635613000 1.553620s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Starting a new Raft election for term 13.
+2015-10-10T20:19:15.660284000 1.578291s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: This server is Raft leader for term 13. Latest log index is 35.
+2015-10-10T20:19:15.811885000 1.729892s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 13.
+2015-10-10T20:19:15.826186000 1.744193s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 13. Latest log index is 35.
+2015-10-10T20:19:16.551142000 2.469168s info: Table 589fed21-b101-4315-8af7-deff86410895: Starting a new Raft election for term 13.
+2015-10-10T20:19:16.564990000 2.483016s info: Table 589fed21-b101-4315-8af7-deff86410895: This server is Raft leader for term 13. Latest log index is 36.
+2015-10-10T20:20:10.182708000 56.101266s notice: Removing file /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data/589fed21-b101-4315-8af7-deff86410895
+2015-10-10T20:20:10.182717000 56.101275s info: Table 589fed21-b101-4315-8af7-deff86410895: Deleted the table.
+2015-10-10T20:20:10.219309000 56.137867s notice: Removing file /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data/75d63da5-e82f-446d-b05e-2f2e4959fab4
+2015-10-10T20:20:10.219318000 56.137876s info: Table 75d63da5-e82f-446d-b05e-2f2e4959fab4: Deleted the table.
+2015-10-10T20:20:10.248416000 56.166974s notice: Removing file /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data/e3cfcd7d-aeff-4a88-8632-0a324f9c2640
+2015-10-10T20:20:10.248426000 56.166983s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Deleted the table.
+2015-10-10T20:20:22.433888000 68.352579s info: Table ee71ce3c-cbaf-4e4a-92e8-8e2c347308bd: Added replica on this server.
+2015-10-10T20:20:24.253274000 70.171985s info: Table ee71ce3c-cbaf-4e4a-92e8-8e2c347308bd: Starting a new Raft election for term 1.
+2015-10-10T20:20:24.273802000 70.192512s info: Table ee71ce3c-cbaf-4e4a-92e8-8e2c347308bd: This server is Raft leader for term 1. Latest log index is 0.
+2015-10-10T20:20:27.844644000 73.763392s info: Table f4b12f73-59a5-4a63-b362-9249d4c6cafe: Added replica on this server.
+2015-10-10T20:20:29.333348000 75.252115s info: Table f4b12f73-59a5-4a63-b362-9249d4c6cafe: Starting a new Raft election for term 1.
+2015-10-10T20:20:29.364233000 75.283000s info: Table f4b12f73-59a5-4a63-b362-9249d4c6cafe: This server is Raft leader for term 1. Latest log index is 0.
+2015-10-10T20:20:33.079276000 78.998081s info: Table 737d7f10-ef29-4e40-b6ad-e22cfd1fc53e: Added replica on this server.
+2015-10-10T20:20:34.659058000 80.577882s info: Table 737d7f10-ef29-4e40-b6ad-e22cfd1fc53e: Starting a new Raft election for term 1.
+2015-10-10T20:20:34.685227000 80.604051s info: Table 737d7f10-ef29-4e40-b6ad-e22cfd1fc53e: This server is Raft leader for term 1. Latest log index is 0.

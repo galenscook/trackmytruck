@@ -6,13 +6,22 @@
   </head>
   <body>
     <h1>All Trucks</h1>
-
+    <h1><%=currentUser.name%></h1>
     <ul>
     <% allTrucks.forEach(function(truck){ %>
-      <li><%=truck.name %> -- 
-      <form method='post', action="/favorites/<%=truck.id%>">
-        <input type='submit' value='add to favorites'>
-      </form>
+      <li><%=truck.name %> -- <span>
+        <%if(favorites.indexOf(truck.id) === -1){%>
+          <form method='post', action="/favorites/<%=truck.id%>">
+            <input type='submit' value='add to favorites'>
+          </form>
+        <% } else {%>
+        
+          <form method='post', action="/favorites/<%=truck.id%>?_method=DELETE">
+            <input type='hidden' name='_method' value='delete'>
+            <input type='submit' value='unfavorite'>
+          </form>
+        <%  } %>
+      </span>
       </li>
     <% }) %>
 
