@@ -28,3 +28,6 @@
 2015-10-09T11:54:02.777004000 936.482085s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Added replica on this server.
 2015-10-09T11:54:04.135816000 937.840916s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: Starting a new Raft election for term 1.
 2015-10-09T11:54:04.161397000 937.866497s info: Table e3cfcd7d-aeff-4a88-8632-0a324f9c2640: This server is Raft leader for term 1. Latest log index is 0.
+2015-10-10T17:09:03.100484000 51068.883304s info: Table 0591a2f5-42b8-425d-b415-f115f3bb3ad7: Added replica on this server.
+2015-10-10T17:09:04.240288000 51070.023124s info: Table 0591a2f5-42b8-425d-b415-f115f3bb3ad7: Starting a new Raft election for term 1.
+2015-10-10T17:09:04.269525000 51070.052362s info: Table 0591a2f5-42b8-425d-b415-f115f3bb3ad7: This server is Raft leader for term 1. Latest log index is 0.

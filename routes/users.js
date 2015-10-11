@@ -21,7 +21,7 @@ router.get('/new', function(request, response, next) {
 
 // Show User Profile
 
-router.get('/:id', auth.authorize, function (request, response, next) {
+router.get('/:id', function (request, response, next) {
   rdb.find('users', request.params.id)
   .then(function (user) {
     if(!user) {
@@ -29,7 +29,15 @@ router.get('/:id', auth.authorize, function (request, response, next) {
       notFoundError.status = 404;
       return next(notFoundError);
     }
-    response.render('users/show', {user: user});
+    // var favorites = rdb.favorites(user.id).toArray();
+    // console.log(favorites)
+    // response.render('users/show', {user: user, favorites: favorites})
+    rdb.favorites(user.id)
+    .then(function (favorites) {
+      console.log("MADE IT HERE")
+      response.render('users/show', {user: user, favorites: favorites});
+
+      })
   });
 });
 

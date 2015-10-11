@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Trucks</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>All Trucks</h1>
+
+    <ul>
+    <% allTrucks.forEach(function(truck){ %>
+      <li><%=truck.name %> -- 
+      <form method='post', action="/favorites/<%=truck.id%>">
+        <input type='submit' value='add to favorites'>
+      </form>
+      </li>
+    <% }) %>
+
+    
+  </body>
+</html>
