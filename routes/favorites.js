@@ -22,11 +22,16 @@ router.post('/:truckid', function (request, response) {
     truck_id: request.params.truckid
   }
 
-  rdb.save('favorites', newFavorite)
+  rdb.findFavorite(newFavorite.truck_id, newFavorite.user_id)
   .then(function(result){
-    response.redirect('/trucks')
-  });
+    if(result.length === 0){
+      rdb.save('favorites', newFavorite)
+      .then(function(result){
+        response.redirect('/trucks')
+      }); 
+    }
 
+  })
 });
 
 
