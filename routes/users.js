@@ -2,26 +2,76 @@ var express = require('express');
 var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
-var token = require('../lib/token');
-
-/* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
-
-
-// auth.authorize,
+var session = require('express-session')
 
 // New User Form
 
 router.get('/new', function(request, response, next) {
+    // console.log(currentUser());
+    console.log(session.userID);
+    var user = currentUser();
+    console.log(user);
     response.render('users/new');
 });
 
+// Show User Login Form
 
+router.get('/login', function (request, response, next){
+    // console.log(session)
+    response.render('users/login');
+})
+
+router.get('/logout', function (request, response, next){
+    // console.log(session)
+    session.userID = null;
+    response.redirect('/');
+})
+// Login User
+
+router.post('/login', function (request, response, next) {
+    rdb.findBy('users', 'email', request.body.email)
+    .then(function (user) {
+        user = user[0];
+
+        if(!user) {
+            // var userNotFoundError = new Error('User not found');
+            // userNotFoundError.status = 404;
+            // return next(userNotFoundError);
+            response.redirect('/users/login');
+        }
+
+        auth.authenticate(request.body.password, user.password)
+        .then(function (authenticated) {
+            if(authenticated) {
+              session.userID = user.id;
+                // var currentUser = {
+                //     name: user.name,
+                //     email: user.email,
+                //     token: token.generate(user)
+                // };
+                // console.log(currentUser);
+                response.redirect('/users/'+session.userID); 
+            } else {
+                var authenticationFailedError = new Error('Authentication failed');
+                authenticationFailedError.status = 401;
+                return next(authenticationFailedError);
+            }
+        });
+    });
+});
+
+router.get('/magic', function (request, response, next){
+  rdb.find('users', session.userID)
+  .then(function(user){
+    // currentUser = user;
+    // console.log(currentUser());
+    response.render('users/login');
+  });
+})
 // Show User Profile
 
-router.get('/:id', auth.authorize, function (request, response, next) {
+router.get('/:id', function (request, response, next) {
+  // console.log(session)
   rdb.find('users', request.params.id)
   .then(function (user) {
     if(!user) {
@@ -32,6 +82,7 @@ router.get('/:id', auth.authorize, function (request, response, next) {
     response.render('users/show', {user: user});
   });
 });
+
 
 // Creates new user in database
 router.post('/', function (request, response) {
@@ -50,7 +101,7 @@ router.post('/', function (request, response) {
       rdb.findBy('users', 'email', newUser.email)
       .then(function(users){
         var currentUser = users[0]
-        currentUser.token = token.generate(currentUser)
+        // currentUser.token = token.generate(currentUser)
         console.log(response)
         response.redirect('/users/'+users[0].id)
       })

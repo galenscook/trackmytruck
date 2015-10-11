@@ -4,6 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var rdb = require('./lib/rethink');
+// Require Sessions
+var http = require("http"),
+    Sessions = require("sessions"),
+    sessionHandler = new Sessions(); // memory store by default
+http.createServer(function (req, res) {
+    var session = sessionHandler.httpRequest(req, res);
+    // check session for possible methods
+});
+// var session = require('express-session')
+
 require('dotenv').load();
 
 // var rethink = require('rethinkdb');
@@ -24,6 +35,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// app.use(express.session({secret: '1234567890QWERTY'}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
@@ -61,5 +75,9 @@ app.use(function(err, req, res, next) {
   });
 });
 
+// rdb.find('users', session.userID)
+// .then(function(user){
+//   currentUser = user;
+// });
 
 module.exports = app;

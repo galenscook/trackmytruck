@@ -2,8 +2,14 @@ var express = require('express');
 var router = express.Router();
 var rdb = require('../lib/rethink');
 // var auth = require('../lib/auth');
+var session = require('express-session')
 
 /* GET home page. */
+router.get('/', function(request, response, next) {
+    // console.log(currentUser);
+    console.log(session)
+    response.render('index', { session: session });
+});
 // router.get('/', function(request, response, next) {
 //   var newUser = {
 //               name: "Steve",
