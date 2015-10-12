@@ -9,8 +9,8 @@ router.get('/', function(request, response, next){
   console.log(session.userID);
   rdb.findAll('trucks')
   .then(function (trucks){
-    if(session.userID == undefined){
-      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null});
+    if(session.userID === undefined){
+      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});
     }
     rdb.find('users', session.userID)
     .then(function (user){
@@ -20,7 +20,7 @@ router.get('/', function(request, response, next){
         favorites.forEach(function(favorite){
           favoriteIds.push(favorite.truck_id)
         })
-        response.render('trucks/index', {title: 'All Trucks', allTrucks: trucks, currentUser: user, favorites: favoriteIds});
+      response.render('trucks/index', {title: 'All Trucks', allTrucks: trucks, currentUser: user, favorites: favoriteIds, session: session});
       })
     });
   })
@@ -28,7 +28,7 @@ router.get('/', function(request, response, next){
 
 // New Truck Form
 router.get('/new', function(request, response, next) {
-    response.render('trucks/new', {title: 'New Truck'});
+    response.render('trucks/new', {title: 'New Truck', session: session});
 });
 
 // Show Truck Profile
@@ -57,13 +57,12 @@ router.post('/login', function (request, response, next) {
     if(!truck) {
       response.redirect('/trucks/login');
     }
-
     auth.authenticate(request.body.password, truck.password)
     .then(function (authenticated) {
       if(authenticated) {
         session.userID = truck.id;
         session.userType = 'truck';
-        response.redirect('/trucks/'+session.userID+'/setlocation'); 
+        response.redirect('/trucks/'+session.userID+'/setlocation');
       } else {
         var authenticationFailedError = new Error('Authentication failed');
         authenticationFailedError.status = 401;
