@@ -1,5 +1,3 @@
-var truckLocation = null;
-
 function initTruckMap() {
   var map = new google.maps.Map(document.getElementById('truckmap'), {
     center: {lat: -34.397, lng: 150.644},
@@ -25,10 +23,33 @@ function initTruckMap() {
         draggable: true
       });
 
-      truckLocation = marker.getPosition();
+      var truckLocation = marker.getPosition();
 
       google.maps.event.addListener(marker, 'dragend',function(){
         truckLocation = marker.getPosition();
+        map.setCenter(truckLocation);
+      });
+
+      $('form').on('submit', function(event){
+        event.preventDefault();
+
+        var url = $(this).attr('action');
+        var truckData = {
+          location: JSON.stringify(truckLocation),
+          closingTime: $('#truck-time-input').val(),
+          promo: $('#truck-promo').val()
+        };
+
+        $.ajax({
+          method: 'put',
+          url: url,
+          data: truckData
+        })
+
+        .done(function(response){
+          console.log(response);
+          window.location.replace('/trucks');
+        });
       });
 
     }, function() {
