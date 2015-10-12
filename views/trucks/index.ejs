@@ -1,4 +1,3 @@
-
 <% include ../partials/header %>
     <script src='/js/user_map.js'></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAP_KEY %>&signed_in=true&callback=initMap"
@@ -8,7 +7,7 @@
     <ul>
     <% allTrucks.forEach(function(truck){ %>
       <li><%=truck.name %> -- <span>
-        <%if(currentUser === undefined){ %>
+        <%if(currentUser == undefined){ %>
           <%if(favorites.indexOf(truck.id) === -1){%>
             <form method='post', action="/favorites/<%=truck.id%>">
               <input type='submit' value='add to favorites'>
@@ -24,7 +23,5 @@
       </span>
       </li>
     <% }) %>
-
-    <div id='truckmap' style='width:1080px; height:800px'></div>
-    
+    <div id="truckmap" style="width:1080px; height:800px"></div>
 <% include ../partials/footer %>
