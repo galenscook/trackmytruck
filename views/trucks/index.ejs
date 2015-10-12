@@ -8,13 +8,13 @@
     <ul>
     <% allTrucks.forEach(function(truck){ %>
       <li><%=truck.name %> -- <span>
-        <%if(currentUser === undefined){ %>
+        <%if(currentUser != undefined){ %>
           <%if(favorites.indexOf(truck.id) === -1){%>
             <form method='post', action="/favorites/<%=truck.id%>">
               <input type='submit' value='add to favorites'>
             </form>
           <% } else {%>
-          
+
             <form method='post', action="/favorites/<%=truck.id%>?_method=DELETE">
               <input type='hidden' name='_method' value='delete'>
               <input type='submit' value='unfavorite'>
@@ -26,5 +26,5 @@
     <% }) %>
 
     <div id='truckmap' style='width:1080px; height:800px'></div>
-    
+
 <% include ../partials/footer %>

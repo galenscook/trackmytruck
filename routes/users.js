@@ -7,14 +7,14 @@ var session = require('express-session')
 // New User Form
 
 router.get('/new', function(request, response, next) {
-    response.render('users/new', {title: 'Sign Up'});
+    response.render('users/new', {title: 'Sign Up', session: session});
 });
 
 // Show User Login Form
 
 router.get('/login', function (request, response, next){
     // console.log(session)
-    response.render('users/login', {title: 'Login'});
+    response.render('users/login', {title: 'Login', session: session});
 })
 
 router.get('/logout', function (request, response, next){
@@ -46,7 +46,7 @@ router.post('/login', function (request, response, next) {
                 //     token: token.generate(user)
                 // };
                 // console.log(currentUser);
-                response.redirect('/users/'+session.userID); 
+                response.redirect('/users/'+session.userID);
             } else {
                 var authenticationFailedError = new Error('Authentication failed');
                 authenticationFailedError.status = 401;
@@ -80,7 +80,7 @@ router.get('/:id', function (request, response, next) {
     rdb.favorites(user.id)
     .then(function (favorites) {
       console.log("MADE IT HERE")
-      response.render('users/show', {title: user+"'s Profile", user: user, favorites: favorites});
+      response.render('users/show', {title: user+"'s Profile", user: user, favorites: favorites, session: session});
 
       })
   });

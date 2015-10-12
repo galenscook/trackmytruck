@@ -8,3 +8,13 @@
   <body>
     <div class='container'>
     <!-- INSERT NAVBAR HERE -->
+      <div id='logo'></div>
+      <div id='logged-out'>
+        <a href = '/trucks/login'>I'm A Truck</a>
+        <a href = '/users/login'>I'm A Human</a>
+      </div>
+      <div id='logged-in'>
+        <% console.log(session.userID) %>
+        <a href = '/users/<%= session.userID %>'>Profile</a>
+        <a href = '/users/logout'>Logout</a>
+      </div>
