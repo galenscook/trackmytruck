@@ -16,8 +16,13 @@
       <% if (session.userID){ %>
         <div id='logged-in'>
           <% console.log(session.userID) %>
-          <a href = '/users/<%= session.userID %>'>Profile</a>
-          <a href = '/users/logout'>Logout</a>
+          <% if(session.userType == 'user') { %>
+            <a href = '/users/<%= session.userID %>'>Profile</a>
+            <a href = '/users/logout'>Logout</a>
+          <% } else { %>
+            <a href = '/trucks/<%= session.userID %>'>Profile</a>
+            <a href = '/trucks/logout'>Logout</a>
+          <% } %>
         </div>
       <% } else{ %>
         <div id='logged-out'>
