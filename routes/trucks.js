@@ -41,7 +41,7 @@ router.get('/:id', function (request, response, next) {
         notFoundError.status = 404;
         return next(notFoundError);
       }
-        response.render('trucks/show', {title: truck.name+"'s Profile", truck: truck});
+        response.render('trucks/show', {title: truck.name+"'s Profile", truck: truck, session: session});
     });
   } else {
     response.redirect('/');
@@ -114,11 +114,41 @@ router.get('/:id/setlocation', function (request, response){
         notFoundError.status = 404;
         return next(notFoundError);
       }
-      response.render('trucks/setlocation', {title: truck.name+"'s Location", truck: truck});
+      response.render('trucks/setlocation', {title: truck.name+"'s Location", truck: truck, session: session});
     });
   } else {
     response.redirect('/');
   }
+});
+
+// Edit profile page
+router.get('/:id/edit', function(request, response, next){
+  if (request.params.id == session.userID){
+    rdb.find('trucks', request.params.id)
+    .then(function(truck){
+      response.render('trucks/edit', {title: truck.name + "'s Profile", truck: truck, session: session})
+    });
+  } else {
+    response.redirect('/')
+  }
+});
+
+// Update profile
+router.put('/:id', function(request, response){
+  rdb.find('trucks', request.params.id)
+  .then(function(truck){
+    var updateTruck = {
+      name: request.body.name || truck.name,
+      description: request.body.description || truck.description,
+      yelpUrl: request.body.yelpUrl || truck.yelpUrl,
+      updated_at: rdb.now()
+    };
+
+    rdb.edit('trucks', truck.id, updateTruck)
+    .then(function(){
+      response.redirect('/trucks/' + request.params.id)
+    })
+  });
 });
 
 module.exports = router;
