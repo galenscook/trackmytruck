@@ -7,7 +7,6 @@ var session = require('express-session');
 // View all trucks
 
 router.get('/', function(request, response, next){
-  console.log(session.userID);
   rdb.findAll('trucks')
   .then(function (trucks){
     if(session.userID == undefined){

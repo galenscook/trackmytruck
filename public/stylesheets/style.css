@@ -1,8 +1,68 @@
+html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+             /*   background-color: green;*/
+            }
+            #container {
+                width: inherit;
+                height: inherit;
+                margin: 0;
+                padding: 0;
+               /* background-color: pink;*/
+            }
+
 body {
+  position: fixed;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.right {
+  float: right;
+}
+
+#loginprompt {
+  display: none;
+}
+/* Truck List */
+#trucklist {
+  position: absolute;
+  top: 8em;
+  background: #fff;
+}
+
+.panel {
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.truckpanel {
+  text-align: top;
+}
+
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.panel-body {
+  padding: 15px;
+}
+
+
+
+#truckmap {
+/*  position:fixed;*/
+  width: 100%;
 }
