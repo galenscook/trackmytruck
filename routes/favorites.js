@@ -4,7 +4,6 @@ var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
 var session = require('express-session')
 
-
 // Create new favorite
 router.post('/:truckid', function (request, response) {
 
@@ -25,8 +24,6 @@ router.post('/:truckid', function (request, response) {
 
   })
 });
-
-
 
 // Unfavorite
 router.delete('/:truckid', function (request, response) {

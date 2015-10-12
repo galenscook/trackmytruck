@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
-var session = require('express-session')
-
+var session = require('express-session');
 // New User Form
 
 router.get('/new', function(request, response, next) {
@@ -18,28 +17,30 @@ router.get('/login', function (request, response, next){
 })
 
 router.get('/logout', function (request, response, next){
-    // console.log(session)
-    session.userID = null;
-    response.redirect('/');
+  session.userID = null;
+  session.userType = null;
+  response.redirect('/');
 })
+
 // Login User
 
 router.post('/login', function (request, response, next) {
-    rdb.findBy('users', 'email', request.body.email)
-    .then(function (user) {
-        user = user[0];
+  rdb.findBy('users', 'email', request.body.email)
+  .then(function (user) {
+    user = user[0];
 
-        if(!user) {
+    if(!user) {
             // var userNotFoundError = new Error('User not found');
             // userNotFoundError.status = 404;
             // return next(userNotFoundError);
-            response.redirect('/users/login');
-        }
+      response.redirect('/users/login');
+    }
 
-        auth.authenticate(request.body.password, user.password)
-        .then(function (authenticated) {
-            if(authenticated) {
-              session.userID = user.id;
+    auth.authenticate(request.body.password, user.password)
+    .then(function (authenticated) {
+      if(authenticated) {
+        session.userID = user.id;
+        session.userType = 'user';
                 // var currentUser = {
                 //     name: user.name,
                 //     email: user.email,
@@ -54,16 +55,16 @@ router.post('/login', function (request, response, next) {
             }
         });
     });
+  });
 });
 
 router.get('/magic', function (request, response, next){
   rdb.find('users', session.userID)
   .then(function(user){
-    // currentUser = user;
-    // console.log(currentUser());
     response.render('users/login');
   });
 })
+
 // Show User Profile
 
 router.get('/:id', function (request, response, next) {
@@ -74,9 +75,6 @@ router.get('/:id', function (request, response, next) {
       notFoundError.status = 404;
       return next(notFoundError);
     }
-    // var favorites = rdb.favorites(user.id).toArray();
-    // console.log(favorites)
-    // response.render('users/show', {user: user, favorites: favorites})
     rdb.favorites(user.id)
     .then(function (favorites) {
       console.log("MADE IT HERE")
@@ -86,8 +84,8 @@ router.get('/:id', function (request, response, next) {
   });
 });
 
-
 // Creates new user in database
+
 router.post('/', function (request, response) {
   auth.hash_password(request.body.password)
   .then(function (hash) {
@@ -103,6 +101,8 @@ router.post('/', function (request, response) {
     .then(function (result) {
       rdb.findBy('users', 'email', newUser.email)
       .then(function(users){
+        session.userID = user.id;
+        session.userType = 'user';
         response.redirect('/users/'+users[0].id)
       })
 

@@ -71,7 +71,9 @@ router.post('/', function (request, response) {
       rdb.findBy('trucks', 'yelpUrl', newTruck.yelpUrl)
       .then(function(trucks){
         var currentTruck = trucks[0]
-        response.redirect('/trucks/'+trucks[0].id)
+        session.userID = currentTruck.id;
+        session.userType = 'truck';
+        response.redirect('/trucks/'+currentTruck.id)
       })
 
     });
