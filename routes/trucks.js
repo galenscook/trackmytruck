@@ -138,9 +138,24 @@ router.put('/:id/setlocation', function (request, response){
         var notFoundError = new Error('Truck not found');
         notFoundError.status = 404;
         return next(notFoundError);
+      } else {
+        var updateTruck = {
+          name: truck.name,
+          description: truck.description,
+          yelpUrl: truck.yelpUrl,
+          updated_at: rdb.now(),
+          location: request.body.location,
+          closingTime: request.body.closingTime,
+          promo: request.body.promo
+        };
+
+        console.log(updateTruck);
+
+        rdb.edit('trucks', truck.id, updateTruck)
+        .then(function(){
+          response.send('done')
+        })
       }
-      // truck.update('location', request.params.location)
-      response.redirect('/trucks/');
     });
   } else {
     response.redirect('/');
