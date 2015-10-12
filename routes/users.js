@@ -48,22 +48,14 @@ router.post('/login', function (request, response, next) {
                 // };
                 // console.log(currentUser);
                 response.redirect('/users/'+session.userID);
-            } else {
-                var authenticationFailedError = new Error('Authentication failed');
-                authenticationFailedError.status = 401;
-                return next(authenticationFailedError);
-            }
-        });
+      } else {
+          var authenticationFailedError = new Error('Authentication failed');
+          authenticationFailedError.status = 401;
+          return next(authenticationFailedError);
+      }
     });
   });
 });
-
-router.get('/magic', function (request, response, next){
-  rdb.find('users', session.userID)
-  .then(function(user){
-    response.render('users/login');
-  });
-})
 
 // Show User Profile
 
@@ -79,8 +71,7 @@ router.get('/:id', function (request, response, next) {
     .then(function (favorites) {
       console.log("MADE IT HERE")
       response.render('users/show', {title: user+"'s Profile", user: user, favorites: favorites, session: session});
-
-      })
+    })
   });
 });
 
@@ -105,7 +96,6 @@ router.post('/', function (request, response) {
         session.userType = 'user';
         response.redirect('/users/'+users[0].id)
       })
-
     });
   });
 });
