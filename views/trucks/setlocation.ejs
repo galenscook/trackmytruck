@@ -1,1 +1,34 @@
-<h1><%= title %></h1>
+<% include ../partials/header %>
+    <script src='/js/user_map.js'></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAP_KEY %>&signed_in=true&callback=initMap"
+         async defer></script>
+
+    <h1><%= title %></h1>
+
+    <div id='truckmap' class="u-full-width" style='height:400px'></div>
+    <p></p>
+    <form method='post', action="/trucks/<%=truck.id%>/setlocation?_method=PUT">
+    <div class="row">
+	  <div class="six columns">
+	    <label for="exampleRecipientInput">I'll be at this location until: </label>
+	    <select class="u-full-width" id="truck-time-input">
+	    <option value="Option 1">1:00pm</option>
+	    <option value="Option 2">2:00pm</option>
+	    <option value="Option 3">3:00pm</option>
+	    <option value="Option 4">4:00pm</option>
+	    <option value="Option 5">5:00pm</option>
+	    <option value="Option 6">6:00pm</option>
+	    <option value="Option 7">7:00pm</option>
+	    <option value="Option 8">8:00pm</option>
+	    <option value="Option 9">9:00pm</option>
+	    <option value="Option 10">10:00pm</option>
+	    <option value="Option 11">11:00pm</option>
+	    <option value="Option 12">12:00am</option>
+	    </select>
+	  </div>
+    </div>
+    <label for="exampleMessage">Today's Promotion (optional)</label>
+  	<textarea class="u-full-width" placeholder="Today's special deals or promotions" id="truck-promo"></textarea>
+    <input class="button-primary" type="submit" value='Open for Business'>
+    </form>
+<% include ../partials/footer %>
