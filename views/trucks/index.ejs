@@ -1,10 +1,10 @@
-
 <% include ../partials/header %>
     <script src='/js/user_map.js'></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAP_KEY %>&signed_in=true&callback=initMap"
          async defer></script>
 
     <h1>All Trucks</h1>
+    <% include ../partials/trucklist %>
     <ul>
     <% allTrucks.forEach(function(truck){ %>
       <li><%=truck.name %> -- <span>
