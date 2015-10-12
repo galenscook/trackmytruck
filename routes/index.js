@@ -8,7 +8,7 @@ var session = require('express-session')
 router.get('/', function(request, response, next) {
     // console.log(currentUser);
     console.log(session)
-    response.render('index', { session: session });
+    response.render('index', { title: "Track My Truck", session: session });
 });
 // router.get('/', function(request, response, next) {
 //   var newUser = {
