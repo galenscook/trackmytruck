@@ -7,18 +7,14 @@ var session = require('express-session')
 // New User Form
 
 router.get('/new', function(request, response, next) {
-    // console.log(currentUser());
-    console.log(session.userID);
-    var user = currentUser();
-    console.log(user);
-    response.render('users/new');
+    response.render('users/new', {title: 'Sign Up'});
 });
 
 // Show User Login Form
 
 router.get('/login', function (request, response, next){
     // console.log(session)
-    response.render('users/login');
+    response.render('users/login', {title: 'Login'});
 })
 
 router.get('/logout', function (request, response, next){
@@ -84,7 +80,7 @@ router.get('/:id', function (request, response, next) {
     rdb.favorites(user.id)
     .then(function (favorites) {
       console.log("MADE IT HERE")
-      response.render('users/show', {user: user, favorites: favorites});
+      response.render('users/show', {title: user+"'s Profile", user: user, favorites: favorites});
 
       })
   });

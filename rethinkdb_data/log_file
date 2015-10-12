@@ -341,3 +341,21 @@
 2015-10-10T20:20:33.079276000 78.998081s info: Table 737d7f10-ef29-4e40-b6ad-e22cfd1fc53e: Added replica on this server.
 2015-10-10T20:20:34.659058000 80.577882s info: Table 737d7f10-ef29-4e40-b6ad-e22cfd1fc53e: Starting a new Raft election for term 1.
 2015-10-10T20:20:34.685227000 80.604051s info: Table 737d7f10-ef29-4e40-b6ad-e22cfd1fc53e: This server is Raft leader for term 1. Latest log index is 0.
+2015-10-11T17:28:17.422540000 0.272520s notice: Running rethinkdb 2.1.5-2 (CLANG 4.2 (clang-425.0.28))...
+2015-10-11T17:28:17.435478000 0.285428s notice: Running on Darwin 15.0.0 x86_64
+2015-10-11T17:28:17.435864000 0.285813s notice: Loading data from directory /Users/galen0531/Dropbox/Dev/3-phase/trackmytruck/rethinkdb_data
+2015-10-11T17:28:17.539131000 0.389080s info: Automatically using cache size of 100 MB
+2015-10-11T17:28:17.539141000 0.389089s warn: Cache size is larger than available memory.
+2015-10-11T17:28:17.539146000 0.389094s warn: Cache size is very low and may impact performance.
+2015-10-11T17:28:17.539625000 0.389574s notice: Listening for intracluster connections on port 29015
+2015-10-11T17:28:17.590087000 0.440035s notice: Listening for client driver connections on port 28015
+2015-10-11T17:28:17.590206000 0.440154s notice: Listening for administrative HTTP connections on port 8080
+2015-10-11T17:28:17.590207000 0.440155s notice: Listening on addresses: 127.0.0.1, ::1
+2015-10-11T17:28:17.590207001 0.440156s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-10-11T17:28:17.590208000 0.440156s notice: Server ready, "Galens_MacBook_Pro_local_h8y" 1a2eb104-7f90-4456-9f1e-4bdf7ef36241
+2015-10-11T17:28:18.848314000 1.698283s info: Table ee71ce3c-cbaf-4e4a-92e8-8e2c347308bd: Starting a new Raft election for term 2.
+2015-10-11T17:28:18.883106000 1.733075s info: Table ee71ce3c-cbaf-4e4a-92e8-8e2c347308bd: This server is Raft leader for term 2. Latest log index is 2.
+2015-10-11T17:28:18.900923000 1.750891s info: Table f4b12f73-59a5-4a63-b362-9249d4c6cafe: Starting a new Raft election for term 2.
+2015-10-11T17:28:18.919207000 1.769176s info: Table f4b12f73-59a5-4a63-b362-9249d4c6cafe: This server is Raft leader for term 2. Latest log index is 2.
+2015-10-11T17:28:19.213398000 2.063367s info: Table 737d7f10-ef29-4e40-b6ad-e22cfd1fc53e: Starting a new Raft election for term 2.
+2015-10-11T17:28:19.274231000 2.124200s info: Table 737d7f10-ef29-4e40-b6ad-e22cfd1fc53e: This server is Raft leader for term 2. Latest log index is 2.

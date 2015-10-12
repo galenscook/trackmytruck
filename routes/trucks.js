@@ -11,7 +11,7 @@ router.get('/', function(request, response, next){
   rdb.findAll('trucks')
   .then(function (trucks){
     if(session.userID === undefined){
-      response.render('trucks/index', {allTrucks: trucks, currentUser: null, favorites: null});
+      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null});
     }
     rdb.find('users', session.userID)
     .then(function (user){
@@ -21,7 +21,7 @@ router.get('/', function(request, response, next){
         favorites.forEach(function(favorite){
           favoriteIds.push(favorite.truck_id)
         })
-      response.render('trucks/index', {allTrucks: trucks, currentUser: user, favorites: favoriteIds});
+      response.render('trucks/index', {title: 'All Trucks', allTrucks: trucks, currentUser: user, favorites: favoriteIds});
       })
       });
     // response.render('trucks/index', {allTrucks: trucks})
@@ -31,7 +31,7 @@ router.get('/', function(request, response, next){
 // New Truck Form
 
 router.get('/new', function(request, response, next) {
-    response.render('trucks/new');
+    response.render('trucks/new', {title: 'New Truck'});
 });
 
 
@@ -49,7 +49,7 @@ router.get('/:id', function (request, response, next) {
     // .then(function (user){
     //   currentUser = user
     //   });
-      response.render('trucks/show', {truck: truck});
+      response.render('trucks/show', {title: truck.name+"'s Profile", truck: truck});
     });
   });
 

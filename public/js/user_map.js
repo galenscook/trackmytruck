@@ -17,7 +17,7 @@ function initMap() {
         lng: position.coords.longitude
       };
 
-      console.log(truck);
+      // console.log(pos);
 
       var marker = new google.maps.Marker({
         position: pos,
