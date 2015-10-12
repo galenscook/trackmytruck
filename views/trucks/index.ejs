@@ -7,7 +7,7 @@
     <ul>
     <% allTrucks.forEach(function(truck){ %>
       <li><%=truck.name %> -- <span>
-        <%if(currentUser == undefined){ %>
+        <%if(currentUser != undefined){ %>
           <%if(favorites.indexOf(truck.id) === -1){%>
             <form method='post', action="/favorites/<%=truck.id%>">
               <input type='submit' value='add to favorites'>
