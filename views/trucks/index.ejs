@@ -3,10 +3,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAP_KEY %>&signed_in=true&callback=initMap"
          async defer></script>
          
-    <div class='row'>
+    <div class='row map'>
       <h1>All Trucks</h1>
       <!-- <div class='six columns'> -->
-        <div id="truckmap"></div>
+        <div id="truckmap" ></div>
       <!-- </div> -->
       <% include ../partials/trucklist %>
     </div>

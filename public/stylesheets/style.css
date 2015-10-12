@@ -65,10 +65,41 @@ a {
   font-size: 1.5em;
 }
 
+.icon {
+  background: none;
+  border: none;
+}
+
 
 /* Map */
+
+.map {
+  position: relative;
+}
 
 #truckmap {
 /*  position:fixed;*/
   width: 100%;
+}
+
+/* MOBILE */
+@media screen and (max-width: 750px){
+  body {
+    position: static;
+  }
+  #trucklist {
+    position: static;
+    display: block;
+    width: 100%;
+    min-height: 20em;
+  }
+
+  #truckmap {
+    position: static;
+    display: block;
+  }
+
+  .columns {
+    width: 100%;
+  }
 }

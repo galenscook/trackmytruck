@@ -1,5 +1,5 @@
 <script type="text/javascript" src='/js/favorites.js'></script>
-<div id='trucklist' class='four columns'>
+<div id='trucklist' class='four columns panel'>
   <div id='loginprompt' class='panel'>
     <p>Please <a href="/users/login">log in</a> or <a href="/users/new">sign up</a> to favorite a truck.</p>
   </div>
@@ -11,18 +11,18 @@
           <%if(currentUser != undefined){ %>
             <%if(favorites.indexOf(truck.id) === -1){%>
               <form method='post', action="/favorites/<%=truck.id%>">
-                <i type='submit' class='fa fa-star-o fa-2x'></i>
+                <button type='submit' class='icon'><i class='fa fa-star-o fa-2x'></i></button>
               </form>
             <% } else {%>
             
               <form method='post', action="/favorites/<%=truck.id%>?_method=DELETE">
                 <input type='hidden' name='_method' value='delete'>
-                <i type='submit' class='fa fa-star fa-2x'></i>
+                <input type='submit' class='fa fa-star fa-2x'></i>
               </form>
             <%  } %>
           <% } else {%>
               <i type='submit' class='notloggedin fa fa-star-o fa-2x'></i>
-            <% } %>
+            <% } %>%>
         </span>
       </div>
       <div class='panel-body'>

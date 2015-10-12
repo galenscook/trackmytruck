@@ -84,7 +84,7 @@ router.post('/', function (request, response) {
     .then(function (result) {
       rdb.findBy('users', 'email', newUser.email)
       .then(function(users){
-        session.userID = user.id;
+        session.userID = users[0].id;
         session.userType = 'user';
         response.redirect('/users/'+users[0].id)
       })
