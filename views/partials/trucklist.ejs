@@ -1,12 +1,12 @@
 <script type="text/javascript" src='/js/favorites.js'></script>
-<div id='trucklist' class='five columns'>
+<div id='trucklist' class='four columns'>
   <div id='loginprompt' class='panel'>
     <p>Please <a href="/users/login">log in</a> or <a href="/users/new">sign up</a> to favorite a truck.</p>
   </div>
   <% allTrucks.forEach(function(truck){ %>
     <div class='panel truckpanel'>
       <div class='panel-heading'>
-        <%=truck.name %> 
+        <h1><%=truck.name %></h1>
         <span class='right'>
           <%if(currentUser != undefined){ %>
             <%if(favorites.indexOf(truck.id) === -1){%>

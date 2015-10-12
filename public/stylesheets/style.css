@@ -35,10 +35,11 @@ a {
   position: absolute;
   top: 8em;
   background: #fff;
+  overflow-y: scroll;
 }
 
 .panel {
-  margin-bottom: 20px;
+  margin: 10px;
   background-color: #ffffff;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -60,7 +61,12 @@ a {
   padding: 15px;
 }
 
+.panel h1 {
+  font-size: 1.5em;
+}
 
+
+/* Map */
 
 #truckmap {
 /*  position:fixed;*/

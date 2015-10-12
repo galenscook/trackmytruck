@@ -8,6 +8,7 @@ var session = require('express-session');
 router.get('/', function(request, response, next){
   rdb.findAll('trucks')
   .then(function (trucks){
+    console.log(session)
     if(session.userID == undefined){
       response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null});
     }
