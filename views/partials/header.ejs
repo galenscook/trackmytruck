@@ -8,7 +8,7 @@
   <body>
     <div class='container'>
     <!-- INSERT NAVBAR HERE -->
-      <div id='logo'></div>
+      <div id='logo'><a href = '/'>home</a></div>
       <% if (session.userID){ %>
         <div id='logged-in'>
           <% console.log(session.userID) %>
@@ -17,7 +17,7 @@
         </div>
       <% } else{ %>
         <div id='logged-out'>
-          <a href = '/trucks/login'>I'm A Truck</a>
-          <a href = '/users/login'>I'm A Human</a>
+          <a href = '/trucks/new'>I'm A Truck</a>
+          <a href = '/users/new'>Login / Sign-up</a>
         </div>
       <% } %>

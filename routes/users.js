@@ -10,7 +10,7 @@ router.get('/new', function(request, response, next) {
 });
 
 // Show User Login Form
-router.get('/login', function (request, response, next){
+router.get('/new', function (request, response, next){
     // console.log(session)
     response.render('users/login', {title: 'Login', session: session});
 })
