@@ -49,3 +49,5 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function getTruckLocation(){
   return truckLocation;
 }
+
+
