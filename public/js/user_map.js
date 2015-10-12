@@ -24,102 +24,32 @@ function initMap() {
         icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
       });
 
-      var truck1 = new google.maps.Marker({
-              position: {lat: 37.784778021272416, lng: -122.3962264976227},
+      $.ajax({
+        method: 'get',
+        url: '/users/get-truck-info',
+        dataType: 'json'
+      })
+
+      .done(function(response){
+        // console.log(response);
+        // response = JSON.parse(response);
+        var truckCoordinates = response.map(function(object){
+          if (object.location){
+            var coordinate = JSON.parse(object.location);
+            return new google.maps.LatLng(coordinate.J, coordinate.M)
+          }
+        });
+
+        for(var i = 0; i < response.length; i++){
+          if(truckCoordinates[i]){
+            new google.maps.Marker({
+              position: truckCoordinates[i],
               map: map,
-              title: 'Truck 1'
+              title: response[i].name,
             });
-
-      var truck2 = new google.maps.Marker({
-              position: {lat: 37.78671973034361, lng: -122.4032860717499},
-              map: map,
-              title: 'Truck 2'
-            });
-
-      var truck3 = new google.maps.Marker({
-              position: {lat: 37.78858507965642, lng: -122.40667638394473},
-              map: map,
-              title: 'Truck 3'
-            });
-
-      var truck4 = new google.maps.Marker({
-              position: {lat: 37.78844941947592, lng: -122.41375741574404},
-              map: map,
-              title: 'Truck 4'
-            });
-
-      var truck5 = new google.maps.Marker({
-              position: {lat: 37.78695714105294, lng: -122.41422948453067},
-              map: map,
-              title: 'Truck 5'
-            });
-
-      var truck6 = new google.maps.Marker({
-              position: {lat: 37.78556658176349, lng: -122.4165039977753},
-              map: map,
-              title: 'Truck 6'
-            });
-
-      var truck7 = new google.maps.Marker({
-              position: {lat: 37.78651623484282, lng: -122.41800603482363},
-              map: map,
-              title: 'Truck 7'
-            });
-
-      var truck8 = new google.maps.Marker({
-              position: {lat: 37.78868682462838, lng: -122.4185210189545},
-              map: map,
-              title: 'Truck 8'
-            });
-
-      var truck9 = new google.maps.Marker({
-              position: {lat: 37.78990775336479, lng: -122.42186841580508},
-              map: map,
-              title: 'Truck 9'
-            });
-
-      var truck10 = new google.maps.Marker({
-              position: {lat: 37.78916163264523, lng: -122.42465791318057},
-              map: map,
-              title: 'Truck 10'
-            });
-
-      var truck11 = new google.maps.Marker({
-              position: {lat: 37.78811026793499, lng: -122.42482957455752},
-              map: map,
-              title: 'Truck 11'
-            });
-
-      var truck12 = new google.maps.Marker({
-              position: {lat: 37.78692322528404, lng: -122.4254733047211},
-              map: map,
-              title: 'Truck 12'
-            });
-
-      var truck13 = new google.maps.Marker({
-              position: {lat: 37.78529525007087, lng: -122.42620286557315},
-              map: map,
-              title: 'Truck 13'
-            });
-
-      var truck14 = new google.maps.Marker({
-              position: {lat: 37.78705888826634, lng: -122.4287348708832},
-              map: map,
-              title: 'Truck 14'
-            });
-
-      var truck15 = new google.maps.Marker({
-              position: {lat: 37.78583791245993, lng: -122.4287348708832},
-              map: map,
-              title: 'Truck 15'
-            });
-
-      var trucks = [truck1, truck2, truck3, truck4, truck5, truck6, truck7, truck8, truck9, truck10, truck11, truck12, truck13, truck14, truck15];
-
-      for(var i = 0; i < trucks.length; i++){
-        trucks[i].setMap(null)
-      };
-      // truck.setMap(null);
+          }
+        };
+      });
 
       // var radius = new google.maps.Circle({
       //   strokeColor: '#FF0000',
@@ -134,8 +64,6 @@ function initMap() {
 
       map.setCenter(pos);
 
-      findInBound(trucks);
-      showInBound();
       // findInRadius(trucks);
       // showInRadius();
 
@@ -198,21 +126,21 @@ function initMap() {
       google.maps.event.addListener(map, 'zoom_changed', function(){
         zoom = map.getZoom();
         if(zoom < 13){
-          for(var i = 0; i < trucks.length; i++){
-            trucks[i].setMap(null)
-          }
+          // for(var i = 0; i < trucks.length; i++){
+          //   trucks[i].setMap(null)
+          // }
           marker.setMap(null);
         } else{
-          inBound = [];
+          // inBound = [];
 
-          for(var i = 0; i < trucks.length; i++){
-            trucks[i].setMap(null)
-          };
+          // for(var i = 0; i < trucks.length; i++){
+          //   trucks[i].setMap(null)
+          // };
           if(map.getBounds().contains(marker.getPosition())){
             marker.setMap(map);
           }
-          findInBound(trucks);
-          showInBound();
+          // findInBound(trucks);
+          // showInBound();
           // radius.setMap(map);
           // marker.setMap(map);
           // findInRadius(trucks);
@@ -223,17 +151,17 @@ function initMap() {
       google.maps.event.addListener(map, 'dragend', function(){
         inBound = [];
 
-        for(var i = 0; i < trucks.length; i++){
-          trucks[i].setMap(null)
-        };
+        // for(var i = 0; i < trucks.length; i++){
+        //   trucks[i].setMap(null)
+        // };
 
         marker.setMap(null);
 
         if(map.getBounds().contains(marker.getPosition())){
           marker.setMap(map);
         }
-        findInBound(trucks);
-        showInBound();
+        // findInBound(trucks);
+        // showInBound();
       })
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
