@@ -14,11 +14,17 @@
 
       <div id='logo'><a href = '/'>home</a></div>
       <% if (session.userID){ %>
-        <div id='logged-in'>
-          <% console.log(session.userID) %>
-          <a href = '/users/<%= session.userID %>'>Profile</a>
-          <a href = '/users/logout'>Logout</a>
-        </div>
+        <% if (session.userType == 'user'){ %>
+          <div id='user-logged-in'>
+            <a href = '/users/<%= session.userID %>'>Profile</a>
+            <a href = '/users/logout'>Logout</a>
+          </div>
+        <% } else { %>
+          <div id='truck-logged-in'>
+            <a href = '/trucks/<%= session.userID %>'>Profile</a>
+            <a href = '/trucks/logout'>Logout</a>
+          </div>
+        <% } %>
       <% } else{ %>
         <div id='logged-out'>
           <a href = '/trucks/new'>I'm A Truck</a>

@@ -37,6 +37,14 @@ router.get('/new', function(request, response, next) {
     response.render('trucks/new', {title: 'New Truck', session: session});
 });
 
+// Logout Truck
+router.get('/logout', function (request, response, next){
+  console.log('truck logout')
+  session.userID = null;
+  session.userType = null;
+  response.redirect('/');
+})
+
 // Show Truck Profile
 router.get('/:id', function (request, response, next) {
   if(request.params.id == session.userID){
@@ -78,12 +86,6 @@ router.post('/login', function (request, response, next) {
   });
 });
 
-// Logout Truck
-router.get('/logout', function (request, response, next){
-  session.userID = null;
-  session.userType = null;
-  response.redirect('/');
-})
 
 // Creates new truck in database  **ADD IN PHOTO AND YELP AND CATEGORIES
 router.post('/', function (request, response) {
