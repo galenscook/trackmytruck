@@ -4,12 +4,31 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var rdb = require('./lib/rethink');
+var dotenv = require('dotenv');
+
+dotenv.load();
+// Require Sessions
+var http = require("http"),
+    Sessions = require("sessions"),
+    sessionHandler = new Sessions(); // memory store by default
+http.createServer(function (req, res) {
+    var session = sessionHandler.httpRequest(req, res);
+    // check session for possible methods
+});
+// var session = require('express-session')
+
 require('dotenv').load();
+var methodOverride = require('method-override')
+
+
 
 // var rethink = require('rethinkdb');
 // var config = require('./config');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var trucks = require('./routes/trucks');
+var favorites = require('./routes/favorites');
 
 var app = express();
 
@@ -23,10 +42,16 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// app.use(express.session({secret: '1234567890QWERTY'}));
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/trucks', trucks);
+app.use('/favorites', favorites);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -59,5 +84,9 @@ app.use(function(err, req, res, next) {
   });
 });
 
+// rdb.find('users', session.userID)
+// .then(function(user){
+//   currentUser = user;
+// });
 
 module.exports = app;

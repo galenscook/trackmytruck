@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%=title%></title>
+    <link rel='stylesheet' href="/stylesheets/skeleton.css" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class='container'>
+    <!-- INSERT NAVBAR HERE -->
+      <div id='logo'><a href = '/'>home</a></div>
+      <% if (session.userID){ %>
+        <div id='logged-in'>
+          <% console.log(session.userID) %>
+          <a href = '/users/<%= session.userID %>'>Profile</a>
+          <a href = '/users/logout'>Logout</a>
+        </div>
+      <% } else{ %>
+        <div id='logged-out'>
+          <a href = '/trucks/new'>I'm A Truck</a>
+          <a href = '/users/new'>Login / Sign-up</a>
+        </div>
+      <% } %>

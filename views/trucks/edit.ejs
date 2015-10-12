@@ -1,0 +1,8 @@
+<% include ../partials/header %>
+  <form method='post', action='/trucks/<%= truck.id %>?_method=PUT'>
+    <input name='name' placeholder='<%= truck.name %>'>
+    <input name='description' placeholder='<%= truck.description %>'>
+    <input name='yelpUrl' placeholder='<%= truck.yelpUrl %>'>
+<!--     <input type='hidden' name='id' value='<%= truck.id %>'> -->
+    <input type='submit'>
+<% include ../partials/footer %>
