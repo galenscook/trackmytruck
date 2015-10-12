@@ -12,28 +12,28 @@
   <body>
   <div class='container header'>
     <div class='row navbar'>
-      <div class='navbar'>
         <div id='logo' class='four columns'><a href = '/'>home</a>
         </div>
+        <div class='four columns offset-by-four navlinks'>
         <% if (session.userID){ %>
           <% if (session.userType == 'user'){ %>
-            <div id='user-logged-in' class='four columns offset-by-four'>
+            <div id='user-logged-in'>
               <a href = '/users/<%= session.userID %>'>Profile</a>
               <a href = '/users/logout'>Logout</a>
             </div>
           <% } else { %>
-            <div id='truck-logged-in' class='four columns ooffset-by-four'>
+            <div id='truck-logged-in'>
               <a href = '/trucks/<%= session.userID %>'>Profile</a>
               <a href = '/trucks/logout'>Logout</a>
             </div>
           <% } %>
         <% } else{ %>
-          <div id='logged-out' class='four columns offset-by-four'>
+          <div id='logged-out'>
             <a href = '/trucks/new'>I'm A Truck</a>
             <a href = '/users/new'>Login / Sign-up</a>
           </div>
         <% } %>
-      </div>
+        </div>
     </div>
   </div>
 

@@ -47,6 +47,10 @@ a {
   margin: 0 auto;
 }
 
+.navlinks {
+  text-align: right;
+}
+
 /*.navbar {
   width: 80%;
 }*/
@@ -75,7 +79,7 @@ a {
 }
 
 .panel-heading {
-  padding: 10px 15px;
+  padding: 10px 10px;
   border-bottom: 1px solid transparent;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
@@ -86,13 +90,28 @@ a {
 
 .panel h1 {
   font-size: 1.5em;
+  margin-bottom: 0.25em;
 }
 
-.icon {
+button.icon {
   background: none;
   border: none;
+  height: auto;
+  padding: 0;
+  line-height: auto;
+  border-radius: 0px;
+  margin: 0;
+  max-height: 1.5em;
 }
 
+.truckpanel form {
+  margin: 0;
+  max-height: 1.5em;
+}
+
+.truckpanel span {
+  max-height: 1.5em;
+}
 
 /* Map */
 
