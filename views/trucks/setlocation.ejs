@@ -1,10 +1,9 @@
 <% include ../partials/header %>
     <script src='/js/truck_map.js'></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAP_KEY %>&signed_in=true&callback=initTruckMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAP_KEY %>&signed_in=true&callback=initTruckMap&libraries=geometry"
          async defer></script>
 
     <h1><%= title %></h1>
-
     <div id='truckmap' class="u-full-width" style='height:400px'></div>
     <p></p>
     <form method='post', action="/trucks/<%=truck.id%>/setlocation?_method=PUT">
