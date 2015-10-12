@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
-var session = require('express-session')
+var session = require('express-session');
 
 // View all trucks
 
@@ -10,6 +10,9 @@ router.get('/', function(request, response, next){
   console.log(session.userID);
   rdb.findAll('trucks')
   .then(function (trucks){
+    if(session.userID === undefined){
+      response.render('trucks/index', {allTrucks: trucks, currentUser: null, favorites: null});
+    }
     rdb.find('users', session.userID)
     .then(function (user){
       rdb.favoritesIds(user.id)
