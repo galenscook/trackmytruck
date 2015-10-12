@@ -10,7 +10,7 @@ router.get('/', function(request, response, next){
   console.log(session.userID);
   rdb.findAll('trucks')
   .then(function (trucks){
-    if(session.userID === undefined){
+    if(session.userID == undefined){
       response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null});
     }
     rdb.find('users', session.userID)
@@ -71,7 +71,9 @@ router.post('/', function (request, response) {
       rdb.findBy('trucks', 'yelpUrl', newTruck.yelpUrl)
       .then(function(trucks){
         var currentTruck = trucks[0]
-        response.redirect('/trucks/'+trucks[0].id)
+        session.userID = currentTruck.id;
+        session.userType = 'truck';
+        response.redirect('/trucks/'+currentTruck.id)
       })
 
     });
