@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= user.name %>'s profile</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= user.name %></h1>
-    <p>Welcome, <%= user.name %>!</p>
-    <p>Your email is <%= user.email %></p>
-    <% favorites.forEach(function(favorite){ %>
-      <p><%=favorite.name%></p>
-      <% }) %>
-  </body>
-</html>
+<% include ../partials/header %>
+
+  <h1><%= user.name %></h1>
+  <p>Welcome, <%= user.name %>!</p>
+  <p>Your email is <%= user.email %></p>
+  <% favorites.forEach(function(favorite){ %>
+    <p><%=favorite.name%></p>
+    <% }) %>
+
+<% include ../partials/footer %>

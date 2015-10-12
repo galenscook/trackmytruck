@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Register a Truck</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>Register a Truck</h1>
-    <form method='post', action='/trucks'>
-      <input name='yelpUrl' placeholder='www.yelp.com/biz/tacotuesdays'>
-      <input name='password' placeholder='password' type='password'>
-      <input name='name' placeholder='Taco Tuesdays'>
-      <input name='description' placeholder='All the tacos on all the days' type='text'>
-      <input type='submit'>
-    </form>
+<% include ../partials/header %>
 
-    
-  </body>
-</html>
+  <h1>Register a Truck</h1>
+  <form method='post', action='/trucks'>
+    <input name='yelpUrl' placeholder='www.yelp.com/biz/tacotuesdays'>
+    <input name='password' placeholder='password' type='password'>
+    <input name='name' placeholder='Taco Tuesdays'>
+    <input name='description' placeholder='All the tacos on all the days' type='text'>
+    <input type='submit'>
+  </form>
+
+<% include ../partials/footer %>
