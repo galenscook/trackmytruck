@@ -27,14 +27,6 @@ router.post('/:truckid', function (request, response) {
 
 // Unfavorite
 router.delete('/:truckid', function (request, response) {
-
-  // TAKE THIS OUT ONCE CURRENTUSER IS DEFINED
-
-  // rdb.find('users', '1878cef7-941a-4340-a160-65175f115e50')
-  // .then(function(user){
-  //   currentUser = user
-  // });
-  console.log("IN THE DELETE")
   rdb.findFavorite(request.params.truckid, session.userID)
   .then(function(results){
     currentFavorite = results[0]
