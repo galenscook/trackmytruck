@@ -1,3 +1,7 @@
+* {
+  outline: 1px red solid;
+}
+
 html, body {
                 width: 100%;
                 height: 100%;
@@ -15,7 +19,7 @@ html, body {
 
 body {
   /*position: fixed;*/
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -30,6 +34,25 @@ a {
 #loginprompt {
   display: none;
 }
+
+/* Navbar */
+.container.header {
+  width: 100%;
+  max-width: 100%;
+  outline: 1px red solid;
+}
+
+.row.navbar {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/*.navbar {
+  width: 80%;
+}*/
+
+
+
 /* Truck List */
 #trucklist {
   position: absolute;

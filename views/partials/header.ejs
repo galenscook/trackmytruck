@@ -10,25 +10,33 @@
     <script type="text/javascript" src='/js/application.js'></script>
   </head>
   <body>
-    <div class='container'>
-
-      <div id='logo'><a href = '/'>home</a></div>
-      <% if (session.userID){ %>
-        <% if (session.userType == 'user'){ %>
-          <div id='user-logged-in'>
-            <a href = '/users/<%= session.userID %>'>Profile</a>
-            <a href = '/users/logout'>Logout</a>
-          </div>
-        <% } else { %>
-          <div id='truck-logged-in'>
-            <a href = '/trucks/<%= session.userID %>'>Profile</a>
-            <a href = '/trucks/logout'>Logout</a>
+  <div class='container header'>
+    <div class='row navbar'>
+      <div class='navbar'>
+        <div id='logo' class='four columns'><a href = '/'>home</a>
+        </div>
+        <% if (session.userID){ %>
+          <% if (session.userType == 'user'){ %>
+            <div id='user-logged-in' class='four columns offset-by-four'>
+              <a href = '/users/<%= session.userID %>'>Profile</a>
+              <a href = '/users/logout'>Logout</a>
+            </div>
+          <% } else { %>
+            <div id='truck-logged-in' class='four columns ooffset-by-four'>
+              <a href = '/trucks/<%= session.userID %>'>Profile</a>
+              <a href = '/trucks/logout'>Logout</a>
+            </div>
+          <% } %>
+        <% } else{ %>
+          <div id='logged-out' class='four columns offset-by-four'>
+            <a href = '/trucks/new'>I'm A Truck</a>
+            <a href = '/users/new'>Login / Sign-up</a>
           </div>
         <% } %>
-      <% } else{ %>
-        <div id='logged-out'>
-          <a href = '/trucks/new'>I'm A Truck</a>
-          <a href = '/users/new'>Login / Sign-up</a>
-        </div>
-      <% } %>
+      </div>
+    </div>
+  </div>
+
+    <div class='container'>
+
 
