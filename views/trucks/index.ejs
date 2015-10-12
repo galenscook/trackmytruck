@@ -1,6 +1,8 @@
+
 <% include ../partials/header %>
     <script src='/js/user_map.js'></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIO44NDyoWrLPgdeoSv6W5UkJkU15E55o&signed_in=true&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAP_KEY %>&signed_in=true&callback=initMap"
+         async defer></script>
 
     <h1>All Trucks</h1>
     <ul>
