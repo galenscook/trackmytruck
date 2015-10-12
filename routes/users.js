@@ -68,6 +68,35 @@ router.get('/:id', function (request, response, next) {
   }
 });
 
+// Edit profile page
+router.get('/:id/edit', function(request, response, next){
+  if (request.params.id == session.userID){
+    rdb.find('users', request.params.id)
+    .then(function(user){
+      response.render('users/edit', {title: user.name+"'s Profile", user: user, session: session})
+    });
+  } else {
+    response.redirect('/')
+  }
+});
+
+// Update profile
+router.put('/:id', function(request, response){
+  rdb.find('users', request.params.id)
+  .then(function(user){
+    var updateUser = {
+      name: request.body.name || user.name,
+      email: request.body.email || user.email,
+      cell: request.body.cell || user.cell
+    };
+
+    rdb.edit('users', user.id, updateUser)
+    .then(function(){
+      response.redirect('/users/' + request.params.id)
+    })
+  });
+});
+
 // Creates new user in database
 router.post('/', function (request, response) {
   auth.hash_password(request.body.password)

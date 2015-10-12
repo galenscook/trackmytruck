@@ -1,0 +1,8 @@
+<% include ../partials/header %>
+  <form method='post', action='/users/<%= user.id %>?_method=PUT'>
+    <input name='name' placeholder='<%= user.name %>'>
+    <input name='email' placeholder='<%= user.email %>'>
+    <input name='cell' placeholder='<%= user.cell %>'>
+<!--     <input type='hidden' name='id' value='<%= user.id %>'> -->
+    <input type='submit'>
+<% include ../partials/footer %>
