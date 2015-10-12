@@ -3,19 +3,19 @@ var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
 var session = require('express-session');
-// New User Form
 
+// New User Form
 router.get('/new', function(request, response, next) {
     response.render('users/new', {title: 'Sign Up', session: session});
 });
 
 // Show User Login Form
-
 router.get('/login', function (request, response, next){
     // console.log(session)
     response.render('users/login', {title: 'Login', session: session});
 })
 
+// Logout User
 router.get('/logout', function (request, response, next){
   session.userID = null;
   session.userType = null;
@@ -23,16 +23,12 @@ router.get('/logout', function (request, response, next){
 })
 
 // Login User
-
 router.post('/login', function (request, response, next) {
   rdb.findBy('users', 'email', request.body.email)
   .then(function (user) {
     user = user[0];
 
     if(!user) {
-            // var userNotFoundError = new Error('User not found');
-            // userNotFoundError.status = 404;
-            // return next(userNotFoundError);
       response.redirect('/users/login');
     }
 
@@ -41,13 +37,7 @@ router.post('/login', function (request, response, next) {
       if(authenticated) {
         session.userID = user.id;
         session.userType = 'user';
-                // var currentUser = {
-                //     name: user.name,
-                //     email: user.email,
-                //     token: token.generate(user)
-                // };
-                // console.log(currentUser);
-                response.redirect('/users/'+session.userID);
+        response.redirect('/users/'+session.userID);
       } else {
           var authenticationFailedError = new Error('Authentication failed');
           authenticationFailedError.status = 401;
@@ -58,25 +48,27 @@ router.post('/login', function (request, response, next) {
 });
 
 // Show User Profile
-
 router.get('/:id', function (request, response, next) {
-  rdb.find('users', request.params.id)
-  .then(function (user) {
-    if(!user) {
-      var notFoundError = new Error('User not found');
-      notFoundError.status = 404;
-      return next(notFoundError);
-    }
-    rdb.favorites(user.id)
-    .then(function (favorites) {
-      console.log("MADE IT HERE")
-      response.render('users/show', {title: user+"'s Profile", user: user, favorites: favorites, session: session});
-    })
-  });
+  if(request.params.id == session.userID){
+    rdb.find('users', request.params.id)
+    .then(function (user) {
+      if(!user) {
+        var notFoundError = new Error('User not found');
+        notFoundError.status = 404;
+        return next(notFoundError);
+      }
+      rdb.favorites(user.id)
+      .then(function (favorites) {
+        console.log("MADE IT HERE")
+        response.render('users/show', {title: user+"'s Profile", user: user, favorites: favorites, session: session});
+      })
+    });
+  } else {
+    response.redirect('/')
+  }
 });
 
 // Creates new user in database
-
 router.post('/', function (request, response) {
   auth.hash_password(request.body.password)
   .then(function (hash) {

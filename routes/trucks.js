@@ -5,7 +5,6 @@ var auth = require('../lib/auth');
 var session = require('express-session');
 
 // View all trucks
-
 router.get('/', function(request, response, next){
   console.log(session.userID);
   rdb.findAll('trucks')
@@ -23,36 +22,62 @@ router.get('/', function(request, response, next){
         })
       response.render('trucks/index', {title: 'All Trucks', allTrucks: trucks, currentUser: user, favorites: favoriteIds, session: session});
       })
-      });
-    // response.render('trucks/index', {allTrucks: trucks})
+    });
   })
 })
 
 // New Truck Form
-
 router.get('/new', function(request, response, next) {
     response.render('trucks/new', {title: 'New Truck', session: session});
 });
 
-
 // Show Truck Profile
-
 router.get('/:id', function (request, response, next) {
-  rdb.find('trucks', request.params.id)
-  .then(function (truck) {
+  if(request.params.id == session.userID){
+    rdb.find('trucks', request.params.id)
+    .then(function (truck) {
+      if(!truck) {
+        var notFoundError = new Error('Truck not found');
+        notFoundError.status = 404;
+        return next(notFoundError);
+      }
+        response.render('trucks/show', {title: truck.name+"'s Profile", truck: truck});
+    });
+  } else {
+    response.redirect('/');
+  }
+});
+
+// Login Truck
+router.post('/login', function (request, response, next) {
+  rdb.findBy('trucks', 'yelpUrl', request.body.yelpUrl)
+  .then(function (trucks) {
+    truck = trucks[0];
+
     if(!truck) {
-      var notFoundError = new Error('Truck not found');
-      notFoundError.status = 404;
-      return next(notFoundError);
+      response.redirect('/trucks/login');
     }
-    // rdb.find('users', '1878cef7-941a-4340-a160-65175f115e50')
-    // .then(function (user){
-    //   currentUser = user
-    //   });
-      response.render('trucks/show', {title: truck.name+"'s Profile", truck: truck, session: session});
+    auth.authenticate(request.body.password, truck.password)
+    .then(function (authenticated) {
+      if(authenticated) {
+        session.userID = truck.id;
+        session.userType = 'truck';
+        response.redirect('/trucks/'+session.userID+'/setlocation');
+      } else {
+        var authenticationFailedError = new Error('Authentication failed');
+        authenticationFailedError.status = 401;
+        return next(authenticationFailedError);
+      }
     });
   });
+});
 
+// Logout Truck
+router.get('/logout', function (request, response, next){
+  session.userID = null;
+  session.userType = null;
+  response.redirect('/');
+})
 
 // Creates new truck in database  **ADD IN PHOTO AND YELP AND CATEGORIES
 router.post('/', function (request, response) {
@@ -75,10 +100,26 @@ router.post('/', function (request, response) {
         session.userType = 'truck';
         response.redirect('/trucks/'+currentTruck.id)
       })
-
     });
   });
 });
 
+// Set location for Truck
+router.get('/:id/setlocation', function (request, response){
+  if(request.params.id == session.userID){
+    rdb.find('trucks', request.params.id)
+    .then(function (truck) {
+      if(!truck) {
+        var notFoundError = new Error('Truck not found');
+        notFoundError.status = 404;
+        return next(notFoundError);
+      }
+      response.render('trucks/setlocation', {title: truck.name+"'s Location", truck: truck});
+    });
+  } else {
+    response.redirect('/');
+  }
+});
 
 module.exports = router;
+

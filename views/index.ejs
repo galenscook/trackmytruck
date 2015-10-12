@@ -3,12 +3,12 @@
 <div class='row'>
   <h1>trackmytruck</h1>
   <p>Welcome to trackmytruck</p>
-  <% if(session.userID !== null) { %>
+  <% if(session.userID != null) { %>
   	<a href="/users/logout">Logout</a>
   <% }else{ %>
   	<a href="/users/new">Sign up</a>
   	<a href="/users/login">Login</a>
- 	 	<a href="/trucks/new">I'm a Truck</a>
+ 	<a href="/trucks/new">I'm a Truck</a>
  	<% } %>
 </div>
 
