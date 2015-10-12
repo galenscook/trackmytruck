@@ -19,8 +19,9 @@ function initTruckMap() {
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
-        title: 'YOU!',
-        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+        title: "I'm here!",
+        icon: 'http://maps.google.com/mapfiles/ms/micons/bus.png',
+        // icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
         draggable: true
       });
 

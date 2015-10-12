@@ -1,22 +1,41 @@
 <% include ../partials/header %>
 <div class="row">
   <div class="six columns">
-    <h1>Register a Truck</h1>
+    <h2>Register a Truck</h2>
 	<form method='post', action='/trucks'>
-	  <input name='yelpUrl' placeholder='www.yelp.com/biz/tacotuesdays'>
-	  <input name='password' placeholder='password' type='password'>
+	  <div class="row">
+      <label for 'truck-url-field'>Yelp URL</label>
+      <input name='yelpUrl' class="u-full-width" placeholder='www.yelp.com/biz/tacotuesdays' id="truck-url-field">
+      </div>
+      <div class="row">
+      <div class="six columns">
+      <label for 'truck-password-field'>Choose a Password</label>
+	  <input name='password' class="u-full-width" placeholder='password' type='password' id="truck-password-field">
+	  </div>
+	  </div>
+	  <div class="row">
 	  <input name='name' placeholder='Taco Tuesdays'>
+	  </div>
+	  <div class="row">
 	  <input name='description' placeholder='All the tacos on all the days' type='text'>
-	  <input type='submit'>
+	  </div>
+	  <input type='submit' value="Sign Up">
 	</form>
   </div>
-  
+
   <div class="six columns">
-    <h1>Truck Login</h1>
+    <h2>Truck Login</h2>
     <form method='post', action='/trucks/login'>
-      <input name='yelpUrl' placeholder='www.yelp.com/biz/tacotuesdays'>
-      <input name='password' placeholder='password' type='password'>
-      <input type='submit'>
+    <div class="row">
+      <label for 'truck-url-field'>Yelp URL</label>
+      <input name='yelpUrl' class="u-full-width" placeholder='www.yelp.com/biz/tacotuesdays' id="truck-url-field">
+    <div class="row">
+    <div class="six columns"
+      <label for 'truck-password-field'>Password</label>
+      <input name='password' class="u-full-width" placeholder='password' type='password' id="truck-password-field">
+    </div>
+    </div>
+      <input type='submit' value="Login">
     </form>
   </div>
 </div>
