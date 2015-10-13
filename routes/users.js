@@ -3,16 +3,12 @@ var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
 var session = require('express-session');
-
-
 // var yelp = require('../lib/yelp')
 
 // New User Form
 router.get('/new', function (request, response, next) {
     response.render('users/new', {title: 'Sign Up', session: session});
 });
-
-
 
 // Logout User
 router.get('/logout', function (request, response, next){
@@ -37,6 +33,7 @@ router.post('/login', function (request, response, next) {
         session.userID = user.id;
         console.log(session);
         session.userType = 'user';
+        // response.redirect('/trucks')
         response.redirect('/users/'+session.userID);
       } else {
           var authenticationFailedError = new Error('Authentication failed');
@@ -145,7 +142,8 @@ router.post('/', function (request, response) {
       .then(function(users){
         session.userID = users[0].id;
         session.userType = 'user';
-        response.redirect('/users/'+users[0].id)
+        response.redirect('/trucks')
+        // response.redirect('/users/'+users[0].id)
       })
     });
   });
