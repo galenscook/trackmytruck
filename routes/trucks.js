@@ -3,17 +3,60 @@ var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
 var session = require('express-session');
-// var mapFunctions = require('../public/js/helpers.js');
 
-var sortTrucks = function(trucks){
-  var distanceArray = []
-  trucks.forEach(function(truck){
-    console.log(mapFunctions.calcDistance(session, truck))
-    // distanceArray.push(mapFunctions.calcDistance(session, truck));
+function calcDistance(session, truck){
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(truck.position["J"]-session.position["J"]);  // deg2rad below
+  var dLon = deg2rad(truck.position["M"]-session.position["M"]); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(truck.position["J"])) * Math.cos(deg2rad(-37.784998)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2); 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
+}
+
+function sortDistances(truckArray){
+  var distanceArray = [];
+  var session = {};
+  truckArray.forEach(function (truck){
+    var d = {id: truck.id, distance: calcDistance(truck)}
+    distanceArray.push(d);
   });
+  // distanceArray.sort(function(a, b){return a-b});
+  distanceArray.sort(function (a, b){return a.distance - b.distance})
   return distanceArray;
 }
 
+function sortTrucks(distanceArray){
+  var allTrucksArray = [];
+  distanceArray.forEach(function(distanceObject){
+    rdb.find('trucks', distanceObject.id)
+    .then(function (truck){
+      allTrucksArray.push(truck);
+    });
+  });
+  return allTrucksArray;
+}
+
+// var truck3 = {
+//   id: 443102236,
+//   position: {"J": 36.782039, "M": -122.401001}
+// }
+// var truck4 = {
+//   id: 086897335,
+//   position: {"J": 37.785227, "M": -122.400518}
+// }
+// var truck5 = {
+//   id: 125086736,
+//   position: {"J": 37.782039, "M": -122.401001}
+// }
+// var truckArray = [truck3, truck5, truck4]
 
 // View all trucks
 router.get('/', function(request, response, next){
@@ -21,9 +64,6 @@ router.get('/', function(request, response, next){
   .then(function (trucks){
 
     if(session.userID == undefined){
-      // sortTrucks(trucks);
-      // .then(function (response){
-        // console.log(response);
       response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});   
     }
     if(session.userType == 'user'){
@@ -40,6 +80,11 @@ router.get('/', function(request, response, next){
         })
       });
     }else{
+      // Add the below 3 lines after truck distance issues are resolved
+      // and user location is stored in session
+      // var allDistances = sortDistances(session, trucks); 
+      // var allTrucksArray = sortTrucks(allDistances);
+      // response.render('trucks/index', {title: 'All Trucks', allTrucks: allTrucksArray, currentUser: null, session: session});    
       // For userType 'truck', render map without favorites
       response.render('trucks/index', {title: 'All Trucks', allTrucks: trucks, currentUser: null, session: session});
     }

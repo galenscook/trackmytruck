@@ -39,7 +39,7 @@ function initTruckMap() {
           closingTime: $('#truck-time-input').val(),
           promo: $('#truck-promo').val()
         };
-
+        console.log(truckData)
         $.ajax({
           method: 'put',
           url: url,
