@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  freezeWindow();
   function setHeight() {
     windowHeight = $(window).innerHeight();
     if(windowHeight <= 450){
@@ -8,8 +9,8 @@ $(document).ready(function() {
 
     } else {
 
-    $('#truckmap').css('min-height', (windowHeight*0.75));
-    $('#trucklist').css('max-height', (windowHeight*0.65));
+    $('#truckmap').css('min-height', (windowHeight*0.7));
+    $('#trucklist').css('height', (windowHeight*0.6));
     // $('#trucklist').css('max-height', (windowHeight*0.65));
   }
   };
@@ -19,3 +20,10 @@ $(document).ready(function() {
     setHeight();
   });
 });
+
+function freezeWindow(){
+  var route = /\/trucks$/
+  if(route.test($(location).attr('href'))){
+    $('body').css('position', 'fixed')
+  }
+}

@@ -45,16 +45,42 @@ a {
 .row.navbar {
   width: 80%;
   margin: 0 auto;
+  height: 6.5rem;
 }
 
-.navlinks {
+/*.navlinks {
   text-align: right;
+}*/
+
+
+.navbar-list {
+  list-style: none;
+  margin-bottom: 0;
 }
 
+.navbar-item {
+  position: relative;
+  float:right;
+  margin-bottom: 0;
+}
+
+.navbar-item a {
+  margin-right: 2rem;
+  margin-left: 2rem;
+  text-decoration: none;
+  line-height: 6.5rem;
+}
+
+#logo {
+  float: left;
+}
 /*.navbar {
   width: 80%;
 }*/
 
+nav .mobile-nav {
+  display: none;
+}
 
 
 /* Truck List */
@@ -143,5 +169,27 @@ button.icon {
 
   .columns {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  h1 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem;}
+  h2 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
+  h3 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
+  h4 { font-size: 1.5rem; line-height: 1.6; letter-spacing: 0rem; }
+  h5 { font-size: 1.2rem; line-height: 1.7;  letter-spacing: -.05rem; }
+  h6 { font-size: 1rem; line-height: 1.7;  letter-spacing: 0; }
+  nav ul {
+    display: none;
+  }
+
+  nav .mobile-nav {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .mobile-nav .navbar-list {
+    float: right;
+    margin: 1.2rem auto;
   }
 }
