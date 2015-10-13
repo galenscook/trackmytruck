@@ -3,9 +3,9 @@ function initMap() {
     zoom: 17,
     center: {lat: -34.397, lng: 150.644}
   });
-
+  
   var infoWindow = new google.maps.InfoWindow({map: map});
-
+  
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -24,6 +24,26 @@ function initMap() {
         icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
       });
 
+      map.setCenter(pos);
+      
+      var userPosition = {lat: marker.position.lat(), lng: marker.position.lng()};
+
+      var userData = {
+          location: JSON.stringify(userPosition),
+        };
+
+      $.ajax({
+        method: 'put',
+        url: '/users/set-location',
+        data: userData
+      })
+
+      .done(function(response){
+        console.log(response);
+      });
+
+      // findInBound(trucks);
+      // showInBound();
 
       $.ajax({
         method: 'get',
@@ -138,12 +158,17 @@ function initMap() {
           if(map.getBounds().contains(marker.getPosition())){
             marker.setMap(map);
           }
+
+          findInBound(trucks);
+          showInBound();
+
           // findInBound(trucks);
           // showInBound();
           // radius.setMap(map);
           // marker.setMap(map);
           // findInRadius(trucks);
           // showInRadius();
+
         }
       })
 
@@ -177,24 +202,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
 }
-
-// function createTruckMarkers(listOfTrucks)
-//   for(var i = 0; i < listOfTrucks.length; i++){
-    // if(listOfTrucks[i].name is user's favorite){
-      // var newTruckMarker = new google.maps.Marker({
-      //   position: listOfTrucks[i].location,
-      //   map: map,
-      //   title: listOfTrucks[i].name,
-      //   icon: 'favorite icon'
-      // })
-    //} else{
-      // var newTruckMarker = new google.maps.Marker({
-      //   position: listOfTrucks[i].location,
-      //   map: map,
-      //   title: listOfTrucks[i].name,
-      //   icon: 'normal icon'
-      // })
-//     }
-//  return newTruckMarker;
-//   }
-// }
