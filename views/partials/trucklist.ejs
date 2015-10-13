@@ -4,21 +4,15 @@
     <p>Please <a href="/users/login">log in</a> or <a href="/users/new">sign up</a> to favorite a truck.</p>
   </div>
   <% allTrucks.forEach(function(truck){ %>
-    <div class='panel truckpanel'>
+    <div class='panel truckpanel' id='<%= truck.id %>'>
       <div class='panel-heading'>
         <h1><%=truck.name %>
         <span class='right'>
           <%if(currentUser != undefined){ %>
             <%if(favorites.indexOf(truck.id) === -1){%>
-              <form method='post', action="/favorites/<%=truck.id%>">
-                <button type='submit' class='icon'><i class='fa fa-star-o fa-2x'></i></button>
-              </form>
+              <%- include ./addFavorite.ejs %>
             <% } else {%>
-            
-              <form method='post', action="/favorites/<%=truck.id%>?_method=DELETE">
-                <input type='hidden' name='_method' value='delete'>
-                <button type='submit' class='icon'><i class='fa fa-star fa-2x'></i></button>
-              </form>
+              <%- include ./removeFavorite.ejs %>
             <%  } %>
           <% } else {%>
               <button class='icon'><i type='submit' class='notloggedin fa fa-star-o fa-2x'></i></button>
