@@ -171,7 +171,7 @@ router.put('/:id/setlocation', function (request, response){
 
         rdb.edit('trucks', truck.id, updateTruck)
         .then(function(){
-          response.send('done')
+          response.redirect('/sendmsg?_method=POST')
         })
       }
     });
