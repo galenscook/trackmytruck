@@ -27,8 +27,6 @@ function initMap() {
       map.setCenter(pos);
       
       var userPosition = {lat: marker.position.lat(), lng: marker.position.lng()};
-      console.log("CREATE USER POSITION")
-      console.log(userPosition);
 
       var userData = {
           location: JSON.stringify(userPosition),
