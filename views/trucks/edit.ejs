@@ -1,8 +1,25 @@
 <% include ../partials/header %>
   <form method='post', action='/trucks/<%= truck.id %>?_method=PUT'>
-    <input name='name' placeholder='<%= truck.name %>'>
-    <input name='description' placeholder='<%= truck.description %>'>
-    <input name='yelpUrl' placeholder='<%= truck.yelpUrl %>'>
-<!--     <input type='hidden' name='id' value='<%= truck.id %>'> -->
-    <input type='submit'>
+    <div class="row">
+      <label for='name'>Truck Name</label>
+      <input name='name' class="u-full-width" value='<%= truck.name %>' type='text'>
+    </div>
+
+    <div class="row">
+      <label for='truck-email-field'>Email</label>
+      <input name='email' class="u-full-width" value='<%= truck.email %>' id="truck-url-field" type='email'>
+    </div>
+
+    <div class="row">
+      <label for='name'>Description</label>
+      <textarea name='description' class="u-full-width"><%= truck.description %></textarea>
+    </div>
+
+    <div class="row">
+      <label for='truck-url-field'>Yelp URL</label>
+      <input name='yelpUrl' class="u-full-width" value='<%= truck.yelpInfo.url %>' id="truck-url-field" type='text'>
+    </div>
+
+    <input type='submit' value="Update">
+  </form>
 <% include ../partials/footer %>

@@ -41,6 +41,10 @@ a {
   padding-right: 4%;
 }
 
+.edit {
+  padding-top: 2.5em;
+  margin-left: 0;
+}
 .col-left {
   margin-left: 6%;
 }
@@ -154,6 +158,10 @@ button.icon {
   max-height: 1.5em;
 }
 
+.yelp_logo {
+  padding-top: 2em;
+}
+
 /* Map */
 
 .map {
@@ -163,6 +171,10 @@ button.icon {
 #truckmap {
 /*  position:fixed;*/
   width: 100%;
+}
+
+.truck-name a {
+  text-decoration: none;
 }
 
 /* MOBILE */
