@@ -11,7 +11,6 @@ router.get('/new', function(request, response, next) {
 
 // Show User Login Form
 router.get('/new', function (request, response, next){
-    // console.log(session)
     response.render('users/login', {title: 'Login', session: session});
 })
 
@@ -49,10 +48,8 @@ router.post('/login', function (request, response, next) {
 
 // Send info to map
 router.get('/get-truck-info', function(request, response){
-  console.log('got to get truck info route');
   rdb.findAll('trucks')
   .then(function(trucks){
-    console.log(trucks);
     response.json(trucks);
   })
 })
@@ -69,7 +66,6 @@ router.get('/:id', function (request, response, next) {
       }
       rdb.favorites(user.id)
       .then(function (favorites) {
-        console.log("MADE IT HERE")
         response.render('users/show', {title: user+"'s Profile", user: user, favorites: favorites, session: session});
       })
     });

@@ -31,12 +31,10 @@ function initMap() {
       })
 
       .done(function(response){
-        // console.log(response);
-        // response = JSON.parse(response);
         var truckCoordinates = response.map(function(object){
           if (object.location){
             var coordinate = JSON.parse(object.location);
-            return new google.maps.LatLng(coordinate.J, coordinate.M)
+            return coordinate;
           }
         });
 
@@ -45,7 +43,7 @@ function initMap() {
             new google.maps.Marker({
               position: truckCoordinates[i],
               map: map,
-              title: response[i].name,
+              title: response[i].name
             });
           }
         };

@@ -23,10 +23,11 @@ function initTruckMap() {
         draggable: true
       });
 
-      var truckLocation = marker.getPosition();
+      var truckLocation = {lat: marker.position.lat(), lng: marker.position.lng()};
+      console.log(truckLocation);
 
       google.maps.event.addListener(marker, 'dragend',function(){
-        truckLocation = marker.getPosition();
+        truckLocation = {lat: marker.position.lat(), lng: marker.position.lng()};
         map.setCenter(truckLocation);
       });
 
@@ -39,6 +40,8 @@ function initTruckMap() {
           closingTime: $('#truck-time-input').val(),
           promo: $('#truck-promo').val()
         };
+
+        console.log(truckData)
 
         $.ajax({
           method: 'put',
