@@ -42,7 +42,7 @@ function deg2rad(deg) {
 }
 
 var allTrucksArray = [];
-function sortTrucks(distanceArray){
+function sortTrucks(distanceArray, user, favorites, session, response){
   distanceArray.forEach(function(distanceObject){
     rdb.find('trucks', distanceObject.id)
     .then(function (truck){
@@ -50,13 +50,10 @@ function sortTrucks(distanceArray){
       allTrucksArray.push(truck);
       console.log(allTrucksArray);
       if(allTrucksArray.length == distanceArray.length){
-        console.log(allTrucksArray);
-        return allTrucksArray;
+        response.render('trucks/index', {title: 'All Trucks', allTrucks: allTrucksArray, currentUser: user, favorites: favoriteIds, session: session});
       }
     });
   });
-  // console.log("TRUCKS ARRAY BEFORE RETURN: " + allTrucksArray);
-  // return allTrucksArray;
 }
 
 router.get('/', function(request, response, next){
@@ -77,17 +74,7 @@ router.get('/', function(request, response, next){
           })
           // For userType 'user', render map with currentUser's favorites          var allDistances = sortDistances(user, trucks);
           var allDistances = sortDistances(user, trucks);
-          // sortDistances(user, trucks)
-          // .then(function(allDistances){
-          //   sortTrucks(allDistances)
-          //   .then(function(sortedTrucksArray){
-          //     console.log(sortedTrucksArray);
-          //   })
-          // })
-          // console.log(allDistances);
-          var sortedTrucksArray = sortTrucks(allDistances);
-          // console.log("LINE 80: "+sortTrucks(allDistances));
-          response.render('trucks/index', {title: 'All Trucks', allTrucks: sortedTrucksArray, currentUser: user, favorites: favoriteIds, session: session});
+          sortTrucks(allDistances, user, favorites, session, response);
         })
       });
     }else{
