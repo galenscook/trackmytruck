@@ -5,7 +5,8 @@ var session = require('express-session')
 
 /* GET home page. */
 router.get('/', function(request, response, next) {
-    response.render('index', { title: "Track My Truck", session: session });
+  response.redirect('/trucks')
+    // response.render('index', { title: "Track My Truck", session: session });
 });
 
 module.exports = router;

@@ -48,10 +48,8 @@ router.post('/login', function (request, response, next) {
 
 // Send info to map
 router.get('/get-truck-info', function(request, response){
-  console.log('got to get truck info route');
   rdb.findAll('trucks')
   .then(function(trucks){
-    console.log(trucks);
     response.json(trucks);
   })
 })
@@ -68,7 +66,6 @@ router.get('/:id', function (request, response, next) {
       }
       rdb.favorites(user.id)
       .then(function (favorites) {
-        console.log("MADE IT HERE")
         response.render('users/show', {title: user+"'s Profile", user: user, favorites: favorites, session: session});
       })
     });
@@ -111,7 +108,7 @@ router.post('/', function (request, response) {
   auth.hash_password(request.body.password)
   .then(function (hash) {
     var newUser = {
-      name: request.body.name,
+      name: request.body.firstName+' '+request.body.lastInitial,
       email: request.body.email,
       cell: request.body.cell,
       password: hash,
