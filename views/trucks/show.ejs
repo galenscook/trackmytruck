@@ -1,8 +1,36 @@
 <% include ../partials/header %>
 
-  <h1><%= truck.name %></h1>
-  <p>Welcome to <%= truck.name %></p>
-  <p>Your yelp url is <%= truck.yelpUrl %></p>
+  <div class='row truck-name'>
+    <div class='four columns'>
+      <h1><a href='<%= truck.yelpInfo.url %>' target="_blank"><%= truck.name %></a></h1>
+    </div>
+    <div class='one column edit'>
+      <% if(truck.id === session.userID){ %>
+        <a href='/trucks/<%= truck.id %>/edit'>edit</a>
+      <% } %>
+    </div>
+  </div>
 
-    
+  <div class='row'>
+    <img src='<%= truck.yelpInfo.largeRating %>'> <%= truck.yelpInfo.review_count %> Reviews
+  </div>
+
+  <div class='row'>
+    <br><strong>Category:</strong> <%= truck.yelpInfo.categories[0][0] %>
+  </div>
+
+  <div class='row'>
+    <br><strong>Followers:</strong> <%= fav_num %>
+  </div>
+
+  <div class='row'>
+    <br><strong>Description:</strong>
+    <br><%= truck.description %>
+  </div>
+
+  <div class='row'>
+    <br><strong>Promotions:</strong>
+    <br><%= truck.promo %>
+  </div>
+
 <% include ../partials/footer %>
