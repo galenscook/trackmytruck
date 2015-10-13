@@ -24,6 +24,7 @@ function initMap() {
         icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
       });
 
+
       var truck1 = new google.maps.Marker({
               position: {lat: 37.784778021272416, lng: -122.3962264976227},
               map: map,
