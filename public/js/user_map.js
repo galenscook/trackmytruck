@@ -24,8 +24,25 @@ function initMap() {
         icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
       });
 
-
       map.setCenter(pos);
+      
+      var userPosition = {lat: marker.position.lat(), lng: marker.position.lng()};
+      console.log("CREATE USER POSITION")
+      console.log(userPosition);
+
+      var userData = {
+          location: JSON.stringify(userPosition),
+        };
+
+      $.ajax({
+        method: 'put',
+        url: '/users/set-location',
+        data: userData
+      })
+
+      .done(function(response){
+        console.log(response);
+      });
 
       // findInBound(trucks);
       // showInBound();

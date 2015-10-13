@@ -35,6 +35,7 @@ router.post('/login', function (request, response, next) {
     .then(function (authenticated) {
       if(authenticated) {
         session.userID = user.id;
+        console.log(session);
         session.userType = 'user';
         response.redirect('/users/'+session.userID);
       } else {
@@ -46,8 +47,32 @@ router.post('/login', function (request, response, next) {
   });
 });
 
+// Store user location from map
+router.put('/set-location', function (request, response){
+  console.log(session)
+  if(session.userID != undefined){
+    rdb.find('users', session.userID)
+    .then(function(user){
+      var updateUser = {
+        name: user.name,
+        email: user.email,
+        cell: user.cell,
+        position: request.body.location
+      }
+      // console.log(request.data)
+      rdb.edit('users', user.id, updateUser)
+      .then(function(){
+        console.log(user.position)
+        response.send('done')
+      })
+    })
+  } else {
+    console.log("USERS.JS AFTER ELSE")
+    response.send('done')
+  }
+});
 // Send info to map
-router.get('/get-truck-info', function(request, response){
+router.get('/get-truck-info', function (request, response){
   rdb.findAll('trucks')
   .then(function(trucks){
     response.json(trucks);
