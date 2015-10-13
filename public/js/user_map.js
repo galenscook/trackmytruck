@@ -3,7 +3,7 @@ function initMap() {
     zoom: 17,
     center: {lat: -34.397, lng: 150.644}
   });
-
+  
   var infoWindow = new google.maps.InfoWindow({map: map});
   
   // Try HTML5 geolocation.
@@ -24,72 +24,10 @@ function initMap() {
         icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
       });
 
-
-
-      // for(var i = 0; i < trucks.length; i++){
-      //   trucks[i].setMap(null)
-      // };
-      // truck.setMap(null);
-
-      // var radius = new google.maps.Circle({
-      //   strokeColor: '#FF0000',
-      //   strokeOpacity: 0.8,
-      //   strokeWeight: 2,
-      //   fillColor: '#FF0000',
-      //   fillOpacity: 0,
-      //   map: map,
-      //   center: pos,
-      //   radius: 800
-      // });
-
       map.setCenter(pos);
 
       findInBound(trucks);
       showInBound();
-      // findInRadius(trucks);
-      // showInRadius();
-
-      // google.maps.event.addListener(marker, 'dragend', function() {
-      //   inRadius = [];
-
-      //   for(var i = 0; i < trucks.length; i++){
-      //     trucks[i].setMap(null)
-      //   };
-
-      //   var position = this.getPosition();
-
-      //   radius.setMap(null);
-
-      //   radius = new google.maps.Circle({
-      //     strokeColor: '#FF0000',
-      //     strokeOpacity: 0.8,
-      //     strokeWeight: 2,
-      //     fillColor: '#FF0000',
-      //     fillOpacity: 0,
-      //     map: map,
-      //     center: position,
-      //     radius: 800
-      //   });
-
-      //   map.setCenter(position);
-
-      //   findInRadius(trucks);
-      //   showInRadius();
-      // });
-
-      // function findInRadius(trucks){
-      //   for(var i = 0; i < trucks.length; i++){
-      //     if (radius.getBounds().contains(trucks[i].getPosition())){
-      //       inRadius.push(trucks[i]);
-      //     };
-      //   };
-      // };
-
-      // function showInRadius(){
-      //   for(var i = 0; i < inRadius.length; i++){
-      //     inRadius[i].setMap(map);
-      //   }
-      // };
 
       function findInBound(trucks){
         for(var i = 0; i < trucks.length; i++){
@@ -123,10 +61,6 @@ function initMap() {
           }
           findInBound(trucks);
           showInBound();
-          // radius.setMap(map);
-          // marker.setMap(map);
-          // findInRadius(trucks);
-          // showInRadius();
         }
       })
 
@@ -161,23 +95,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Your browser doesn\'t support geolocation.');
 }
 
-// function createTruckMarkers(listOfTrucks)
-//   for(var i = 0; i < listOfTrucks.length; i++){
-    // if(listOfTrucks[i].name is user's favorite){
-      // var newTruckMarker = new google.maps.Marker({
-      //   position: listOfTrucks[i].location,
-      //   map: map,
-      //   title: listOfTrucks[i].name,
-      //   icon: 'favorite icon'
-      // })
-    //} else{
-      // var newTruckMarker = new google.maps.Marker({
-      //   position: listOfTrucks[i].location,
-      //   map: map,
-      //   title: listOfTrucks[i].name,
-      //   icon: 'normal icon'
-      // })
-//     }
-//  return newTruckMarker;
-//   }
+// // Calculates distance between two points in km's
+// module.exports.calcDistance = function(session, truck){
+//   var p1 = new google.maps.LatLng(37.785083, -122.397204);
+//   var p2 = new google.maps.LatLng(truck.location["J"], truck.location["M"]);
+//   return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+//   // alert(calcDistance(p1, p2));
 // }

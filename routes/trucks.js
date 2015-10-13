@@ -3,6 +3,17 @@ var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
 var session = require('express-session');
+// var mapFunctions = require('../public/js/helpers.js');
+
+var sortTrucks = function(trucks){
+  var distanceArray = []
+  trucks.forEach(function(truck){
+    console.log(mapFunctions.calcDistance(session, truck))
+    // distanceArray.push(mapFunctions.calcDistance(session, truck));
+  });
+  return distanceArray;
+}
+
 
 // View all trucks
 router.get('/', function(request, response, next){
@@ -10,7 +21,10 @@ router.get('/', function(request, response, next){
   .then(function (trucks){
 
     if(session.userID == undefined){
-      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});
+      // sortTrucks(trucks);
+      // .then(function (response){
+        // console.log(response);
+      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});   
     }
     if(session.userType == 'user'){
       rdb.find('users', session.userID)
