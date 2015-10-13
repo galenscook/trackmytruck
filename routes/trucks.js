@@ -3,6 +3,13 @@ var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
 var session = require('express-session');
+var yelp = require("yelp").createClient({
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  token: process.env.TOKEN,
+  token_secret: process.env.TOKEN_SECRET,
+  ssl: true
+});
 
 // View all trucks
 router.get('/', function(request, response, next){
@@ -89,27 +96,39 @@ router.post('/login', function (request, response, next) {
 
 // Creates new truck in database  **ADD IN PHOTO AND YELP AND CATEGORIES
 router.post('/', function (request, response) {
+  var yelpID = (request.body.yelpUrl).match(/([^\/]+)$/)[0]
   auth.hash_password(request.body.password)
   .then(function (hash) {
+
     var newTruck = {
       name: request.body.name,
       email: request.body.email,
       description: request.body.description,
-      yelpUrl: request.body.yelpUrl,
       password: hash,
       updated_at: rdb.now()
     };
 
-    rdb.save('trucks', newTruck)
-    .then(function (result) {
-      rdb.findBy('trucks', 'yelpUrl', newTruck.yelpUrl)
-      .then(function(trucks){
-        var currentTruck = trucks[0]
-        session.userID = currentTruck.id;
-        session.userType = 'truck';
-        response.redirect('/trucks/'+currentTruck.id)
-      })
-    });
+    yelp.business(yelpID, function(error, data){
+      newTruck.yelpInfo = {
+        url: request.body.yelpUrl,
+        categories: data.categories,
+        smallRating: data.rating_img_url_small,
+        mediumRating: data.rating_img_url,
+        largeRating: data.rating_img_url_large,
+      }
+      console.log(newTruck.yelpInfo.categories)
+      rdb.save('trucks', newTruck)
+      .then(function (result) {
+        rdb.findBy('trucks', 'email', newTruck.email)
+        .then(function(trucks){
+          var currentTruck = trucks[0]
+          session.userID = currentTruck.id;
+          session.userType = 'truck';
+          console.log(typeof currentTruck.yelpInfo.categories)
+          response.redirect('/trucks/'+currentTruck.id)
+        })
+      });
+    });  
   });
 });
 
@@ -149,8 +168,6 @@ router.put('/:id/setlocation', function (request, response){
           closingTime: request.body.closingTime,
           promo: request.body.promo
         };
-
-        console.log(updateTruck);
 
         rdb.edit('trucks', truck.id, updateTruck)
         .then(function(){

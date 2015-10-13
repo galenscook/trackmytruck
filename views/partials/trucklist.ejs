@@ -21,6 +21,10 @@
       </div>
       <div class='panel-body'>
         <p><%=truck.description%></p>
+        <% if(truck.yelpInfo != undefined){ %>
+          <p><%=truck.yelpInfo.categories[0][0]%></p>
+          <img src="<%=truck.yelpInfo.smallRating%>">
+        <% } %>
       </div>
     </div>
   <% }) %>

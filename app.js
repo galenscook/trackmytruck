@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var rdb = require('./lib/rethink');
+// var yelp = require('./lib/yelp')
 var dotenv = require('dotenv');
 
 dotenv.load();
@@ -42,6 +43,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 
 // app.use(express.session({secret: '1234567890QWERTY'}));
 
