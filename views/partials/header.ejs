@@ -10,25 +10,61 @@
     <script type="text/javascript" src='/js/application.js'></script>
   </head>
   <body>
-    <div class='container'>
-
-      <div id='logo'><a href = '/'>home</a></div>
-      <% if (session.userID){ %>
-        <% if (session.userType == 'user'){ %>
-          <div id='user-logged-in'>
-            <a href = '/users/<%= session.userID %>'>Profile</a>
-            <a href = '/users/logout'>Logout</a>
-          </div>
-        <% } else { %>
-          <div id='truck-logged-in'>
-            <a href = '/trucks/<%= session.userID %>'>Profile</a>
-            <a href = '/trucks/logout'>Logout</a>
+  <div class='container header'>
+    <nav class='row navbar'>
+      <ul class='navbar-list'>
+      <li class='navbar-item' id='logo'><a href = '/'>TrackMyTruck</a></li>
+        <% if (session.userID){ %>
+          <% if (session.userType == 'user'){ %>
+            <div id='user-logged-in'>
+              <li class='navbar-item'><a href = '/users/<%= session.userID %>'>Profile</a></li>
+              <li class='navbar-item'><a href = '/users/logout'>Log Out</a></li>
+            </div>
+          <% } else { %>
+            <div id='truck-logged-in'>
+              <li class='navbar-item'><a href = '/trucks/<%= session.userID %>/setlocation'>Set Location</a></li>
+              <li class='navbar-item'><a href = '/trucks/<%= session.userID %>'>Profile</a></li>
+              <li class='navbar-item'><a href = '/trucks/logout'>Log Out</a></li>
+            </div>
+          <% } %>
+        <% } else{ %>
+          <div id='logged-out'>
+            <li class='navbar-item'><a href = '/trucks/new'>I'm A Truck</a></li>
+            <li class='navbar-item'><a href = '/users/new'>Login / Sign Up</a></li>
           </div>
         <% } %>
-      <% } else{ %>
-        <div id='logged-out'>
-          <a href = '/trucks/new'>I'm A Truck</a>
-          <a href = '/users/new'>Login / Sign-up</a>
-        </div>
-      <% } %>
+      </ul>
+
+      <!-- Options for Mobile Views -->
+      <div class='mobile-nav'>
+        <span class='navbar-item' id='logo'><a href = '/'>TrackMyTruck</a></span>
+        <select class='navbar-list'>
+          <% if (session.userID){ %>
+            <% if (session.userType == 'user'){ %>
+              <div id='user-logged-in'>
+                <option value = '/users/<%= session.userID%>' selected='selected'>Profile</option>
+                <li class='navbar-item'><a href = '/users/logout'>Log Out</a></li>
+              </div>
+            <% } else { %>
+              <div id='truck-logged-in'>
+                <option value = '/trucks/<%= session.userID %>/setlocation' selected='selected'>Set Location</option>
+                <option value = '/trucks/<%= session.userID %>'>Profile</option>
+                <option value = '/trucks/logout'>Log Out</option>
+              </div>
+            <% } %>
+          <% } else{ %>
+            <div id='logged-out'>
+              <option value='' selected='selected'>Menu</option>
+              <option value = '/trucks/new'>I'm A Truck</option>
+              <option value= '/users/new'>Login / Sign Up</option>
+            </div>
+          <% } %>
+        </ul>
+        </select>
+      </div>
+    </nav>
+  </div>
+
+    <div class='container'>
+
 

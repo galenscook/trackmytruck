@@ -24,6 +24,7 @@ function initMap() {
         icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
       });
 
+
       $.ajax({
         method: 'get',
         url: '/users/get-truck-info',

@@ -108,7 +108,7 @@ router.post('/', function (request, response) {
   auth.hash_password(request.body.password)
   .then(function (hash) {
     var newUser = {
-      name: request.body.name,
+      name: request.body.firstName+' '+request.body.lastInitial,
       email: request.body.email,
       cell: request.body.cell,
       password: hash,

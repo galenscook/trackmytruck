@@ -64,7 +64,7 @@ router.get('/:id', function (request, response, next) {
 
 // Login Truck
 router.post('/login', function (request, response, next) {
-  rdb.findBy('trucks', 'yelpUrl', request.body.yelpUrl)
+  rdb.findBy('trucks', 'email', request.body.email)
   .then(function (trucks) {
     truck = trucks[0];
 
@@ -93,6 +93,7 @@ router.post('/', function (request, response) {
   .then(function (hash) {
     var newTruck = {
       name: request.body.name,
+      email: request.body.email,
       description: request.body.description,
       yelpUrl: request.body.yelpUrl,
       password: hash,
