@@ -11,13 +11,12 @@ var yelp = require("yelp").createClient({
   ssl: true
 });
 
-// View all trucks
 router.get('/', function(request, response, next){
   rdb.findAll('trucks')
   .then(function (trucks){
 
     if(session.userID == undefined){
-      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});
+      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});   
     }
     if(session.userType == 'user'){
       rdb.find('users', session.userID)
@@ -28,8 +27,9 @@ router.get('/', function(request, response, next){
           favorites.forEach(function(favorite){
             favoriteIds.push(favorite.truck_id)
           })
-        // For userType 'user', render map with currentUser's favorites
-        response.render('trucks/index', {title: 'All Trucks', allTrucks: trucks, currentUser: user, favorites: favoriteIds, session: session});
+          // For userType 'user', render map with currentUser's favorites
+          var allDistances = sortDistances(user, trucks);
+          sortTrucks(allDistances, user, favorites, session, response);
         })
       });
     }else{
@@ -93,7 +93,6 @@ router.post('/login', function (request, response, next) {
   });
 });
 
-
 // Creates new truck in database  **ADD IN PHOTO AND YELP AND CATEGORIES
 router.post('/', function (request, response) {
   var yelpID = (request.body.yelpUrl).match(/([^\/]+)$/)[0]
@@ -105,6 +104,7 @@ router.post('/', function (request, response) {
       email: request.body.email,
       description: request.body.description,
       password: hash,
+      location: null,
       updated_at: rdb.now()
     };
 
@@ -209,6 +209,61 @@ router.put('/:id', function(request, response){
     })
   });
 });
+
+//Helper method for calculating truck-user distance
+function calcDistance(user, truck){
+  var R = 6371; // Radius of the earth in km
+  // console.log(user.position);
+  var userLocation = JSON.parse(user.position);
+  var truckLocation = JSON.parse(truck.location);
+  console.log("************************************")
+  console.log(truckLocation["lat"]);
+  var dLat = deg2rad(truckLocation["lat"]-userLocation["lat"]);  // deg2rad below
+  var dLon = deg2rad(truckLocation["lng"]-userLocation["lng"]); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(truckLocation["lat"])) * Math.cos(deg2rad(userLocation["lat"])) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2); 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d;
+}
+
+//Helper method for sorting trucks by distance to user
+function sortDistances(user, truckArray){
+  var distanceArray = [];
+  truckArray.forEach(function (truck){
+    if(truck.location != null){
+      var d = {id: truck.id, distance: calcDistance(user, truck)}
+      distanceArray.push(d);
+    }else{
+      var d = {id: truck.id, distance: 10}
+      distanceArray.push(d);
+    }
+  });
+  distanceArray.sort(function (a, b){return a.distance - b.distance})
+  return distanceArray;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
+}
+
+// 
+var allTrucksArray = [];
+function sortTrucks(distanceArray, user, favorites, session, response){
+  distanceArray.forEach(function(distanceObject){
+    rdb.find('trucks', distanceObject.id)
+    .then(function (truck){
+      console.log("IN THEN" + truck);
+      allTrucksArray.push(truck);
+      console.log(allTrucksArray);
+      if(allTrucksArray.length == distanceArray.length){
+        response.render('trucks/index', {title: 'All Trucks', allTrucks: allTrucksArray, currentUser: user, favorites: favoriteIds, session: session});
+      }
+    });
+  });
+}
 
 module.exports = router;
 
