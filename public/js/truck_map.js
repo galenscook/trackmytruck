@@ -3,7 +3,6 @@ function initTruckMap() {
     center: {lat: -34.397, lng: 150.644},
     zoom: 17
   });
-  var infoWindow = new google.maps.InfoWindow({map: map});
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -40,8 +39,6 @@ function initTruckMap() {
           closingTime: $('#truck-time-input').val(),
           promo: $('#truck-promo').val()
         };
-
-        console.log(truckData)
 
         $.ajax({
           method: 'put',
