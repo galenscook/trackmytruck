@@ -46,6 +46,16 @@ router.post('/login', function (request, response, next) {
   });
 });
 
+// Send info to map
+router.get('/get-truck-info', function(request, response){
+  console.log('got to get truck info route');
+  rdb.findAll('trucks')
+  .then(function(trucks){
+    console.log(trucks);
+    response.json(trucks);
+  })
+})
+
 // Show User Profile
 router.get('/:id', function (request, response, next) {
   if(request.params.id == session.userID){
@@ -119,5 +129,6 @@ router.post('/', function (request, response) {
     });
   });
 });
+
 
 module.exports = router;
