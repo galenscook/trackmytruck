@@ -4,15 +4,15 @@ var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
 var session = require('express-session');
 
+
+// var yelp = require('../lib/yelp')
+
 // New User Form
-router.get('/new', function(request, response, next) {
+router.get('/new', function (request, response, next) {
     response.render('users/new', {title: 'Sign Up', session: session});
 });
 
-// Show User Login Form
-router.get('/new', function (request, response, next){
-    response.render('users/login', {title: 'Login', session: session});
-})
+
 
 // Logout User
 router.get('/logout', function (request, response, next){
