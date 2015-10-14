@@ -42,8 +42,8 @@ function initMap() {
 
 
       var trucks = [];
-      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      var labelIndex = 0;
+      // var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      // var labelIndex = 0;
 
       $.ajax({
         method: 'get',
@@ -65,15 +65,17 @@ function initMap() {
               position: truckCoordinates[i],
               map: map,
               title: response[i].name,
-              label: labels[labelIndex++ % labels.length]
+              id: response[i].id,
+              label: ' '
             }));
           }
         };
+
+        findInBound(trucks);
+        showInBound();
       });
 
 
-      findInBound(trucks);
-      showInBound();
 
       map.setCenter(pos);
 
