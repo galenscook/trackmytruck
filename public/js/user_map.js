@@ -3,9 +3,7 @@ function initMap() {
     zoom: 17,
     center: {lat: -34.397, lng: 150.644}
   });
-  
-  // var infoWindow = new google.maps.InfoWindow({map: map});
-  
+
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -58,8 +56,8 @@ function initMap() {
         console.log(response);
       });
 
-      // findInBound(trucks);
-      // showInBound();
+
+      var trucks = [];
 
       $.ajax({
         method: 'get',
@@ -77,76 +75,31 @@ function initMap() {
 
         for(var i = 0; i < response.length; i++){
           if(truckCoordinates[i]){
-            new google.maps.Marker({
+            trucks.push(new google.maps.Marker({
               position: truckCoordinates[i],
               map: map,
-              title: response[i].name
-            });
+              title: response[i].name,
+              id: response[i].id,
+              label: ' '
+            }));
           }
         };
+
+        findInBound(trucks);
+        showInBound();
       });
 
-      // var radius = new google.maps.Circle({
-      //   strokeColor: '#FF0000',
-      //   strokeOpacity: 0.8,
-      //   strokeWeight: 2,
-      //   fillColor: '#FF0000',
-      //   fillOpacity: 0,
-      //   map: map,
-      //   center: pos,
-      //   radius: 800
-      // });
 
-      // map.setCenter(pos);
 
-      // findInRadius(trucks);
-      // showInRadius();
-
-      // google.maps.event.addListener(marker, 'dragend', function() {
-      //   inRadius = [];
-
-      //   for(var i = 0; i < trucks.length; i++){
-      //     trucks[i].setMap(null)
-      //   };
-
-      //   var position = this.getPosition();
-
-      //   radius.setMap(null);
-
-      //   radius = new google.maps.Circle({
-      //     strokeColor: '#FF0000',
-      //     strokeOpacity: 0.8,
-      //     strokeWeight: 2,
-      //     fillColor: '#FF0000',
-      //     fillOpacity: 0,
-      //     map: map,
-      //     center: position,
-      //     radius: 800
-      //   });
-
-      //   map.setCenter(position);
-
-      //   findInRadius(trucks);
-      //   showInRadius();
-      // });
-
-      // function findInRadius(trucks){
-      //   for(var i = 0; i < trucks.length; i++){
-      //     if (radius.getBounds().contains(trucks[i].getPosition())){
-      //       inRadius.push(trucks[i]);
-      //     };
-      //   };
-      // };
-
-      // function showInRadius(){
-      //   for(var i = 0; i < inRadius.length; i++){
-      //     inRadius[i].setMap(map);
-      //   }
-      // };
+      map.setCenter(pos);
 
       function findInBound(trucks){
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var labelIndex = 0;
+
         for(var i = 0; i < trucks.length; i++){
-          if (map.getBounds().contains(trucks[i].getPosition())){
+          if (map.getBounds().contains(trucks[i].position)){
+            trucks[i].label = labels[labelIndex++ % labels.length];
             inBound.push(trucks[i]);
           };
         };
@@ -161,47 +114,31 @@ function initMap() {
       google.maps.event.addListener(map, 'zoom_changed', function(){
         zoom = map.getZoom();
         if(zoom < 13){
-          // for(var i = 0; i < trucks.length; i++){
-          //   trucks[i].setMap(null)
-          // }
-          marker.setMap(null);
-        } else{
-          // inBound = [];
-
-          // for(var i = 0; i < trucks.length; i++){
-          //   trucks[i].setMap(null)
-          // };
-          if(map.getBounds().contains(marker.getPosition())){
-            marker.setMap(map);
+          for(var i = 0; i < trucks.length; i++){
+            trucks[i].setMap(null)
           }
+
+        } else{
+          inBound = [];
+
+          for(var i = 0; i < trucks.length; i++){
+            trucks[i].setMap(null)
+          };
 
           findInBound(trucks);
           showInBound();
-
-          // findInBound(trucks);
-          // showInBound();
-          // radius.setMap(map);
-          // marker.setMap(map);
-          // findInRadius(trucks);
-          // showInRadius();
-
         }
       })
 
       google.maps.event.addListener(map, 'dragend', function(){
         inBound = [];
 
-        // for(var i = 0; i < trucks.length; i++){
-        //   trucks[i].setMap(null)
-        // };
+        for(var i = 0; i < trucks.length; i++){
+          trucks[i].setMap(null)
+        };
 
-        marker.setMap(null);
-
-        if(map.getBounds().contains(marker.getPosition())){
-          marker.setMap(map);
-        }
-        // findInBound(trucks);
-        // showInBound();
+        findInBound(trucks);
+        showInBound();
       })
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());

@@ -21,6 +21,7 @@
     "morgan": "~1.6.1",
     "rethinkdb": "^2.1.5",
     "serve-favicon": "~2.3.0",
+    "twilio": "^2.5.1",
     "yelp": "^0.2.0"
   }
 }

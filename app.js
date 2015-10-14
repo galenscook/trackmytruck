@@ -5,10 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var rdb = require('./lib/rethink');
-// var yelp = require('./lib/yelp')
+
 var dotenv = require('dotenv');
 
 dotenv.load();
+
+
+
 // Require Sessions
 var http = require("http"),
     Sessions = require("sessions"),
