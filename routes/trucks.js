@@ -41,6 +41,7 @@ router.get('/', function(request, response, next){
 
 // New Truck Form
 router.get('/new', function(request, response, next) {
+    console.log(session);
     response.render('trucks/new', {title: 'New Truck', session: session});
 });
 
@@ -257,9 +258,8 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
-//
-var allTrucksArray = [];
 function sortTrucks(distanceArray, user, favorites, session, response){
+  var allTrucksArray = [];
   distanceArray.forEach(function(distanceObject){
     rdb.find('trucks', distanceObject.id)
     .then(function (truck){
