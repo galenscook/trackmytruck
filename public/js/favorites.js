@@ -18,7 +18,6 @@ $(document).ready(function(){
     })
 
     .done(function(response){
-      // console.log(response);
       $('div#' + id + ' div span').html(response);
     })
   })

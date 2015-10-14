@@ -39,6 +39,36 @@ router.get('/', function(request, response, next){
   })
 })
 
+router.get('/search', function(request, response, next){
+  var searchTerm = request.query.searchvalue;
+  rdb.findSearchedTrucks(searchTerm)
+  .then(function(trucks){
+    console.log(trucks)
+    if(session.userID == undefined){
+      console.log(session);
+      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});      
+    }
+    if(session.userType == 'user'){
+      rdb.find('users', session.userID)
+      .then(function (user){
+        rdb.favoritesIds(user.id)
+        .then(function(favorites){
+          favoriteIds = []
+          favorites.forEach(function(favorite){
+            favoriteIds.push(favorite.truck_id)
+          })
+          // For userType 'user', render map with currentUser's favorites
+          var allDistances = sortDistances(user, trucks);
+          sortTrucks(allDistances, user, favorites, session, response);
+        })
+      });
+    }else{
+      // For userType 'truck', render map without favorites
+      response.render('trucks/index', {title: 'All Trucks', allTrucks: trucks, currentUser: null, session: session});
+    }
+  })
+})
+
 // New Truck Form
 router.get('/new', function(request, response, next) {
     response.render('trucks/new', {title: 'New Truck', session: session});
@@ -126,6 +156,7 @@ router.post('/', function (request, response) {
       description: request.body.description,
       password: hash,
       location: null,
+      promo: "",
       updated_at: rdb.now()
     };
 
