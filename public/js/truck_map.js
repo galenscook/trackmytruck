@@ -33,6 +33,7 @@ function initTruckMap() {
         event.preventDefault();
 
         var url = $(this).attr('action');
+        var id = $(this).attr('id')
         
         var truckData = {
           location: JSON.stringify(truckLocation),
@@ -49,7 +50,7 @@ function initTruckMap() {
 
         .done(function(response){
           console.log(response);
-          window.location.replace('/trucks');
+          window.location.replace('/sendmsg/'+id);
         });
       });
 
