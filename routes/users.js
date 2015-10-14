@@ -49,8 +49,8 @@ router.post('/login', function (request, response, next) {
 
 // Store user location from map
 router.put('/set-location', function (request, response){
-  console.log(session)
-  if(session.userID != undefined){
+  console.log(session.userType)
+  if(session.userID != undefined && session.userType === 'user'){
     rdb.find('users', session.userID)
     .then(function(user){
       var updateUser = {
