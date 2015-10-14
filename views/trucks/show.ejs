@@ -4,11 +4,11 @@
     <div class='four columns'>
       <h1><a href='<%= truck.yelpInfo.url %>' target="_blank"><%= truck.name %></a></h1>
     </div>
-    <div class='one column edit'>
       <% if(truck.id === session.userID){ %>
-        <a href='/trucks/<%= truck.id %>/edit'>edit</a>
+        <div class='one column edit'>
+          <a href='/trucks/<%= truck.id %>/edit'>edit</a>
+        </div>
       <% } %>
-    </div>
   </div>
 
   <div class='row'>

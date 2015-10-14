@@ -41,7 +41,6 @@ router.get('/', function(request, response, next){
 
 // New Truck Form
 router.get('/new', function(request, response, next) {
-    console.log(session);
     response.render('trucks/new', {title: 'New Truck', session: session});
 });
 

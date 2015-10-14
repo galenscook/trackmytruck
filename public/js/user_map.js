@@ -23,7 +23,7 @@ function initMap() {
       });
 
       map.setCenter(pos);
-      
+
       var sessionPosition = {lat: marker.position.lat(), lng: marker.position.lng()};
 
       var sessionData = {
@@ -37,7 +37,6 @@ function initMap() {
       })
 
       .done(function(response){
-        console.log(response);
       });
 
       var userPosition = {lat: marker.position.lat(), lng: marker.position.lng()};
@@ -53,7 +52,6 @@ function initMap() {
       })
 
       .done(function(response){
-        console.log(response);
       });
 
 
