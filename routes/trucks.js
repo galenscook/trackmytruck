@@ -226,7 +226,7 @@ router.put('/:id', function(request, response){
 //Helper method for calculating truck-user distance
 function calcDistance(user, truck){
   var R = 6371; // Radius of the earth in km
-  // console.log(user.position);
+  console.log(user.position);
   var userLocation = JSON.parse(user.position);
   var truckLocation = JSON.parse(truck.location);
   console.log("************************************")

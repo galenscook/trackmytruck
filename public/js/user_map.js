@@ -42,8 +42,6 @@ function initMap() {
 
 
       var trucks = [];
-      // var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      // var labelIndex = 0;
 
       $.ajax({
         method: 'get',
