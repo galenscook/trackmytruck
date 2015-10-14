@@ -31,6 +31,16 @@
           <div id='logged-out'>
             <li class='navbar-item'><a href = '/trucks/new'>I'm A Truck</a></li>
             <li class='navbar-item'><a href = '/users/new'>Login / Sign Up</a></li>
+            <form id="search-form" action='/trucks/search' method="get">
+              <label for="search-box"></label>
+              <input name="searchvalue" class="u-full-width" type="search" placeholder="i.e. Thai food" id="search-box">
+                  <div id="row">
+                  <div class="eight columns">.</div>
+                  <div class="four columns">
+                  <input class="button-primary" type="submit" value="Search">
+                  </div>
+                  </div>
+            </form>
           </div>
         <% } %>
       </ul>
