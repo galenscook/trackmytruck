@@ -46,10 +46,11 @@ router.post('/login', function (request, response, next) {
 
 // Store user location from map
 router.put('/set-location', function (request, response){
-  console.log(session)
+  // console.log(session)
   if(session.userID != undefined){
     rdb.find('users', session.userID)
     .then(function(user){
+      // console.log(user);
       var updateUser = {
         name: user.name,
         email: user.email,
@@ -132,6 +133,7 @@ router.post('/', function (request, response) {
       name: request.body.firstName+' '+request.body.lastInitial,
       email: request.body.email,
       cell: request.body.cell,
+      position: session.position,
       password: hash,
       updated_at: rdb.now()
     };

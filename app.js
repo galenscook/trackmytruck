@@ -30,7 +30,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var trucks = require('./routes/trucks');
 var favorites = require('./routes/favorites');
-
+var sessions = require('./routes/sessions');
 var app = express();
 
 // view engine setup
@@ -54,6 +54,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/trucks', trucks);
 app.use('/favorites', favorites);
+app.use('/sessions', sessions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

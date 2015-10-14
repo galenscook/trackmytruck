@@ -4,7 +4,7 @@ function initMap() {
     center: {lat: -34.397, lng: 150.644}
   });
   
-  var infoWindow = new google.maps.InfoWindow({map: map});
+  // var infoWindow = new google.maps.InfoWindow({map: map});
   
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -26,6 +26,22 @@ function initMap() {
 
       map.setCenter(pos);
       
+      var sessionPosition = {lat: marker.position.lat(), lng: marker.position.lng()};
+
+      var sessionData = {
+          location: JSON.stringify(sessionPosition),
+        };
+
+      $.ajax({
+        method: 'put',
+        url: '/sessions/set-location',
+        data: sessionData
+      })
+
+      .done(function(response){
+        console.log(response);
+      });
+
       var userPosition = {lat: marker.position.lat(), lng: marker.position.lng()};
 
       var userData = {
@@ -81,7 +97,7 @@ function initMap() {
       //   radius: 800
       // });
 
-      map.setCenter(pos);
+      // map.setCenter(pos);
 
       // findInRadius(trucks);
       // showInRadius();
