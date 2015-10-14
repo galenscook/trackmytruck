@@ -138,6 +138,7 @@ router.post('/', function (request, response) {
         mediumRating: data.rating_img_url,
         largeRating: data.rating_img_url_large,
       }
+
       rdb.save('trucks', newTruck)
       .then(function (result) {
         rdb.findBy('trucks', 'email', newTruck.email)
@@ -278,9 +279,8 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
-//
-var allTrucksArray = [];
 function sortTrucks(distanceArray, user, favorites, session, response){
+  var allTrucksArray = [];
   distanceArray.forEach(function(distanceObject){
     rdb.find('trucks', distanceObject.id)
     .then(function (truck){
