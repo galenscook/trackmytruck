@@ -1,6 +1,6 @@
 function initMap() {
   var map = new google.maps.Map(document.getElementById('truckmap'), {
-    zoom: 17,
+    zoom: 14,
     center: {lat: -34.397, lng: 150.644}
   });
 
@@ -23,7 +23,7 @@ function initMap() {
       });
 
       map.setCenter(pos);
-      
+
       var sessionPosition = {lat: marker.position.lat(), lng: marker.position.lng()};
 
       var sessionData = {
@@ -37,7 +37,6 @@ function initMap() {
       })
 
       .done(function(response){
-        console.log(response);
       });
 
       var userPosition = {lat: marker.position.lat(), lng: marker.position.lng()};
@@ -53,11 +52,13 @@ function initMap() {
       })
 
       .done(function(response){
-        console.log(response);
       });
 
 
       var trucks = [];
+      var truckInfo = new google.maps.InfoWindow({
+        content: ''
+      });
 
       $.ajax({
         method: 'get',
@@ -75,13 +76,19 @@ function initMap() {
 
         for(var i = 0; i < response.length; i++){
           if(truckCoordinates[i]){
-            trucks.push(new google.maps.Marker({
+            var truckMarker = new google.maps.Marker({
               position: truckCoordinates[i],
               map: map,
               title: response[i].name,
               id: response[i].id,
-              label: ' '
-            }));
+              label: undefined
+            });
+
+            var truckDesc = '<h1><a href="' + response[i].yelpInfo.url  + '" target="_blank">' + response[i].name + '</a></h1>' + '<br><img src="' + response[i].yelpInfo.mediumRating + '">' + response[i].yelpInfo.review_count + 'Reviews' + '<br><strong>Category:</strong>' + response[i].yelpInfo.categories[0][0] + '<br><strong>Description:</strong>' + '<br>' + response[i].description + '<br><strong>Promotions:</strong>' + '<br>' + response[i].promo;
+
+            trucks.push(truckMarker);
+
+            bindInfoWindow(truckMarker, map, truckInfo, truckDesc)
           }
         };
 
@@ -94,15 +101,31 @@ function initMap() {
       map.setCenter(pos);
 
       function findInBound(trucks){
-        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        var labelIndex = 0;
+        var index = 1;
+        // var inBoundId = [];
 
         for(var i = 0; i < trucks.length; i++){
           if (map.getBounds().contains(trucks[i].position)){
-            trucks[i].label = labels[labelIndex++ % labels.length];
+            trucks[i].label = String(index++);
             inBound.push(trucks[i]);
+            // inBoundId.push(trucks[i].id)
           };
         };
+
+      //*****************
+      //* DON'T  DELETE *
+      //*  FUTURE  USE  *
+      //*****************
+
+      //   $.ajax({
+      //     url: '/trucks/update-truck-list',
+      //     data: {trucks: JSON.stringify(inBoundId)},
+      //     method: 'put'
+      //   })
+
+      //   .done(function(response){
+      //     console.log(response)
+      //   });
       }
 
       function showInBound(){
@@ -128,7 +151,7 @@ function initMap() {
           findInBound(trucks);
           showInBound();
         }
-      })
+      });
 
       google.maps.event.addListener(map, 'dragend', function(){
         inBound = [];
@@ -139,7 +162,12 @@ function initMap() {
 
         findInBound(trucks);
         showInBound();
-      })
+      });
+
+      // console.log(trucks)
+      // for(var i = 0; i < trucks.length; i++){
+
+      // };
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -154,4 +182,11 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setContent(browserHasGeolocation ?
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
+}
+
+function bindInfoWindow(marker, map, infowindow, description) {
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(description);
+    infowindow.open(map, marker);
+  });
 }

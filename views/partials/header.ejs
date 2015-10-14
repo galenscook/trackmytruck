@@ -17,14 +17,14 @@
         <% if (session.userID){ %>
           <% if (session.userType == 'user'){ %>
             <div id='user-logged-in'>
-              <li class='navbar-item'><a href = '/users/<%= session.userID %>'>Profile</a></li>
               <li class='navbar-item'><a href = '/users/logout'>Log Out</a></li>
+              <li class='navbar-item'><a href = '/users/<%= session.userID %>'>Profile</a></li>
             </div>
           <% } else { %>
             <div id='truck-logged-in'>
-              <li class='navbar-item'><a href = '/trucks/<%= session.userID %>/setlocation'>Set Location</a></li>
-              <li class='navbar-item'><a href = '/trucks/<%= session.userID %>'>Profile</a></li>
               <li class='navbar-item'><a href = '/trucks/logout'>Log Out</a></li>
+              <li class='navbar-item'><a href = '/trucks/<%= session.userID %>'>Profile</a></li>
+              <li class='navbar-item'><a href = '/trucks/<%= session.userID %>/setlocation'>Set Location</a></li>
             </div>
           <% } %>
         <% } else{ %>
