@@ -16,7 +16,8 @@ router.get('/', function(request, response, next){
   .then(function (trucks){
 
     if(session.userID == undefined){
-      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});   
+      console.log(session);
+      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});      
     }
     if(session.userType == 'user'){
       rdb.find('users', session.userID)
@@ -41,6 +42,7 @@ router.get('/', function(request, response, next){
 
 // New Truck Form
 router.get('/new', function(request, response, next) {
+    console.log(session); 
     response.render('trucks/new', {title: 'New Truck', session: session});
 });
 
@@ -229,8 +231,8 @@ function calcDistance(user, truck){
   console.log(user.position);
   var userLocation = JSON.parse(user.position);
   var truckLocation = JSON.parse(truck.location);
-  console.log("************************************")
-  console.log(truckLocation["lat"]);
+  // console.log("************************************")
+  // console.log(truckLocation["lat"]);
   var dLat = deg2rad(truckLocation["lat"]-userLocation["lat"]);  // deg2rad below
   var dLon = deg2rad(truckLocation["lng"]-userLocation["lng"]); 
   var a = 
@@ -263,15 +265,16 @@ function deg2rad(deg) {
 }
 
 // 
-var allTrucksArray = [];
 function sortTrucks(distanceArray, user, favorites, session, response){
+  var allTrucksArray = [];
   distanceArray.forEach(function(distanceObject){
     rdb.find('trucks', distanceObject.id)
     .then(function (truck){
-      console.log("IN THEN" + truck);
+      // console.log("IN THEN" + truck);
       allTrucksArray.push(truck);
-      console.log(allTrucksArray);
+      // console.log(allTrucksArray);
       if(allTrucksArray.length == distanceArray.length){
+        // console.log(session);
         response.render('trucks/index', {title: 'All Trucks', allTrucks: allTrucksArray, currentUser: user, favorites: favoriteIds, session: session});
       }
     });

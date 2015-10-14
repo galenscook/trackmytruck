@@ -23,6 +23,22 @@ function initMap() {
       });
 
       map.setCenter(pos);
+      
+      var sessionPosition = {lat: marker.position.lat(), lng: marker.position.lng()};
+
+      var sessionData = {
+          location: JSON.stringify(sessionPosition),
+        };
+
+      $.ajax({
+        method: 'put',
+        url: '/sessions/set-location',
+        data: sessionData
+      })
+
+      .done(function(response){
+        console.log(response);
+      });
 
       var userPosition = {lat: marker.position.lat(), lng: marker.position.lng()};
 

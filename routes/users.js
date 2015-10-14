@@ -3,16 +3,12 @@ var router = express.Router();
 var rdb = require('../lib/rethink');
 var auth = require('../lib/auth');
 var session = require('express-session');
-
-
 // var yelp = require('../lib/yelp')
 
 // New User Form
 router.get('/new', function (request, response, next) {
     response.render('users/new', {title: 'Sign Up', session: session});
 });
-
-
 
 // Logout User
 router.get('/logout', function (request, response, next){
@@ -37,6 +33,7 @@ router.post('/login', function (request, response, next) {
         session.userID = user.id;
         console.log(session);
         session.userType = 'user';
+        // response.redirect('/trucks')
         response.redirect('/users/'+session.userID);
       } else {
           var authenticationFailedError = new Error('Authentication failed');
@@ -49,10 +46,11 @@ router.post('/login', function (request, response, next) {
 
 // Store user location from map
 router.put('/set-location', function (request, response){
-  console.log(session)
+  // console.log(session)
   if(session.userID != undefined){
     rdb.find('users', session.userID)
     .then(function(user){
+      // console.log(user);
       var updateUser = {
         name: user.name,
         email: user.email,
@@ -136,6 +134,7 @@ router.post('/', function (request, response) {
       name: request.body.firstName+' '+request.body.lastInitial,
       email: request.body.email,
       cell: request.body.cell,
+      position: session.position,
       password: hash,
       position: '{"lat": 37.7848993, "lng": -122.3980642999999}',
       updated_at: rdb.now()
@@ -147,7 +146,8 @@ router.post('/', function (request, response) {
       .then(function(users){
         session.userID = users[0].id;
         session.userType = 'user';
-        response.redirect('/users/'+users[0].id)
+        response.redirect('/trucks')
+        // response.redirect('/users/'+users[0].id)
       })
     });
   });
