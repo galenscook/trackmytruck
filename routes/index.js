@@ -27,8 +27,7 @@ function calcDistance(user, truck){
   // console.log(user.position);
   var userLocation = JSON.parse(user.position);
   var truckLocation = JSON.parse(truck.location);
-  console.log("************************************")
-  console.log(truckLocation["lat"]);
+
   var dLat = deg2rad(truckLocation["lat"]-userLocation["lat"]);  // deg2rad below
   var dLon = deg2rad(truckLocation["lng"]-userLocation["lng"]); 
   var a = 
@@ -38,6 +37,10 @@ function calcDistance(user, truck){
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
   var d = R * c; // Distance in km
   return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
 }
 
 /* GET home page. */
@@ -56,9 +59,9 @@ router.get('/sendmsg/:id', function(request, response, next){
       }
       else{
         fans.forEach(function(fan){
-          // if(calcDistance(fan, truck) <= 2){
+          if(calcDistance(fan, truck) <= 2){
             sendSMS(fan.cell, truck.name+' just opened near you!')
-          // }
+          }
         })
         response.redirect('/')
       }
