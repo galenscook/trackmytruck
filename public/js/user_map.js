@@ -164,10 +164,22 @@ function initMap() {
         showInBound();
       });
 
-      // console.log(trucks)
-      // for(var i = 0; i < trucks.length; i++){
+      $('.truckpanel').on('click', function(event){
 
-      // };
+        var truckId = $(this).attr('id');
+
+        trucks.forEach(function(truck){
+          if(truck.id == truckId){
+            if (!map.getBounds().contains(truck.position)){
+              map.panTo(truck.position)
+              findInBound(trucks);
+              showInBound();
+            };
+            google.maps.event.trigger(truck, 'click');
+          }
+        })
+      });
+
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
