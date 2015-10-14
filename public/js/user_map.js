@@ -81,7 +81,6 @@ function initMap() {
               map: map,
               title: response[i].name,
               id: response[i].id,
-              label: undefined
             });
 
             var truckDesc = '<h1><a href="' + response[i].yelpInfo.url  + '" target="_blank">' + response[i].name + '</a></h1>' + '<br><img src="' + response[i].yelpInfo.mediumRating + '">' + response[i].yelpInfo.review_count + 'Reviews' + '<br><strong>Category:</strong>' + response[i].yelpInfo.categories[0][0] + '<br><strong>Description:</strong>' + '<br>' + response[i].description + '<br><strong>Promotions:</strong>' + '<br>' + response[i].promo;
@@ -96,17 +95,11 @@ function initMap() {
         showInBound();
       });
 
-
-
-      map.setCenter(pos);
-
       function findInBound(trucks){
-        var index = 1;
         // var inBoundId = [];
 
         for(var i = 0; i < trucks.length; i++){
           if (map.getBounds().contains(trucks[i].position)){
-            trucks[i].label = String(index++);
             inBound.push(trucks[i]);
             // inBoundId.push(trucks[i].id)
           };
@@ -180,6 +173,10 @@ function initMap() {
         })
       });
 
+      google.maps.event.addListener(map, 'dragend', function(){
+        truckInfo.close();
+      });
+
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -200,5 +197,6 @@ function bindInfoWindow(marker, map, infowindow, description) {
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(description);
     infowindow.open(map, marker);
+    $('#' + marker.id)[0].scrollIntoView();
   });
 }
