@@ -137,6 +137,7 @@ router.post('/', function (request, response) {
       email: request.body.email,
       cell: request.body.cell,
       password: hash,
+      position: '{"lat": 37.7848993, "lng": -122.3980642999999}',
       updated_at: rdb.now()
     };
 
