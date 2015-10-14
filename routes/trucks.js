@@ -51,6 +51,28 @@ router.get('/logout', function (request, response, next){
   response.redirect('/');
 })
 
+//*****************
+//* DON'T  DELETE *
+//*  FUTURE  USE  *
+//*****************
+// Updates Truck List
+// router.put('/update-truck-list', function(request, response, next){
+//   var allTrucks = [];
+//   truckIds = JSON.parse(request.body.trucks);
+
+//   for(var i = 0; i < truckIds.length; i++){
+//     rdb.find('trucks', truckIds[i])
+//     .then(function(truck){
+//       allTrucks.push(truck);
+//       if (allTrucks.length === truckIds.length){
+//         // response.send(allTrucks);
+//         response.render('partials/trucklist', {layout: false, allTrucks: allTrucks})
+//       };
+//     });
+//   }
+// })
+
+
 // Show Truck Profile
 router.get('/:id', function (request, response, next) {
   rdb.find('trucks', request.params.id)
@@ -62,7 +84,7 @@ router.get('/:id', function (request, response, next) {
         notFoundError.status = 404;
         return next(notFoundError);
       }
-
+      //still need to search database for favorites since favorites is a local variable in the trucklist partial
       response.render('trucks/show', {title: truck.name+"'s Profile", truck: truck, session: session, fav_num: favorites.length});
     })
   });
