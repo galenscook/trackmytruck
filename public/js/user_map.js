@@ -145,7 +145,6 @@ function initMap() {
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      // var inRadius = [];
       var inBound = []
 
       var pos = {
@@ -205,7 +204,6 @@ function initMap() {
       })
 
       .done(function(response){
-        console.log("AJAX GET TRUCK INFO FINISHED");
         var truckCoordinates = response.map(function(object){
           if (object.location){
             var coordinate = JSON.parse(object.location);
@@ -220,10 +218,6 @@ function initMap() {
         })
 
         .always(function(response2){
-          console.log("AJAX GET FAVORITES INFO FINISHED");
-          console.log("RESPONSE 2: " + response2);
-          // var response3 = JSON.parse(response2);
-          // console.log("RESPONSE 3: " + response3);
           favoritesArray = [];
           if(response2.length > 0){
             var userFavorites = response2.map(function(object){
@@ -232,7 +226,6 @@ function initMap() {
           }
 
           for(var i = 0; i < response.length; i++){
-            console.log("IN FOR")
             if(truckCoordinates[i]){
               if(favoritesArray.contains(response[i].id)){
                 var truckMarker = new google.maps.Marker({
@@ -243,7 +236,6 @@ function initMap() {
                   icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
                 });
               }else{
-                console.log("IN ELSE");
                 var truckMarker = new google.maps.Marker({
                   position: truckCoordinates[i],
                   map: map,
@@ -258,7 +250,7 @@ function initMap() {
             }
           };
         });
-        console.log(trucks);
+
         findInBound(trucks);
         showInBound();
       });
