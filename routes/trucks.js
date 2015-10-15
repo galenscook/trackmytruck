@@ -11,6 +11,8 @@ var yelp = require("yelp").createClient({
   ssl: true
 });
 
+
+
 router.get('/', function(request, response, next){
   rdb.findAll('trucks')
   .then(function (trucks){
@@ -118,6 +120,7 @@ router.post('/', function (request, response) {
         smallRating: data.rating_img_url_small,
         mediumRating: data.rating_img_url,
         largeRating: data.rating_img_url_large,
+        image: data.image_url
       }
       console.log(newTruck.yelpInfo.categories)
       rdb.save('trucks', newTruck)

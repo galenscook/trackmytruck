@@ -23,12 +23,13 @@
             <% } %>%>
         </span></h1>
       </div>
-      <div class='panel-body'>
-        <p><%=truck.description%></p>
-        <% if(truck.yelpInfo != undefined){ %>
-          <p><%=truck.yelpInfo.categories[0][0]%></p>
-          <img src="<%=truck.yelpInfo.smallRating%>">
-        <% } %>
+      <div class='panel-body clearfix'>
+        <p>Category: <%=truck.yelpInfo.categories[0][0]%></p>
+        <p><img src="<%=truck.yelpInfo.mediumRating%>">(<%=truck.yelpInfo.review_count%>)<span class='right'><a href='https://www.yelp.com' target = '_blank'><img src = 'https://s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/14f29ad24935/assets/img/yelp_logo_40x20.png'></a></span></p>
+
+
+        
+      
       </div>
     </div>
   <% }) %>

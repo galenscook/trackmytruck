@@ -1,6 +1,6 @@
-* {
+/** {
   outline: 1px red solid;
-}
+}*/
 
 html, body {
     /*background-image: url('http://tomsfoodieblog.com/wp-content/uploads/2013/03/palm-desert-food-and-wine-festival-1024x768.jpg');*/
@@ -22,7 +22,7 @@ html, body {
             }
 
 body {
-  position: fixed;
+  /*position: fixed;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -65,6 +65,13 @@ a {
   max-width: 100%;
 }
 
+.clearfix:after { 
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
 /* Main Content Area */
 #content {
   margin: 0;
@@ -73,12 +80,13 @@ a {
 
 /* Sidebar */
 #sidebar {
-  background-color: pink;
+/*  background-color: pink;*/
   width:33.6666666667%;
 }
 
 
 .yelp_logo {
+  margin: 0 auto;
   text-align: center;
   position: fixed;
   bottom: 2%;
@@ -91,15 +99,6 @@ a {
   margin:0;
   margin: 4% auto;
 }
-
-/*.row.navbar {
-  width: 80%;
-  margin: 0 auto;
-  height: 6.5rem;
-}
-*/
-
-
 
 .navbar-list {
   list-style: none;
@@ -118,11 +117,8 @@ a {
 }
 
 .navbar-item a {
-/*  margin-right: 2rem;
-  margin-left: 2rem;*/
   text-decoration: none;
-/*  line-height: 6.5rem;
-*/}
+}
 
 
 
@@ -145,8 +141,6 @@ nav .mobile-nav {
 
 /* Truck List */
 #trucklist {
-  /*position: absolute;*/
-  /*top: 8em;*/
   background: #fff;
   overflow-y: scroll;
   margin: 0 2%;
@@ -175,7 +169,14 @@ nav .mobile-nav {
   padding: 2%;
 }
 
-.panel
+.panel-body p {
+  margin-bottom: 0;
+}
+
+.panel-body img {
+  vertical-align: sub;
+}
+
 .panel h1 {
   font-size: 1.5em;
   margin-bottom: 0;
@@ -205,7 +206,10 @@ button.icon {
   max-height: 1.5em;
 }
 
-
+.list-icon {
+  max-width: 40%;
+  /*object-fit: contain;*/
+}
 
 /* Map */
 
