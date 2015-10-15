@@ -11,11 +11,11 @@ $(document).ready(function() {
     } else if(windowHeight <= 625){
       $('#sidebar').css('min-height', (windowHeight));
       $('#truckmap').css('min-height', (windowHeight));
-      $('#trucklist').css('height', (windowHeight*0.65));
+      $('#trucklist').css('height', (windowHeight*0.55));
     } else if(windowHeight <= 1120){
       $('#sidebar').css('min-height', (windowHeight));
       $('#truckmap').css('min-height', (windowHeight));
-      $('#trucklist').css('height', (windowHeight*0.7));
+      $('#trucklist').css('height', (windowHeight*0.6));
     } else {
 
     $('#sidebar').css('min-height', (windowHeight));
