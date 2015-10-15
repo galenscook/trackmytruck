@@ -94,7 +94,7 @@ router.get('/get-user-favorites', function (request, response){
 
 // Show User Profile
 router.get('/:id', function (request, response, next) {
-  // if(request.params.id == session.userID){
+  if(request.params.id == session.userID){
     rdb.find('users', request.params.id)
     .then(function (user) {
       if(!user) {
@@ -107,9 +107,9 @@ router.get('/:id', function (request, response, next) {
         response.render('users/show', {title: user.name+"'s Profile", user: user, favorites: favorites, session: session});
       })
     });
-  // } else {
-  //   response.redirect('/')
-  // }
+  } else {
+    response.redirect('/')
+  }
 });
 
 // Edit profile page

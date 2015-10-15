@@ -1,8 +1,36 @@
 <% include ../partials/header %>
-  <form method='post', action='/users/<%= user.id %>?_method=PUT'>
-    <input name='name' placeholder='<%= user.name %>'>
-    <input name='email' placeholder='<%= user.email %>'>
-    <input name='cell' placeholder='<%= user.cell %>'>
-<!--     <input type='hidden' name='id' value='<%= user.id %>'> -->
-    <input type='submit'>
+
+<!-- Sidebar content -->
+  <div class='eight columns offset-by-two' id='userpitch'>
+  </div>
+  <div class = 'row yelp_logo four columns'>
+    Copyright 2015
+  </div>
+</div>
+<!-- Any content in sidebar goes ABOVE this div closure-->
+
+<div class='eight columns' id='content'>
+  <div id='tabbed-content'>
+    <h1>Edit Profile</h1>
+
+    <form method='post', action='/users/<%= user.id %>?_method=PUT'>
+      <div class='row'>
+        <label for='name'>Name</label>
+        <input name='name' class="u-full-width" value='<%= user.name %>' type='text'>
+      </div>
+
+      <div class='row'>
+        <label for='email'>E-Mail</label>
+        <input name='email' class="u-full-width" value='<%= user.email %>' type='text'>
+      </div>
+
+      <div class='row'>
+        <label for='cell'>Cell Phone Number</label>
+        <input name='cell' class="u-full-width" value='<%= user.cell %>' type='text'>
+      </div>
+
+      <input type='submit'>
+    </form>
+  </div>
+</div>
 <% include ../partials/footer %>
