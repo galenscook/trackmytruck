@@ -1,36 +1,50 @@
 <% include ../partials/header %>
 
-  <div class='row truck-name'>
-    <div class='four columns'>
-      <h1><a href='<%= truck.yelpInfo.url %>' target="_blank"><%= truck.name %></a></h1>
+<!-- Sidebar content -->
+      <div class='eight columns offset-by-two' id='userpitch'>
+      </div>
+      <div class = 'row yelp_logo four columns'>
+        Copyright 2015
+      </div>
+  </div> <!-- Any content in sidebar goes ABOVE this div closure-->
+
+<div class='eight columns' id='content'>
+
+  <div id='tabbed-content'>
+    <div class='row truck-name'>
+      <div class='four columns'>
+        <h1><a href='<%= truck.yelpInfo.url %>' target="_blank"><%= truck.name %></a></h1>
+      </div>
+        <% if(truck.id === session.userID){ %>
+          <div class='one column edit'>
+            <a href='/trucks/<%= truck.id %>/edit'>edit</a>
+          </div>
+        <% } %>
     </div>
-      <% if(truck.id === session.userID){ %>
-        <div class='one column edit'>
-          <a href='/trucks/<%= truck.id %>/edit'>edit</a>
-        </div>
-      <% } %>
+
+    <div class='row'>
+      <img src='<%= truck.yelpInfo.largeRating %>'> <%= truck.yelpInfo.review_count %> Reviews
+    </div>
+
+    <div class='row'>
+      <br><strong>Category:</strong> <%= truck.yelpInfo.categories[0][0] %>
+    </div>
+
+    <div class='row'>
+      <br><strong>Followers:</strong> <%= fav_num %>
+    </div>
+
+    <div class='row'>
+      <br><strong>Description:</strong>
+      <br><%= truck.description %>
+    </div>
+
+    <div class='row'>
+      <br><strong>Promotions:</strong>
+      <br><%= truck.promo %>
+    </div>
+
   </div>
 
-  <div class='row'>
-    <img src='<%= truck.yelpInfo.largeRating %>'> <%= truck.yelpInfo.review_count %> Reviews
-  </div>
-
-  <div class='row'>
-    <br><strong>Category:</strong> <%= truck.yelpInfo.categories[0][0] %>
-  </div>
-
-  <div class='row'>
-    <br><strong>Followers:</strong> <%= fav_num %>
-  </div>
-
-  <div class='row'>
-    <br><strong>Description:</strong>
-    <br><%= truck.description %>
-  </div>
-
-  <div class='row'>
-    <br><strong>Promotions:</strong>
-    <br><%= truck.promo %>
-  </div>
-
+</div>
 <% include ../partials/footer %>
