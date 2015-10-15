@@ -205,7 +205,7 @@ function initMap() {
                   map: map,
                   title: response[i].name,
                   id: response[i].id,
-                  icon: 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star||E65601|000000'
+                  icon: 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star||F09D16|000000'
                   // icon: 'http://maps.google.com/mapfiles/ms/icons/red-pushpin.png'
                   // icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
                 });
@@ -217,13 +217,14 @@ function initMap() {
                   id: response[i].id,
                   // icon: 'http://maps.google.com/mapfiles/ms/icons/red-pushpin.png'
                   // icon: 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star||F09D16|E65601'
-                  icon: 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin||F09D16|000000'
+                  icon: 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin||63BFDB|000000'
                   // icon: 'https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=F09D16|'
                   // icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
                 });
               }
               var truckDesc = '<div id="truck-popup"><h3><a href="' + response[i].yelpInfo.url  + '" target="_blank">' + response[i].name + '</a></h3>' + '<br><img src="' + response[i].yelpInfo.mediumRating + '">' + "  " + response[i].yelpInfo.review_count + " " + 'Reviews' + '<br><strong>Category: </strong>' + response[i].yelpInfo.categories[0][0] + '<br><strong>Description:</strong>' + '<br>' + response[i].description + '<br><strong>Promotions: </strong>' + '<br>' + response[i].promo + '</div>';
-              // truckDesc.style.backgroundImage="url('http://assets.nydailynews.com/polopoly_fs/1.1245686!/img/httpImage/image.jpg_gen/derivatives/article_970/afp-cute-puppy.jpg')";
+                // infoWindow.style.backgroundImage="url('http://assets.nydailynews.com/polopoly_fs/1.1245686!/img/httpImage/image.jpg_gen/derivatives/article_970/afp-cute-puppy.jpg')";
+              // document.getElementById("truck-popup").style.backgroundImage = "url('img_tree.png')";
               trucks.push(truckMarker);
               bindInfoWindow(truckMarker, map, truckInfo, truckDesc)
             }
@@ -322,6 +323,10 @@ function bindInfoWindow(marker, map, infowindow, description) {
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(description);
     infowindow.open(map, marker);
+    var parentDiv = $('#truck-popup').parent();
+    var grandparentDiv = parentDiv.parent();
+    greatGPparentDiv = grandparentDiv.parent();
+    greatGPparentDiv.parent().css("background-image", "url('http://cdn.sheknows.com/articles/2013/04/Puppy_2.jpg') no-repeat");
     $('#' + marker.id)[0].scrollIntoView();
   });
 }
