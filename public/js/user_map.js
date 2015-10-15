@@ -9,147 +9,109 @@ function initMap() {
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#0f4c81"
+                "color": "#33658A"
+            },
+            {
+                "saturation": 38
+            },
+            {
+                "lightness": -11
+            },
+            {
+                "visibility": "on"
             }
         ]
-    }
-    // {
-    // {
-    //     "elementType": "geometry",
-    //     "stylers": [
-    //         {
-    //             "hue": "#ff4400"
-    //         },
-    //         {
-    //             "saturation": -68
-    //         },
-    //         {
-    //             "lightness": -4
-    //         },
-    //         {
-    //             "gamma": 0.72
-    //         }
-    //     ]
-    // },
-    // {
-    //     "featureType": "road",
-    //     "elementType": "labels.icon"
-    // },
-    // {
-    //     "featureType": "landscape.man_made",
-    //     "elementType": "geometry",
-    //     "stylers": [
-    //         {
-    //             "hue": "#0077ff"
-    //         },
-    //         {
-    //             "gamma": 3.1
-    //         }
-    //     ]
-    // },
-    // {
-    //     "featureType": "water",
-    //     "stylers": [
-    //         {
-    //             "hue": "#33658a"
-    //         },
-    //         // {
-    //         //     "gamma": 0.44
-    //         // },
-    //         // {
-    //         //     "saturation": -33
-    //         // }
-    //     ]
-    // },
-    // {
-    //     "featureType": "poi.park",
-    //     "stylers": [
-    //         {
-    //             "hue": "#44ff00"
-    //         },
-    //         {
-    //             "saturation": -23
-    //         }
-    //     ]
-    // },
-    // {
-    //     "featureType": "water",
-    //     "elementType": "labels.text.fill",
-    //     "stylers": [
-    //         {
-    //             "hue": "#33658a"
-    //         },
-    //         // {
-    //         //     "gamma": 0.77
-    //         // },
-    //         // {
-    //         //     "saturation": 65
-    //         // },
-    //         // {
-    //         //     "lightness": 99
-    //         // }
-    //     ]
-    // },
-    // {
-    //     "featureType": "water",
-    //     "elementType": "labels.text.stroke",
-    //     "stylers": [
-    //         // {
-    //         //     "gamma": 0.11
-    //         // },
-    //         // {
-    //         //     "weight": 5.6
-    //         // },
-    //         // {
-    //         //     "saturation": 99
-    //         // },
-    //         {
-    //             "hue": "#33658a"
-    //         },
-    //         // {
-    //         //     "lightness": -86
-    //         // }
-    //     ]
-    // },
-    // {
-    //     "featureType": "transit.line",
-    //     "elementType": "geometry",
-    //     "stylers": [
-    //         {
-    //             "lightness": -48
-    //         },
-    //         {
-    //             "hue": "#ff5e00"
-    //         },
-    //         {
-    //             "gamma": 1.2
-    //         },
-    //         {
-    //             "saturation": -23
-    //         }
-    //     ]
-    // },
-    // {
-    //     "featureType": "transit",
-    //     "elementType": "labels.text.stroke",
-    //     "stylers": [
-    //         {
-    //             "saturation": -64
-    //         },
-    //         {
-    //             "hue": "#ff9100"
-    //         },
-    //         {
-    //             "lightness": 16
-    //         },
-    //         {
-    //             "gamma": 0.47
-    //         },
-    //         {
-    //             "weight": 2.7
-    //         }
-    //     ]
-    // }
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#8ABB21"
+            },
+            {
+                "saturation": -47
+            },
+            {
+                "lightness": -17
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#c6e3a4"
+            },
+            {
+                "saturation": 17
+            },
+            {
+                "lightness": -2
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#cccccc"
+            },
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 13
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#5f5855"
+            },
+            {
+                "saturation": 6
+            },
+            {
+                "lightness": -31
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#ffffff"
+            },
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 100
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
 ]
   map.setOptions({styles: styles});
   // Try HTML5 geolocation.
