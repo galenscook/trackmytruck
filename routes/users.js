@@ -81,21 +81,20 @@ router.get('/get-user-favorites', function (request, response){
         notFoundError.status = 404;
         return next(notFoundError);
       }
-      console.log("BEFORE FAVORITES QUERY")
+
       rdb.favorites(user.id)
       .then(function (favorites) {
         response.json(favorites);
       })
     });
   }else{
-    console.log("HIT FAVORITES ROUTE ELSE");
     response.send("done");
   }
 })
 
 // Show User Profile
 router.get('/:id', function (request, response, next) {
-  if(request.params.id == session.userID){
+  // if(request.params.id == session.userID){
     rdb.find('users', request.params.id)
     .then(function (user) {
       if(!user) {
@@ -105,12 +104,12 @@ router.get('/:id', function (request, response, next) {
       }
       rdb.favorites(user.id)
       .then(function (favorites) {
-        response.render('users/show', {title: user+"'s Profile", user: user, favorites: favorites, session: session});
+        response.render('users/show', {title: user.name+"'s Profile", user: user, favorites: favorites, session: session});
       })
     });
-  } else {
-    response.redirect('/')
-  }
+  // } else {
+  //   response.redirect('/')
+  // }
 });
 
 // Edit profile page
