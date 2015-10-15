@@ -18,7 +18,7 @@ $(document).ready(function(){
     })
 
     .done(function(response){
-      $('#' + id + ' #star').html(response);
+      $('#' + id + ' .star').html(response);
     })
   })
 })

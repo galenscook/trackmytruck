@@ -4,14 +4,11 @@
 
 
 <div id='trucklist' class='panel'>
-  <div id='loginprompt' class='panel'>
-    <p>Please <a href="/users/new">log in</a> or <a href="/users/new">sign up</a> to favorite a truck.</p>
-  </div>
   <% allTrucks.forEach(function(truck){ %>
     <div class='panel truckpanel' id='<%= truck.id %>'>
       <div class='panel-heading'>
         <h1><%=truck.name %>
-        <span id='star' class='right'>
+        <span class='right star'>
           <%if(currentUser != undefined){ %>
             <%if(favorites.indexOf(truck.id) === -1){%>
               <%- include ./addFavorite.ejs %>
