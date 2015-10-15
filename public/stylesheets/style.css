@@ -40,7 +40,9 @@ a {
   left: 32%;
   top: 30em;
   z-index: 99;
-  background: red;
+  border: 1px black solid;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .right-border {
