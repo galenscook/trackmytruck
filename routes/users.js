@@ -81,14 +81,12 @@ router.get('/get-user-favorites', function (request, response){
         notFoundError.status = 404;
         return next(notFoundError);
       }
-      console.log("BEFORE FAVORITES QUERY")
       rdb.favorites(user.id)
       .then(function (favorites) {
         response.json(favorites);
       })
     });
   }else{
-    console.log("HIT FAVORITES ROUTE ELSE");
     response.send("done");
   }
 })
