@@ -4,8 +4,8 @@
 
 html, body {
     /*background-image: url('http://tomsfoodieblog.com/wp-content/uploads/2013/03/palm-desert-food-and-wine-festival-1024x768.jpg');*/
-    /*overflow-y: hidden;*/
-    /*height: 100%;*/
+    overflow: hidden;
+    height: 100%;
     background-repeat: no-repeat;
                 width: 100%;
                 height: 100%;
@@ -30,12 +30,30 @@ a {
   color: #00B7FF;
 }
 
+#truck-popup {
+  color: #63BFDB;
+}
+
+#truck-popup a {
+  color: #E65601;
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.5em;
+}
 .right {
   float: right;
 }
 
 #loginprompt {
   display: none;
+  position: absolute;
+  left: 32%;
+  top: 30em;
+  z-index: 99;
+  border: 1px black solid;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .right-border {
@@ -65,17 +83,17 @@ a {
   max-width: 100%;
 }
 
-.clearfix:after { 
+.clearfix:after {
    content: " ";
-   display: block; 
-   height: 0; 
+   display: block;
+   height: 0;
    clear: both;
 }
-/*
-#scrollablecontent {
+
+.scrollablecontent {
   overflow-y: scroll;
   position: relative;
-}*/
+}
 
 /* Main Content Area */
 #content {
@@ -188,13 +206,13 @@ a {
 
 #logo a {
   text-decoration: none;
-  font-size: 3em;
+  font-size: 4em;
   color: white;
   text-shadow: #E65601 2px 2px 4px;
   font-family: 'Special Elite', cursive;
 }
 .button {
-  border: 1px solid rgba(204, 204, 204, 0.73);
+  border: 1px solid black;
   cursor: pointer;
   box-sizing: border-box;
   margin-bottom: 4%;
@@ -211,6 +229,10 @@ a.button {
 
 #search-form {
   margin-bottom: 0;
+  border: 1px solid black;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 #search-box {
@@ -222,14 +244,14 @@ a.button {
 }
 
 
-#searchfield {
+/*#searchfield {
   margin-right: -1%;
   border: none;
-}
+}*/
 
 #searchbutton {
   position: absolute;
-  right: 0;
+  right: 1%;
   top: 1.5%;
   border: none;
   z-index: 999999;
@@ -250,11 +272,12 @@ a.button {
   }
 
 #logged-in-greeting {
-  position: absolute;
-  right: 2%;
-  top: 6%;
-  background-color: pink;
-  z-index: +1;
+  margin-bottom: 2%;
+}
+
+#logged-in-greeting p{
+  margin-bottom: 0;
+  color: #fff;
 }
 
 
@@ -268,6 +291,10 @@ nav .mobile-nav {
   background: #fff;
   overflow-y: scroll;
   margin: 0 2%;
+  border: 1px solid black;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 .panel {
@@ -317,9 +344,9 @@ button.icon {
   max-height: 1.4em;
 }
 
-/*i {
-  padding: 0
-}*/
+i {
+  color: #F09D16;
+}
 
 .truckpanel form {
   margin: 0;
@@ -356,6 +383,15 @@ button.icon {
     display: block;
     width: 100%;
     margin: 0;
+  }
+
+  #logo a {
+    font-size: 3em;
+  }
+
+  .button {
+    margin-left: 2%;
+    margin-right: 2%;
   }
 }
 

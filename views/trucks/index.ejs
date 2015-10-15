@@ -4,7 +4,7 @@
 
 
 <!-- Sidebar content -->
-  
+
     <% include ../partials/trucklist %>
 
   </div> <!-- Any content in sidebar goes ABOVE this div closure-->
@@ -15,6 +15,13 @@
         <div id="truckmap" ></div>
       <!-- </div> -->
 
-    </div>
 
+
+  <div id='loginprompt' class='panel'>
+    <p>Please <a href="/users/new">log in</a> or <a href="/users/new">sign up</a> to favorite a truck.</p>
+  </div>
+
+  <div class='eight columns' id='content'>
+      <div id="truckmap" ></div>
+  </div>
 <% include ../partials/footer %>

@@ -1,25 +1,40 @@
 <% include ../partials/header %>
-  <form method='post', action='/trucks/<%= truck.id %>?_method=PUT'>
-    <div class="row">
-      <label for='name'>Truck Name</label>
-      <input name='name' class="u-full-width" value='<%= truck.name %>' type='text'>
-    </div>
 
-    <div class="row">
-      <label for='truck-email-field'>Email</label>
-      <input name='email' class="u-full-width" value='<%= truck.email %>' id="truck-url-field" type='email'>
-    </div>
+<!-- Sidebar content -->
+  <div class='eight columns offset-by-two' id='userpitch'>
+  </div>
+  <div class = 'row yelp_logo four columns'>
+    Copyright 2015
+  </div>
+</div>
+<!-- Any content in sidebar goes ABOVE this div closure-->
 
-    <div class="row">
-      <label for='name'>Description</label>
-      <textarea name='description' class="u-full-width"><%= truck.description %></textarea>
-    </div>
+<div class='eight columns' id='content'>
+  <div id='tabbed-content'>
+    <h1>Edit Profile</h1>
+    <form method='post', action='/trucks/<%= truck.id %>?_method=PUT'>
+      <div class="row">
+        <label for='name'>Truck Name</label>
+        <input name='name' class="u-full-width" value='<%= truck.name %>' type='text'>
+      </div>
 
-    <div class="row">
-      <label for='truck-url-field'>Yelp URL</label>
-      <input name='yelpUrl' class="u-full-width" value='<%= truck.yelpInfo.url %>' id="truck-url-field" type='text'>
-    </div>
+      <div class="row">
+        <label for='truck-email-field'>Email</label>
+        <input name='email' class="u-full-width" value='<%= truck.email %>' id="truck-url-field" type='email'>
+      </div>
 
-    <input type='submit' value="Update">
-  </form>
+      <div class="row">
+        <label for='name'>Description</label>
+        <textarea name='description' class="u-full-width"><%= truck.description %></textarea>
+      </div>
+
+      <div class="row">
+        <label for='truck-url-field'>Yelp URL</label>
+        <input name='yelpUrl' class="u-full-width" value='<%= truck.yelpInfo.url %>' id="truck-url-field" type='text'>
+      </div>
+
+      <input type='submit' value="Update">
+    </form>
+  </div>
+</div>
 <% include ../partials/footer %>

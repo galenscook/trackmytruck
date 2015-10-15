@@ -16,11 +16,6 @@
 
   <div class='container full'>
 
-<!--   <div id='logged-in-greeting' class='three columns offset-by-nine'>
-  HELLO
-
-  </div> -->
-
   <div class='row'>
     <div id='sidebar' class='four columns'>
       <div class='container header'>
@@ -34,8 +29,7 @@
               <% if (session.userType == 'user'){ %>
                 <a href = '/users/<%= session.userID %>' role='button' class='navbar-item button'>Profile</a>
                 <a href = '/users/logout' role='button' class='navbar-item button'>Log Out</a>
-
-                
+           
               <% } else { %>
                 <a href = '/trucks/<%= session.userID %>/setlocation' role='button' class='navbar-item button'>Set Location</a>
                 <a href = '/trucks/<%= session.userID %>' role='button' class='navbar-item button'>Profile</a>
@@ -48,6 +42,13 @@
               
             <% } %>
             <div id='searchbox' class='row'>
+            <% if (session.userID){ %>
+            <div id="logged-in-greeting">
+              <% if (session.userType == 'user'){ %>
+                <p>Welcome back, <%= currentUser.name %>!</p>
+              <% } %>
+            </div>
+            <% } %>
             <form id="search-form" action='/trucks/search' method="get">
               <div class='input-group' class='row'>
                 <div id='searchfield'>
@@ -59,10 +60,12 @@
                 </div>
               </div>
             </form>
+
+
               </div>
             </div>
           </div>
-
+          
           <!-- Options for Mobile Views -->
           <div class='mobile-nav'>
             <span class='navbar-item' id='logo'><a href = '/'>TrackMyTruck</a></span>
