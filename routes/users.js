@@ -103,7 +103,7 @@ router.get('/:id', function (request, response, next) {
       }
       rdb.favorites(user.id)
       .then(function (favorites) {
-        response.render('users/show', {title: user+"'s Profile", currentUser: user, favorites: favorites, session: session});
+        response.render('users/show', {title: user.name+"'s Profile", currentUser: user, favorites: favorites, session: session});
       })
     });
   } else {
