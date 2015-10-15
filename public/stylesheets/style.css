@@ -4,8 +4,8 @@
 
 html, body {
     /*background-image: url('http://tomsfoodieblog.com/wp-content/uploads/2013/03/palm-desert-food-and-wine-festival-1024x768.jpg');*/
-/*    overflow: hidden;
-    height: 100%;*/
+    /*overflow-y: hidden;*/
+    /*height: 100%;*/
     background-repeat: no-repeat;
                 width: 100%;
                 height: 100%;
@@ -193,15 +193,35 @@ a {
   text-shadow: #E65601 2px 2px 4px;
   font-family: 'Special Elite', cursive;
 }
+.button {
+  border: 1px solid rgba(204, 204, 204, 0.73);
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-bottom: 4%;
+}
+
+a.button {
+  /*color:#8ABB21;*/
+  background-color: #63bfdb;
+}
 
 #my {
   font-family: 'Shadows Into Light', cursive;
 }
 
+#search-form {
+  margin-bottom: 0;
+}
+
+#search-box {
+  margin-bottom: 0;
+}
 #searchbox {
   border: 1px solid transparent;
   margin: 0 2%;
 }
+
+
 #searchfield {
   margin-right: -1%;
   border: none;
@@ -228,6 +248,15 @@ a {
     display: table;
     border-collapse: separate;
   }
+
+#logged-in-greeting {
+  position: absolute;
+  right: 2%;
+  top: 6%;
+  background-color: pink;
+  z-index: +1;
+}
+
 
 nav .mobile-nav {
   display: none;
