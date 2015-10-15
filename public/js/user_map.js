@@ -128,22 +128,8 @@ function initMap() {
       }
 
       google.maps.event.addListener(map, 'zoom_changed', function(){
-        zoom = map.getZoom();
-        if(zoom < 13){
-          for(var i = 0; i < trucks.length; i++){
-            trucks[i].setMap(null)
-          }
-
-        } else{
-          inBound = [];
-
-          for(var i = 0; i < trucks.length; i++){
-            trucks[i].setMap(null)
-          };
-
-          findInBound(trucks);
-          showInBound();
-        }
+        findInBound(trucks);
+        showInBound();
       });
 
       google.maps.event.addListener(map, 'dragend', function(){
