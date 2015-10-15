@@ -112,7 +112,6 @@ function initMap() {
             }
         ]
     },
-
 ]
   map.setOptions({styles: styles});
   // Try HTML5 geolocation.
@@ -206,7 +205,9 @@ function initMap() {
                   map: map,
                   title: response[i].name,
                   id: response[i].id,
-                  icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                  icon: 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star||E65601|000000'
+                  // icon: 'http://maps.google.com/mapfiles/ms/icons/red-pushpin.png'
+                  // icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
                 });
               }else{
                 var truckMarker = new google.maps.Marker({
@@ -214,9 +215,13 @@ function initMap() {
                   map: map,
                   title: response[i].name,
                   id: response[i].id,
+                  // icon: 'http://maps.google.com/mapfiles/ms/icons/red-pushpin.png'
+                  // icon: 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star||F09D16|E65601'
+                  icon: 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin||F09D16|000000'
+                  // icon: 'https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=F09D16|'
+                  // icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
                 });
               }
-
               var truckDesc = '<h1><a href="' + response[i].yelpInfo.url  + '" target="_blank">' + response[i].name + '</a></h1>' + '<br><img src="' + response[i].yelpInfo.mediumRating + '">' + response[i].yelpInfo.review_count + 'Reviews' + '<br><strong>Category:</strong>' + response[i].yelpInfo.categories[0][0] + '<br><strong>Description:</strong>' + '<br>' + response[i].description + '<br><strong>Promotions:</strong>' + '<br>' + response[i].promo;
               trucks.push(truckMarker);
               bindInfoWindow(truckMarker, map, truckInfo, truckDesc)
