@@ -18,7 +18,7 @@ $(document).ready(function(){
     })
 
     .done(function(response){
-      $('div#' + id + ' div span').html(response);
+      $('#' + id + ' #star').html(response);
     })
   })
 })
