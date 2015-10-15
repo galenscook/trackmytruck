@@ -26,33 +26,34 @@
             <div id='menu'>
             <% if (session.userID){ %>
               <% if (session.userType == 'user'){ %>
-                <button class='navbar-item'><a href = '/users/<%= session.userID %>'>Profile</a></button>
-                <button class='button navbar-item'><a href = '/users/logout'>Log Out</a></button>
+                <a href = '/users/<%= session.userID %>' role='button' class='navbar-item button'>Profile</a>
+                <a href = '/users/logout' role='button' class='navbar-item button'>Log Out</a>
 
                 
               <% } else { %>
-                <button class='navbar-item'><a href = '/trucks/<%= session.userID %>/setlocation'>Set Location</a></button>
-                <button class='navbar-item'><a href = '/trucks/<%= session.userID %>'>Profile</a></button>
-                <button class='navbar-item'><a href = '/trucks/logout'>Log Out</a></button>
+                <a href = '/trucks/<%= session.userID %>/setlocation' role='button' class='navbar-item button'>Set Location</a>
+                <a href = '/trucks/<%= session.userID %>' role='button' class='navbar-item button'>Profile</a>
+                <a href = '/trucks/logout' role='button' class='navbar-item button'>Log Out</a>
                 
               <% } %>
             <% } else{ %>
-              <button class='navbar-item'><a href = '/trucks/new'>I'm A Truck</a></button>
-              <button class='navbar-item'><a href = '/users/new'>Log In / Sign Up</a></button>
+              <a href = '/trucks/new' role='button' class='navbar-item button'>I'm A Truck</a>
+              <a href = '/users/new' role='button' class='navbar-item button'>Log In / Sign Up</a>
               
             <% } %>
+            <div id='searchbox' class='row'>
             <form id="search-form" action='/trucks/search' method="get">
-              <div id="row">
-              <div class="eight columns">
-              <label for="search-box"></label>
-              <input name="searchvalue" class="u-full-width" type="search" placeholder="i.e. Thai food" id="search-box">
-              </div>
-                
-                <div class="four columns">
-                  <input class="button-primary" type="submit" value="Search">
+              <div class='input-group' class='row'>
+                <div id='searchfield'>
+                  <input name="searchvalue" class="u-full-width" type="search" placeholder="i.e. Thai food" id="search-box">
+                  <!-- <button type='submit' class='icon' id='searchbutton'><i class='fa fa-search fa-2x'></i></button> -->
+                <span id='searchbutton'>
+                  <button type='submit' class='icon'><i class='fa fa-search fa-2x'></i></button>
+                </span>
                 </div>
               </div>
             </form>
+              </div>
             </div>
           </div>
 

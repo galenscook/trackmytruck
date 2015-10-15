@@ -170,9 +170,9 @@ a {
   display: inline-block;
   position: relative;
   float:none;
-  margin: 0 1em;
+  margin: 0 1%;
   padding: 0;
-  width: 40%;
+  width: 30%;
 }
 
 .navbar-item a {
@@ -198,7 +198,36 @@ a {
   font-family: 'Shadows Into Light', cursive;
 }
 
+#searchbox {
+  border: 1px solid transparent;
+  margin: 0 2%;
+}
+#searchfield {
+  margin-right: -1%;
+  border: none;
+}
 
+#searchbutton {
+  position: absolute;
+  right: 0;
+  top: 1.5%;
+  border: none;
+  z-index: 999999;
+}
+
+/*#searchbutton button {
+  margin-left: 0;
+  float: left;
+}*/
+
+.input-group {
+    display: inline-table;
+    vertical-align: middle;
+    width: 100%;
+    position: relative;
+    display: table;
+    border-collapse: separate;
+  }
 
 nav .mobile-nav {
   display: none;
