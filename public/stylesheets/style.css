@@ -22,7 +22,7 @@ html, body {
             }
 
 body {
-  /*position: fixed;*/
+  position: fixed;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -71,6 +71,11 @@ a {
    height: 0; 
    clear: both;
 }
+/*
+#scrollablecontent {
+  overflow-y: scroll;
+  position: relative;
+}*/
 
 /* Main Content Area */
 #content {
@@ -78,10 +83,64 @@ a {
   width: 66.3333333333%;;
 }
 
+#tabbed-content {
+  margin: 5%;
+}
+
+.tab {
+    display: none;
+}
+#tabs {
+    float: left;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 16px;
+    list-style: none;
+    text-align: center;
+}
+#tabs li {
+    /*float: left;*/
+    display: inline-block;
+    /*margin: 0 auto;*/
+    margin-right: 5%;
+    padding: 3% 5%;
+    height: 8%;
+    line-height: 10%;
+    margin-bottom: 0;
+}
+#tabs li a {
+    color: #666;
+    font-family: Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    margin: 3% auto;
+}
+
+
+#tabs li.active {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 3px solid white;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom: -1px;
+    height: 9%;
+    /*padding: 9px 14px;*/
+}
+
+#tabs li.active a {
+    color: black;
+    text-decoration: none;
+    border-bottom: none;
+}
 /* Sidebar */
 #sidebar {
-/*  background-color: pink;*/
+  border: 1px solid transparent;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: pink;
   width:33.6666666667%;
+
 }
 
 
