@@ -2,12 +2,22 @@
     <script src='/js/user_map.js'></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.MAP_KEY %>&signed_in=true&callback=initMap&libraries=geometry" async defer></script>
 
-    <div class='row map'>
-      <h1>All Trucks</h1>
-      <div id="truckmap" ></div>>
-      <div id='for-truck-list'>
-        <% include ../partials/trucklist %>
-      </div>
+
+<!-- Sidebar content -->
+  
+    <% include ../partials/trucklist %>
+
+    <div class = 'row yelp_logo four columns'>
+      Copyright 2015 
+    </div>
+  </div> <!-- Any content in sidebar goes ABOVE this div closure-->
+    
+    <div class='eight columns' id='content'>
+      <!-- <div class='six columns'> -->
+      <!-- <div class='six columns'> -->
+        <div id="truckmap" ></div>
+      <!-- </div> -->
+
     </div>
 
 <% include ../partials/footer %>
