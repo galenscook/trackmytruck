@@ -222,7 +222,8 @@ function initMap() {
                   // icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
                 });
               }
-              var truckDesc = '<h1><a href="' + response[i].yelpInfo.url  + '" target="_blank">' + response[i].name + '</a></h1>' + '<br><img src="' + response[i].yelpInfo.mediumRating + '">' + response[i].yelpInfo.review_count + 'Reviews' + '<br><strong>Category:</strong>' + response[i].yelpInfo.categories[0][0] + '<br><strong>Description:</strong>' + '<br>' + response[i].description + '<br><strong>Promotions:</strong>' + '<br>' + response[i].promo;
+              var truckDesc = '<div id="truck-popup"><h3><a href="' + response[i].yelpInfo.url  + '" target="_blank">' + response[i].name + '</a></h3>' + '<br><img src="' + response[i].yelpInfo.mediumRating + '">' + "  " + response[i].yelpInfo.review_count + " " + 'Reviews' + '<br><strong>Category: </strong>' + response[i].yelpInfo.categories[0][0] + '<br><strong>Description:</strong>' + '<br>' + response[i].description + '<br><strong>Promotions: </strong>' + '<br>' + response[i].promo + '</div>';
+              // truckDesc.style.backgroundImage="url('http://assets.nydailynews.com/polopoly_fs/1.1245686!/img/httpImage/image.jpg_gen/derivatives/article_970/afp-cute-puppy.jpg')";
               trucks.push(truckMarker);
               bindInfoWindow(truckMarker, map, truckInfo, truckDesc)
             }
