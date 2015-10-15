@@ -32,7 +32,7 @@ router.post('/login', function (request, response, next) {
       if(authenticated) {
         session.userID = user.id;
         session.userType = 'user';
-        response.redirect('/users/'+session.userID);
+        response.redirect('/trucks');
       } else {
           var authenticationFailedError = new Error('Authentication failed');
           authenticationFailedError.status = 401;
@@ -81,7 +81,6 @@ router.get('/get-user-favorites', function (request, response){
         notFoundError.status = 404;
         return next(notFoundError);
       }
-
       rdb.favorites(user.id)
       .then(function (favorites) {
         response.json(favorites);
@@ -104,7 +103,7 @@ router.get('/:id', function (request, response, next) {
       }
       rdb.favorites(user.id)
       .then(function (favorites) {
-        response.render('users/show', {title: user.name+"'s Profile", user: user, favorites: favorites, session: session});
+        response.render('users/show', {title: user.name+"'s Profile", currentUser: user, favorites: favorites, session: session});
       })
     });
   } else {
