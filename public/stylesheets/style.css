@@ -30,6 +30,17 @@ a {
   color: #00B7FF;
 }
 
+#truck-popup {
+  color: #63BFDB;
+}
+
+#truck-popup a {
+  color: #E65601;
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.5em;
+}
 .right {
   float: right;
 }
