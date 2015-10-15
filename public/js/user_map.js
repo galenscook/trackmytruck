@@ -5,141 +5,114 @@ function initMap() {
   });
   var styles = [
     {
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "hue": "#ff4400"
-            },
-            {
-                "saturation": -68
-            },
-            {
-                "lightness": -4
-            },
-            {
-                "gamma": 0.72
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "labels.icon"
-    },
-    {
-        "featureType": "landscape.man_made",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "hue": "#0077ff"
-            },
-            {
-                "gamma": 3.1
-            }
-        ]
-    },
-    {
         "featureType": "water",
+        "elementType": "geometry.fill",
         "stylers": [
             {
-                "hue": "#00ccff"
+                "color": "#33658A"
             },
             {
-                "gamma": 0.44
+                "saturation": 38
             },
             {
-                "saturation": -33
+                "lightness": -11
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#8ABB21"
+            },
+            {
+                "saturation": -47
+            },
+            {
+                "lightness": -17
+            },
+            {
+                "visibility": "on"
             }
         ]
     },
     {
         "featureType": "poi.park",
+        "elementType": "all",
         "stylers": [
             {
-                "hue": "#44ff00"
+                "hue": "#c6e3a4"
             },
             {
-                "saturation": -23
+                "saturation": 17
+            },
+            {
+                "lightness": -2
+            },
+            {
+                "visibility": "on"
             }
         ]
     },
     {
-        "featureType": "water",
-        "elementType": "labels.text.fill",
+        "featureType": "road.arterial",
+        "elementType": "all",
         "stylers": [
             {
-                "hue": "#007fff"
+                "hue": "#cccccc"
             },
             {
-                "gamma": 0.77
+                "saturation": -100
             },
             {
-                "saturation": 65
+                "lightness": 13
             },
             {
-                "lightness": 99
+                "visibility": "on"
             }
         ]
     },
     {
-        "featureType": "water",
-        "elementType": "labels.text.stroke",
+        "featureType": "administrative.land_parcel",
+        "elementType": "all",
         "stylers": [
             {
-                "gamma": 0.11
+                "hue": "#5f5855"
             },
             {
-                "weight": 5.6
+                "saturation": 6
             },
             {
-                "saturation": 99
+                "lightness": -31
             },
             {
-                "hue": "#0091ff"
-            },
-            {
-                "lightness": -86
+                "visibility": "on"
             }
         ]
     },
     {
-        "featureType": "transit.line",
-        "elementType": "geometry",
+        "featureType": "road.local",
+        "elementType": "all",
         "stylers": [
             {
-                "lightness": -48
+                "hue": "#ffffff"
             },
             {
-                "hue": "#ff5e00"
+                "saturation": -100
             },
             {
-                "gamma": 1.2
+                "lightness": 100
             },
             {
-                "saturation": -23
+                "visibility": "simplified"
             }
         ]
     },
-    {
-        "featureType": "transit",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "saturation": -64
-            },
-            {
-                "hue": "#ff9100"
-            },
-            {
-                "lightness": 16
-            },
-            {
-                "gamma": 0.47
-            },
-            {
-                "weight": 2.7
-            }
-        ]
-    }
+
 ]
   map.setOptions({styles: styles});
   // Try HTML5 geolocation.
