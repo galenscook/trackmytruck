@@ -6,7 +6,6 @@ var session = require('express-session');
 
 router.put('/set-location', function (request, response){
   session.position = request.body.location;
-  console.log(session);
   response.send('done');
 });
 

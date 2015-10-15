@@ -31,9 +31,7 @@ router.post('/login', function (request, response, next) {
     .then(function (authenticated) {
       if(authenticated) {
         session.userID = user.id;
-        console.log(session);
         session.userType = 'user';
-        // response.redirect('/trucks')
         response.redirect('/users/'+session.userID);
       } else {
           var authenticationFailedError = new Error('Authentication failed');
@@ -46,11 +44,9 @@ router.post('/login', function (request, response, next) {
 
 // Store user location from map
 router.put('/set-location', function (request, response){
-  // console.log(session)
-  if(session.userID != undefined){
+  if(session.userID != undefined && session.userType === 'user'){
     rdb.find('users', session.userID)
     .then(function(user){
-      // console.log(user);
       var updateUser = {
         name: user.name,
         email: user.email,
@@ -64,7 +60,7 @@ router.put('/set-location', function (request, response){
       })
     })
   } else {
-    response.send('done')
+    response.send('nothing to do')
   }
 });
 
@@ -76,12 +72,32 @@ router.get('/get-truck-info', function (request, response){
   })
 })
 
+router.get('/get-user-favorites', function (request, response){
+  if(session.userType == 'user' && session.userID != undefined){
+    rdb.find('users', session.userID)
+    .then(function (user) {
+      if(!user) {
+        var notFoundError = new Error('User not found');
+        notFoundError.status = 404;
+        return next(notFoundError);
+      }
+      console.log("BEFORE FAVORITES QUERY")
+      rdb.favorites(user.id)
+      .then(function (favorites) {
+        response.json(favorites);
+      })
+    });
+  }else{
+    console.log("HIT FAVORITES ROUTE ELSE");
+    response.send("done");
+  }
+})
+
 // Show User Profile
 router.get('/:id', function (request, response, next) {
   if(request.params.id == session.userID){
     rdb.find('users', request.params.id)
     .then(function (user) {
-      console.log(user.position)
       if(!user) {
         var notFoundError = new Error('User not found');
         notFoundError.status = 404;

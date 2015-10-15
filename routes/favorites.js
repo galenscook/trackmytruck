@@ -7,7 +7,6 @@ var session = require('express-session')
 // Create new favorite
 router.post('/:truckid', function (request, response) {
 
-  console.log('IN THE POST')
   var newFavorite = {
     user_id: session.userID,
     truck_id: request.params.truckid

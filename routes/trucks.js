@@ -18,8 +18,39 @@ router.get('/', function(request, response, next){
   .then(function (trucks){
 
     if(session.userID == undefined){
+      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});
+    }
+    else {
+      if(session.userType == 'user'){
+        rdb.find('users', session.userID)
+        .then(function (user){
+          rdb.favoritesIds(user.id)
+          .then(function(favorites){
+            favoriteIds = []
+            favorites.forEach(function(favorite){
+              favoriteIds.push(favorite.truck_id)
+            })
+            // For userType 'user', render map with currentUser's favorites
+            var allDistances = sortDistances(user, trucks);
+            sortTrucks(allDistances, user, favorites, session, response);
+          })
+        });
+      }else{
+        // For userType 'truck', render map without favorites
+        response.render('trucks/index', {title: 'All Trucks', allTrucks: trucks, currentUser: null, session: session});
+      }
+    }
+  })
+})
+
+router.get('/search', function(request, response, next){
+  var searchTerm = request.query.searchvalue;
+  rdb.findSearchedTrucks(searchTerm)
+  .then(function(trucks){
+    console.log(trucks)
+    if(session.userID == undefined){
       console.log(session);
-      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});      
+      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});
     }
     if(session.userType == 'user'){
       rdb.find('users', session.userID)
@@ -44,17 +75,37 @@ router.get('/', function(request, response, next){
 
 // New Truck Form
 router.get('/new', function(request, response, next) {
-    console.log(session); 
     response.render('trucks/new', {title: 'New Truck', session: session});
 });
 
 // Logout Truck
 router.get('/logout', function (request, response, next){
-  console.log('truck logout')
   session.userID = null;
   session.userType = null;
   response.redirect('/');
 })
+
+//*****************
+//* DON'T  DELETE *
+//*  FUTURE  USE  *
+//*****************
+// Updates Truck List
+// router.put('/update-truck-list', function(request, response, next){
+//   var allTrucks = [];
+//   truckIds = JSON.parse(request.body.trucks);
+
+//   for(var i = 0; i < truckIds.length; i++){
+//     rdb.find('trucks', truckIds[i])
+//     .then(function(truck){
+//       allTrucks.push(truck);
+//       if (allTrucks.length === truckIds.length){
+//         // response.send(allTrucks);
+//         response.render('partials/trucklist', {layout: false, allTrucks: allTrucks})
+//       };
+//     });
+//   }
+// })
+
 
 // Show Truck Profile
 router.get('/:id', function (request, response, next) {
@@ -67,7 +118,7 @@ router.get('/:id', function (request, response, next) {
         notFoundError.status = 404;
         return next(notFoundError);
       }
-
+      //still need to search database for favorites since favorites is a local variable in the trucklist partial
       response.render('trucks/show', {title: truck.name+"'s Profile", truck: truck, session: session, fav_num: favorites.length});
     })
   });
@@ -109,6 +160,7 @@ router.post('/', function (request, response) {
       description: request.body.description,
       password: hash,
       location: null,
+      promo: "",
       updated_at: rdb.now()
     };
 
@@ -122,7 +174,7 @@ router.post('/', function (request, response) {
         largeRating: data.rating_img_url_large,
         image: data.image_url
       }
-      console.log(newTruck.yelpInfo.categories)
+
       rdb.save('trucks', newTruck)
       .then(function (result) {
         rdb.findBy('trucks', 'email', newTruck.email)
@@ -130,7 +182,6 @@ router.post('/', function (request, response) {
           var currentTruck = trucks[0]
           session.userID = currentTruck.id;
           session.userType = 'truck';
-          console.log(typeof currentTruck.yelpInfo.categories)
           response.redirect('/trucks/'+currentTruck.id+'/setlocation')
         })
       });
@@ -231,18 +282,15 @@ router.put('/:id', function(request, response){
 //Helper method for calculating truck-user distance
 function calcDistance(user, truck){
   var R = 6371; // Radius of the earth in km
-  console.log(user.position);
   var userLocation = JSON.parse(user.position);
   var truckLocation = JSON.parse(truck.location);
-  // console.log("************************************")
-  // console.log(truckLocation["lat"]);
   var dLat = deg2rad(truckLocation["lat"]-userLocation["lat"]);  // deg2rad below
-  var dLon = deg2rad(truckLocation["lng"]-userLocation["lng"]); 
-  var a = 
+  var dLon = deg2rad(truckLocation["lng"]-userLocation["lng"]);
+  var a =
     Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(deg2rad(truckLocation["lat"])) * Math.cos(deg2rad(userLocation["lat"])) * 
-    Math.sin(dLon/2) * Math.sin(dLon/2); 
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    Math.cos(deg2rad(truckLocation["lat"])) * Math.cos(deg2rad(userLocation["lat"])) *
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   var d = R * c; // Distance in km
   return d;
 }
@@ -267,17 +315,13 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
-// 
 function sortTrucks(distanceArray, user, favorites, session, response){
   var allTrucksArray = [];
   distanceArray.forEach(function(distanceObject){
     rdb.find('trucks', distanceObject.id)
     .then(function (truck){
-      // console.log("IN THEN" + truck);
       allTrucksArray.push(truck);
-      // console.log(allTrucksArray);
-      if(allTrucksArray.length == distanceArray.length){
-        // console.log(session);
+      if(allTrucksArray.length === distanceArray.length){
         response.render('trucks/index', {title: 'All Trucks', allTrucks: allTrucksArray, currentUser: user, favorites: favoriteIds, session: session});
       }
     });
