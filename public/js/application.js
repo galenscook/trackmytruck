@@ -23,6 +23,7 @@ $(document).ready(function() {
     $('#trucklist').css('height', (windowHeight*0.75));
     // $('#trucklist').css('max-height', (windowHeight*0.65));
   }
+  $('.set-location').css('min-height', (windowHeight*0.5));
   };
   setHeight();
   
