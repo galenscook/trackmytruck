@@ -318,7 +318,7 @@ function sortTrucks(distanceArray, user, favorites, session, response){
     rdb.find('trucks', distanceObject.id)
     .then(function (truck){
       allTrucksArray.push(truck);
-      if(allTrucksArray.length == distanceArray.length){
+      if(allTrucksArray.length === distanceArray.length){
         response.render('trucks/index', {title: 'All Trucks', allTrucks: allTrucksArray, currentUser: user, favorites: favoriteIds, session: session});
       }
     });

@@ -19,12 +19,32 @@
             <div id='user-logged-in'>
               <li class='navbar-item'><a href = '/users/logout'>Log Out</a></li>
               <li class='navbar-item'><a href = '/users/<%= session.userID %>'>Profile</a></li>
+              <form id="search-form" action='/trucks/search' method="get">
+                <label for="search-box"></label>
+                <input name="searchvalue" class="u-full-width" type="search" placeholder="i.e. Thai food" id="search-box">
+                <div id="row">
+                  <div class="eight columns">.</div>
+                  <div class="four columns">
+                    <input class="button-primary" type="submit" value="Search">
+                  </div>
+                </div>
+              </form>
             </div>
           <% } else { %>
             <div id='truck-logged-in'>
               <li class='navbar-item'><a href = '/trucks/logout'>Log Out</a></li>
               <li class='navbar-item'><a href = '/trucks/<%= session.userID %>'>Profile</a></li>
               <li class='navbar-item'><a href = '/trucks/<%= session.userID %>/setlocation'>Set Location</a></li>
+              <form id="search-form" action='/trucks/search' method="get">
+                <label for="search-box"></label>
+                <input name="searchvalue" class="u-full-width" type="search" placeholder="i.e. Thai food" id="search-box">
+                <div id="row">
+                  <div class="eight columns">.</div>
+                  <div class="four columns">
+                    <input class="button-primary" type="submit" value="Search">
+                  </div>
+                </div>
+              </form>
             </div>
           <% } %>
         <% } else{ %>
@@ -34,12 +54,12 @@
             <form id="search-form" action='/trucks/search' method="get">
               <label for="search-box"></label>
               <input name="searchvalue" class="u-full-width" type="search" placeholder="i.e. Thai food" id="search-box">
-                  <div id="row">
-                  <div class="eight columns">.</div>
-                  <div class="four columns">
+              <div id="row">
+                <div class="eight columns">.</div>
+                <div class="four columns">
                   <input class="button-primary" type="submit" value="Search">
-                  </div>
-                  </div>
+                </div>
+              </div>
             </form>
           </div>
         <% } %>
