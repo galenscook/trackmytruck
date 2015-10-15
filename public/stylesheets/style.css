@@ -36,6 +36,13 @@ a {
 
 #loginprompt {
   display: none;
+  position: absolute;
+  left: 32%;
+  top: 30em;
+  z-index: 99;
+  border: 1px black solid;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .right-border {
@@ -65,10 +72,10 @@ a {
   max-width: 100%;
 }
 
-.clearfix:after { 
+.clearfix:after {
    content: " ";
-   display: block; 
-   height: 0; 
+   display: block;
+   height: 0;
    clear: both;
 }
 /*
