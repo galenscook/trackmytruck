@@ -1,8 +1,8 @@
 <% include ../partials/header %>
 
-  <h1><%= user.name %></h1>
-  <p>Welcome, <%= user.name %>!</p>
-  <p>Your email is <%= user.email %></p>
+  <h1><%= currentUser.name %></h1>
+  <p>Welcome, <%= currentUser.name %>!</p>
+  <p>Your email is <%= currentUser.email %></p>
   <% favorites.forEach(function(favorite){ %>
     <p><%=favorite.name%></p>
     <% }) %>

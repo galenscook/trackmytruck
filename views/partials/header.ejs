@@ -28,7 +28,6 @@
               <% if (session.userType == 'user'){ %>
                 <button class='navbar-item'><a href = '/users/<%= session.userID %>'>Profile</a></button>
                 <button class='button navbar-item'><a href = '/users/logout'>Log Out</a></button>
-
                 
               <% } else { %>
                 <button class='navbar-item'><a href = '/trucks/<%= session.userID %>/setlocation'>Set Location</a></button>
@@ -55,7 +54,15 @@
             </form>
             </div>
           </div>
-
+          <div id="row">
+            <div class="twelve columns">
+            <% if (session.userID){ %>
+              <% if (session.userType == 'user'){ %>
+                <p>Logged in as <%= currentUser.name %></p>
+              <% } %>
+            <% } %>
+            </div>
+          </div>
           <!-- Options for Mobile Views -->
           <div class='mobile-nav'>
             <span class='navbar-item' id='logo'><a href = '/'>TrackMyTruck</a></span>
