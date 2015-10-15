@@ -52,7 +52,7 @@ router.get('/search', function(request, response, next){
       console.log(session);
       response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});
     }
-    if(session.userType == 'user'){
+    else if(session.userType == 'user'){
       rdb.find('users', session.userID)
       .then(function (user){
         rdb.favoritesIds(user.id)

@@ -5,141 +5,151 @@ function initMap() {
   });
   var styles = [
     {
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "hue": "#ff4400"
-            },
-            {
-                "saturation": -68
-            },
-            {
-                "lightness": -4
-            },
-            {
-                "gamma": 0.72
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "labels.icon"
-    },
-    {
-        "featureType": "landscape.man_made",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "hue": "#0077ff"
-            },
-            {
-                "gamma": 3.1
-            }
-        ]
-    },
-    {
         "featureType": "water",
+        "elementType": "geometry.fill",
         "stylers": [
             {
-                "hue": "#00ccff"
-            },
-            {
-                "gamma": 0.44
-            },
-            {
-                "saturation": -33
-            }
-        ]
-    },
-    {
-        "featureType": "poi.park",
-        "stylers": [
-            {
-                "hue": "#44ff00"
-            },
-            {
-                "saturation": -23
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "hue": "#007fff"
-            },
-            {
-                "gamma": 0.77
-            },
-            {
-                "saturation": 65
-            },
-            {
-                "lightness": 99
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "gamma": 0.11
-            },
-            {
-                "weight": 5.6
-            },
-            {
-                "saturation": 99
-            },
-            {
-                "hue": "#0091ff"
-            },
-            {
-                "lightness": -86
-            }
-        ]
-    },
-    {
-        "featureType": "transit.line",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": -48
-            },
-            {
-                "hue": "#ff5e00"
-            },
-            {
-                "gamma": 1.2
-            },
-            {
-                "saturation": -23
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "saturation": -64
-            },
-            {
-                "hue": "#ff9100"
-            },
-            {
-                "lightness": 16
-            },
-            {
-                "gamma": 0.47
-            },
-            {
-                "weight": 2.7
+                "color": "#0f4c81"
             }
         ]
     }
+    // {
+    // {
+    //     "elementType": "geometry",
+    //     "stylers": [
+    //         {
+    //             "hue": "#ff4400"
+    //         },
+    //         {
+    //             "saturation": -68
+    //         },
+    //         {
+    //             "lightness": -4
+    //         },
+    //         {
+    //             "gamma": 0.72
+    //         }
+    //     ]
+    // },
+    // {
+    //     "featureType": "road",
+    //     "elementType": "labels.icon"
+    // },
+    // {
+    //     "featureType": "landscape.man_made",
+    //     "elementType": "geometry",
+    //     "stylers": [
+    //         {
+    //             "hue": "#0077ff"
+    //         },
+    //         {
+    //             "gamma": 3.1
+    //         }
+    //     ]
+    // },
+    // {
+    //     "featureType": "water",
+    //     "stylers": [
+    //         {
+    //             "hue": "#33658a"
+    //         },
+    //         // {
+    //         //     "gamma": 0.44
+    //         // },
+    //         // {
+    //         //     "saturation": -33
+    //         // }
+    //     ]
+    // },
+    // {
+    //     "featureType": "poi.park",
+    //     "stylers": [
+    //         {
+    //             "hue": "#44ff00"
+    //         },
+    //         {
+    //             "saturation": -23
+    //         }
+    //     ]
+    // },
+    // {
+    //     "featureType": "water",
+    //     "elementType": "labels.text.fill",
+    //     "stylers": [
+    //         {
+    //             "hue": "#33658a"
+    //         },
+    //         // {
+    //         //     "gamma": 0.77
+    //         // },
+    //         // {
+    //         //     "saturation": 65
+    //         // },
+    //         // {
+    //         //     "lightness": 99
+    //         // }
+    //     ]
+    // },
+    // {
+    //     "featureType": "water",
+    //     "elementType": "labels.text.stroke",
+    //     "stylers": [
+    //         // {
+    //         //     "gamma": 0.11
+    //         // },
+    //         // {
+    //         //     "weight": 5.6
+    //         // },
+    //         // {
+    //         //     "saturation": 99
+    //         // },
+    //         {
+    //             "hue": "#33658a"
+    //         },
+    //         // {
+    //         //     "lightness": -86
+    //         // }
+    //     ]
+    // },
+    // {
+    //     "featureType": "transit.line",
+    //     "elementType": "geometry",
+    //     "stylers": [
+    //         {
+    //             "lightness": -48
+    //         },
+    //         {
+    //             "hue": "#ff5e00"
+    //         },
+    //         {
+    //             "gamma": 1.2
+    //         },
+    //         {
+    //             "saturation": -23
+    //         }
+    //     ]
+    // },
+    // {
+    //     "featureType": "transit",
+    //     "elementType": "labels.text.stroke",
+    //     "stylers": [
+    //         {
+    //             "saturation": -64
+    //         },
+    //         {
+    //             "hue": "#ff9100"
+    //         },
+    //         {
+    //             "lightness": 16
+    //         },
+    //         {
+    //             "gamma": 0.47
+    //         },
+    //         {
+    //             "weight": 2.7
+    //         }
+    //     ]
+    // }
 ]
   map.setOptions({styles: styles});
   // Try HTML5 geolocation.
@@ -233,7 +243,9 @@ function initMap() {
                   map: map,
                   title: response[i].name,
                   id: response[i].id,
-                  icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                  icon: 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star||E65601|000000'
+                  // icon: 'http://maps.google.com/mapfiles/ms/icons/red-pushpin.png'
+                  // icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
                 });
               }else{
                 var truckMarker = new google.maps.Marker({
@@ -241,9 +253,13 @@ function initMap() {
                   map: map,
                   title: response[i].name,
                   id: response[i].id,
+                  // icon: 'http://maps.google.com/mapfiles/ms/icons/red-pushpin.png'
+                  // icon: 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star||F09D16|E65601'
+                  icon: 'https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin||F09D16|000000'
+                  // icon: 'https://chart.googleapis.com/chart?chst=d_map_pin_icon&chld=F09D16|'
+                  // icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
                 });
               }
-
               var truckDesc = '<h1><a href="' + response[i].yelpInfo.url  + '" target="_blank">' + response[i].name + '</a></h1>' + '<br><img src="' + response[i].yelpInfo.mediumRating + '">' + response[i].yelpInfo.review_count + 'Reviews' + '<br><strong>Category:</strong>' + response[i].yelpInfo.categories[0][0] + '<br><strong>Description:</strong>' + '<br>' + response[i].description + '<br><strong>Promotions:</strong>' + '<br>' + response[i].promo;
               trucks.push(truckMarker);
               bindInfoWindow(truckMarker, map, truckInfo, truckDesc)
