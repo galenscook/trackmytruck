@@ -72,6 +72,27 @@ router.get('/get-truck-info', function (request, response){
   })
 })
 
+router.get('/get-user-favorites', function (request, response){
+  if(session.userType == 'user' && session.userID != undefined){
+    rdb.find('users', session.userID)
+    .then(function (user) {
+      if(!user) {
+        var notFoundError = new Error('User not found');
+        notFoundError.status = 404;
+        return next(notFoundError);
+      }
+      console.log("BEFORE FAVORITES QUERY")
+      rdb.favorites(user.id)
+      .then(function (favorites) {
+        response.json(favorites);
+      })
+    });
+  }else{
+    console.log("HIT FAVORITES ROUTE ELSE");
+    response.send("done");
+  }
+})
+
 // Show User Profile
 router.get('/:id', function (request, response, next) {
   if(request.params.id == session.userID){

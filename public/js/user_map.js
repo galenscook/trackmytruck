@@ -67,6 +67,7 @@ function initMap() {
       })
 
       .done(function(response){
+        console.log("AJAX GET TRUCK INFO FINISHED");
         var truckCoordinates = response.map(function(object){
           if (object.location){
             var coordinate = JSON.parse(object.location);
@@ -74,39 +75,61 @@ function initMap() {
           }
         });
 
-        for(var i = 0; i < response.length; i++){
-          if(truckCoordinates[i]){
-            var truckMarker = new google.maps.Marker({
-              position: truckCoordinates[i],
-              map: map,
-              title: response[i].name,
-              id: response[i].id,
-              label: undefined
-            });
+        $.ajax({
+          method: 'get',
+          url: '/users/get-user-favorites',
+          dataType: 'json'
+        })
 
-            var truckDesc = '<h1><a href="' + response[i].yelpInfo.url  + '" target="_blank">' + response[i].name + '</a></h1>' + '<br><img src="' + response[i].yelpInfo.mediumRating + '">' + response[i].yelpInfo.review_count + 'Reviews' + '<br><strong>Category:</strong>' + response[i].yelpInfo.categories[0][0] + '<br><strong>Description:</strong>' + '<br>' + response[i].description + '<br><strong>Promotions:</strong>' + '<br>' + response[i].promo;
-
-            trucks.push(truckMarker);
-
-            bindInfoWindow(truckMarker, map, truckInfo, truckDesc)
+        .always(function(response2){
+          console.log("AJAX GET FAVORITES INFO FINISHED");
+          console.log("RESPONSE 2: " + response2);
+          // var response3 = JSON.parse(response2);
+          // console.log("RESPONSE 3: " + response3);
+          favoritesArray = [];
+          if(response2.length > 0){
+            var userFavorites = response2.map(function(object){
+              favoritesArray.push(object.id)
+            })
           }
-        };
 
+          for(var i = 0; i < response.length; i++){
+            console.log("IN FOR")
+            if(truckCoordinates[i]){
+              if(favoritesArray.contains(response[i].id)){
+                var truckMarker = new google.maps.Marker({
+                  position: truckCoordinates[i],
+                  map: map,
+                  title: response[i].name,
+                  id: response[i].id,
+                  icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                });
+              }else{
+                console.log("IN ELSE");
+                var truckMarker = new google.maps.Marker({
+                  position: truckCoordinates[i],
+                  map: map,
+                  title: response[i].name,
+                  id: response[i].id,
+                });
+              }
+
+              var truckDesc = '<h1><a href="' + response[i].yelpInfo.url  + '" target="_blank">' + response[i].name + '</a></h1>' + '<br><img src="' + response[i].yelpInfo.mediumRating + '">' + response[i].yelpInfo.review_count + 'Reviews' + '<br><strong>Category:</strong>' + response[i].yelpInfo.categories[0][0] + '<br><strong>Description:</strong>' + '<br>' + response[i].description + '<br><strong>Promotions:</strong>' + '<br>' + response[i].promo;
+              trucks.push(truckMarker);
+              bindInfoWindow(truckMarker, map, truckInfo, truckDesc)
+            }
+          };
+        });
+        console.log(trucks);
         findInBound(trucks);
         showInBound();
       });
 
-
-
-      map.setCenter(pos);
-
       function findInBound(trucks){
-        var index = 1;
         // var inBoundId = [];
 
         for(var i = 0; i < trucks.length; i++){
           if (map.getBounds().contains(trucks[i].position)){
-            trucks[i].label = String(index++);
             inBound.push(trucks[i]);
             // inBoundId.push(trucks[i].id)
           };
@@ -135,22 +158,8 @@ function initMap() {
       }
 
       google.maps.event.addListener(map, 'zoom_changed', function(){
-        zoom = map.getZoom();
-        if(zoom < 13){
-          for(var i = 0; i < trucks.length; i++){
-            trucks[i].setMap(null)
-          }
-
-        } else{
-          inBound = [];
-
-          for(var i = 0; i < trucks.length; i++){
-            trucks[i].setMap(null)
-          };
-
-          findInBound(trucks);
-          showInBound();
-        }
+        findInBound(trucks);
+        showInBound();
       });
 
       google.maps.event.addListener(map, 'dragend', function(){
@@ -164,10 +173,26 @@ function initMap() {
         showInBound();
       });
 
-      // console.log(trucks)
-      // for(var i = 0; i < trucks.length; i++){
+      $('.truckpanel').on('click', function(event){
 
-      // };
+        var truckId = $(this).attr('id');
+
+        trucks.forEach(function(truck){
+          if(truck.id == truckId){
+            if (!map.getBounds().contains(truck.position)){
+              map.panTo(truck.position)
+              findInBound(trucks);
+              showInBound();
+            };
+            google.maps.event.trigger(truck, 'click');
+          }
+        })
+      });
+
+      google.maps.event.addListener(map, 'dragend', function(){
+        truckInfo.close();
+      });
+
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -188,5 +213,15 @@ function bindInfoWindow(marker, map, infowindow, description) {
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(description);
     infowindow.open(map, marker);
+    $('#' + marker.id)[0].scrollIntoView();
   });
+}
+
+Array.prototype.contains = function(k) {
+  for(var i=0; i < this.length; i++){
+    if(this[i] === k){
+      return true;
+    }
+  }
+  return false;
 }

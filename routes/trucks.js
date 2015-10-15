@@ -18,23 +18,25 @@ router.get('/', function(request, response, next){
     if(session.userID == undefined){
       response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});
     }
-    if(session.userType == 'user'){
-      rdb.find('users', session.userID)
-      .then(function (user){
-        rdb.favoritesIds(user.id)
-        .then(function(favorites){
-          favoriteIds = []
-          favorites.forEach(function(favorite){
-            favoriteIds.push(favorite.truck_id)
+    else {
+      if(session.userType == 'user'){
+        rdb.find('users', session.userID)
+        .then(function (user){
+          rdb.favoritesIds(user.id)
+          .then(function(favorites){
+            favoriteIds = []
+            favorites.forEach(function(favorite){
+              favoriteIds.push(favorite.truck_id)
+            })
+            // For userType 'user', render map with currentUser's favorites
+            var allDistances = sortDistances(user, trucks);
+            sortTrucks(allDistances, user, favorites, session, response);
           })
-          // For userType 'user', render map with currentUser's favorites
-          var allDistances = sortDistances(user, trucks);
-          sortTrucks(allDistances, user, favorites, session, response);
-        })
-      });
-    }else{
-      // For userType 'truck', render map without favorites
-      response.render('trucks/index', {title: 'All Trucks', allTrucks: trucks, currentUser: null, session: session});
+        });
+      }else{
+        // For userType 'truck', render map without favorites
+        response.render('trucks/index', {title: 'All Trucks', allTrucks: trucks, currentUser: null, session: session});
+      }
     }
   })
 })
@@ -46,7 +48,7 @@ router.get('/search', function(request, response, next){
     console.log(trucks)
     if(session.userID == undefined){
       console.log(session);
-      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});      
+      response.render('trucks/index', {title: "All Trucks", allTrucks: trucks, currentUser: null, favorites: null, session: session});
     }
     if(session.userType == 'user'){
       rdb.find('users', session.userID)
@@ -316,7 +318,7 @@ function sortTrucks(distanceArray, user, favorites, session, response){
     rdb.find('trucks', distanceObject.id)
     .then(function (truck){
       allTrucksArray.push(truck);
-      if(allTrucksArray.length == distanceArray.length){
+      if(allTrucksArray.length === distanceArray.length){
         response.render('trucks/index', {title: 'All Trucks', allTrucks: allTrucksArray, currentUser: user, favorites: favoriteIds, session: session});
       }
     });
