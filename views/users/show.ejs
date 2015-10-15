@@ -2,22 +2,20 @@
 <!-- Sidebar content -->
   <div class='eight columns offset-by-two' id='userpitch'>
   </div>
-  <div class = 'row yelp_logo four columns'>
-    Copyright 2015
-  </div>
+
 </div>
 <!-- Any content in sidebar goes ABOVE this div closure-->
 
-<div class='eight columns' id='content'>
+<div class='eight columns scrollablecontent' id='content'>
 
   <div id='tabbed-content'>
     <div class='row'>
-      <div class='three columns'>
-        <h1><%= user.name %></h1>
+      <div class='six columns'>
+        <h1><%= currentUser.name %></h1>
       </div>
-      <% if(user.id == session.userID){ %>
+      <% if(currentUser.id == session.userID){ %>
         <div class = 'one column edit'>
-          <a href='/users/<%= user.id %>/edit'>edit</a>
+          <a href='/users/<%= currentUser.id %>/edit'>edit</a>
         </div>
       <% } %>
     </div>
