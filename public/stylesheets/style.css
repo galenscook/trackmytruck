@@ -1,6 +1,6 @@
-* {
+/** {
   outline: 1px red solid;
-}
+}*/
 
 html, body {
     /*background-image: url('http://tomsfoodieblog.com/wp-content/uploads/2013/03/palm-desert-food-and-wine-festival-1024x768.jpg');*/
@@ -138,7 +138,7 @@ a {
   border: 1px solid transparent;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  background-color: pink;
+  background-color: #1C5C8C;
   width:33.6666666667%;
 
 }
@@ -189,6 +189,13 @@ a {
 #logo a {
   text-decoration: none;
   font-size: 3em;
+  color: white;
+  text-shadow: #E65601 2px 2px 4px;
+  font-family: 'Special Elite', cursive;
+}
+
+#my {
+  font-family: 'Shadows Into Light', cursive;
 }
 
 
