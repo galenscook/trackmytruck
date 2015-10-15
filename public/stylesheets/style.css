@@ -259,9 +259,9 @@ button.icon {
   max-height: 1.4em;
 }
 
-/*i {
-  padding: 0
-}*/
+i {
+  color: #F09D16;
+}
 
 .truckpanel form {
   margin: 0;
