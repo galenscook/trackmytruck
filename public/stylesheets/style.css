@@ -286,6 +286,9 @@ nav .mobile-nav {
   display: none;
 }
 
+#login-panel {
+  text-align: center;
+}
 
 /* Truck List */
 #trucklist {
