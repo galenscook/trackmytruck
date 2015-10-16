@@ -222,9 +222,8 @@ function initMap() {
                   // icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
                 });
               }
-              var truckDesc = '<div id="truck-popup"><h3><a href="' + response[i].yelpInfo.url  + '" target="_blank">' + response[i].name + '</a></h3>' + '<br><img src="' + response[i].yelpInfo.mediumRating + '">' + "  " + response[i].yelpInfo.review_count + " " + 'Reviews' + '<br><strong>Category: </strong>' + response[i].yelpInfo.categories[0][0] + '<br><strong>Description:</strong>' + '<br>' + response[i].description + '<br><strong>Promotions: </strong>' + '<br>' + response[i].promo + '</div>';
-                // infoWindow.style.backgroundImage="url('http://assets.nydailynews.com/polopoly_fs/1.1245686!/img/httpImage/image.jpg_gen/derivatives/article_970/afp-cute-puppy.jpg')";
-              // document.getElementById("truck-popup").style.backgroundImage = "url('img_tree.png')";
+              var truckDesc = '<div id="truck-popup"><div class="iw-title"><a href="' + response[i].yelpInfo.url  + '" target="_blank">' + response[i].name + '</a></div>' + '<br><img src="' + response[i].yelpInfo.mediumRating + '">' + "  " + response[i].yelpInfo.review_count + " " + 'Reviews' + '<br><strong>Category: </strong>' + response[i].yelpInfo.categories[0][0] + '<br><strong>Description:</strong>' + '<br>' + response[i].description + '<br><strong>Promotions: </strong>' + '<br>' + response[i].promo + '</div>';
+      
               trucks.push(truckMarker);
               bindInfoWindow(truckMarker, map, truckInfo, truckDesc)
             }
@@ -323,12 +322,32 @@ function bindInfoWindow(marker, map, infowindow, description) {
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(description);
     infowindow.open(map, marker);
-    var parentDiv = $('#truck-popup').parent();
-    var grandparentDiv = parentDiv.parent();
-    greatGPparentDiv = grandparentDiv.parent();
-    greatGPparentDiv.parent().css("background-image", "url('http://cdn.sheknows.com/articles/2013/04/Puppy_2.jpg') no-repeat");
+    // var parentDiv = $('#truck-popup').parent();
+    // var grandparentDiv = parentDiv.parent();
+    // greatGPDiv = grandparentDiv.parent();
+    // var iwOuter = $('.gm-style-iw');greatGPDiv.parent()
+
+    // .css("background-image", "url('http://cdn.sheknows.com/articles/2013/04/Puppy_2.jpg') no-repeat");
     $('#' + marker.id)[0].scrollIntoView();
   });
+// }
+
+  google.maps.event.addListener(infowindow, 'domready', function() {
+    // Reference to the DIV which receives the contents of the infowindow using jQuery
+    var iwOuter = $('.gm-style-iw');
+
+    /* The DIV we want to change is above the .gm-style-iw DIV.
+     * So, we use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+     */
+    var iwBackground = iwOuter.prev();
+    console.log("IN DOMREADY");
+    // Remove the background shadow DIV
+    iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+    iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+  }) 
 }
 
 Array.prototype.contains = function(k) {

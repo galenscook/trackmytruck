@@ -20,6 +20,32 @@ html, body {
                 padding: 0;
                /* background-color: pink;*/
             }
+#iw-container  .iw-title {
+   font-family: 'Open Sans Condensed', sans-serif;
+   font-size: 22px;
+   font-weight: 400;
+   padding: 10px;
+   background-color: #48b5e9;
+   color: white;
+   margin: 1px;
+   border-radius: 2px 2px 0 0; /* In accordance with the rounding of the default infowindow corners. */
+   /*background-image: url('http://cdn.sheknows.com/articles/2013/04/Puppy_2.jpg') no-repeat;*/
+}
+
+.gm-style-iw {
+   /*width: 350px !important;*/
+   padding-left: 8px;
+   padding-top: 15px; 
+   padding-right: 6px;
+   padding-bottom: 4px;
+   top: 15px !important;
+   left: 0 !important;
+   background-color: #fff;
+   box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+   border: 1px solid rgba(72, 181, 233, 0.6);
+   border-radius: 5px 5px 5px 5px; // apply 10px to the bottom corners of the infowindow
+   /*background-image: url('http://cdn.sheknows.com/articles/2013/04/Puppy_2.jpg') no-repeat;*/
+}
 
 body {
   position: fixed;
