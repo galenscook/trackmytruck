@@ -60,7 +60,7 @@ router.get('/sendmsg/:id', function(request, response, next){
       else{
         fans.forEach(function(fan){
           if(calcDistance(fan, truck) <= 2){
-            sendSMS(fan.cell, truck.name+' just opened near you!')
+            sendSMS(fan.cell, truck.name+" just opened near you!  Go to http://www.trackmytruck.com to view the map.")
           }
         })
         response.redirect('/')
