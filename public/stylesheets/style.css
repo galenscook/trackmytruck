@@ -291,6 +291,12 @@ nav .mobile-nav {
   text-align: center;
 }
 
+#login-panel p{
+  margin-bottom: 1%;
+  margin-top: 1%;
+  padding: 2%
+}
+
 /* Truck List */
 #trucklist {
   background: #fff;
