@@ -1,0 +1,30 @@
+<script type="text/javascript" src='/js/favorites.js'></script>
+
+
+
+
+<div id='trucklist' class='panel'>
+  <% allTrucks.forEach(function(truck){ %>
+    <div class='panel truckpanel' id='<%= truck.id %>'>
+      <div class='panel-heading'>
+        <h1><%=truck.name %>
+        <span class='right star'>
+          <%if(currentUser != undefined){ %>
+            <%if(favorites.indexOf(truck.id) === -1){%>
+              <%- include ./addFavorite.ejs %>
+            <% } else {%>
+              <%- include ./removeFavorite.ejs %>
+            <%  } %>
+          <% } else {%>
+              <button class='icon'><i type='submit' class='notloggedin fa fa-star-o fa-2x'></i></button>
+            <% } %>%>
+        </span></h1>
+      </div>
+      <div class='panel-body clearfix'>
+        <p>Category: <%=truck.yelpInfo.categories[0][0]%></p>
+        <p><img src="<%=truck.yelpInfo.mediumRating%>">(<%=truck.yelpInfo.review_count%>)<span class='right'><a href='https://www.yelp.com' target = '_blank'><img src = 'https://s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/14f29ad24935/assets/img/yelp_logo_40x20.png'></a></span></p>
+      </div>
+    </div>
+  <% }) %>
+
+</div>

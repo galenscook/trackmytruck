@@ -1,19 +1,127 @@
 <% include ../partials/header %>
 
-  <h1>Login</h1>
-  <form method='post', action='/users/login'>
-    <input name='email' placeholder='example@email.com'>
-    <input name='password' placeholder='password' type='password'>
-    <input type='submit'>
-  </form>
+<!-- Sidebar content -->
+      <div class='eight columns offset-by-two' id='userpitch'>
+        <div class="panel truckpanel" id="login-panel"><p>By signing up with TrackmyTruck, you can follow your favorite food trucks and receive notifications when they're nearby. It's that easy!</p>
+        </div>
+      </div>
 
-  <h1>Register an Account</h1>
-  <form method='post', action='/users'>
-    <input name='email' placeholder='example@email.com'>
-    <input name='name' placeholder='John D.'>
-    <input name='cell' placeholder='123456789'>
-    <input name='password' placeholder='password' type='password'>
-    <input type='submit'>
-  </form>
+  </div> <!-- Any content in sidebar goes ABOVE this div closure-->
+
+
+<div class='eight columns' id='content'>
+
+<div id='tabbed-content'>
+<h1>Users</h1>
+  <ul id='tabs'>
+    <li class='active'><a href="#tabs-1">Log In</a></li>
+    <li><a href="#tabs-2">Register</a></li>
+  </ul>
+  <div id='tabs-1' class='tab clearfix'>
+    <div class='panel eight columns offset-by-two'>
+      <h2>Log In</h2>
+        <form method='post', action='/users/login'>
+          <div class="row">
+            <label for='user-email-field'>Email</label>
+            <input name='email' class="u-full-width" placeholder='johnd@gmail.com' type='email'>
+          </div>
+          <div class="row">
+            <div class="six columns">
+              <label for='user-password-field'>Password</label>
+              <input name='password' class="u-full-width" placeholder='password' type='password' >
+            </div>
+          </div>
+            <input type='submit' value="Login">
+        </form>
+    </div>
+  </div>
+
+  <div id='tabs-2' class='tab'>
+    <div class='panel eight columns offset-by-two'>
+      <h2>Register</h2>
+       <form method='post', action='/users'>
+         <div class="row">
+           <label for='firstName'>First Name</label>
+           <input name='firstName' class="u-full-width" placeholder='John' type='text'>
+         </div>
+         <div class="row">
+           <label for='lastInitial'>Last Initial</label>
+           <input name='lastInitial' class="u-full-width" placeholder='D' type='text'>
+         </div>
+         <div class="row">
+           <label for='user-email-field'>Email</label>
+           <input name='email' class="u-full-width" placeholder='johnd@gmail.com' type='email'>
+         </div>
+         <div class="row">
+           <div class="six columns">
+             <label for='user-cell-field'>Cell Phone Number</label>
+             <input name='cell' class="u-full-width" placeholder='415-555-5555' type='tel'>
+            </div>
+         </div>
+         <div class="row">
+           <div class="six columns">
+             <label for='user-password-field'>Choose a Password</label>
+             <input name='password' class="u-full-width" placeholder='password' type='password'>
+            </div>
+         </div>
+         <input type='submit' value="Sign Up">
+       </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="row">
+  <div class="six columns right-border col-left">
+    <h2>Register</h2>
+    <form method='post', action='/users'>
+      <div class="row">
+        <label for='firstName'>First Name</label>
+        <input name='firstName' class="u-full-width" placeholder='John' type='text'>
+      </div>
+      <div class="row">
+        <label for='lastInitial'>Last Initial</label>
+        <input name='lastInitial' class="u-full-width" placeholder='D' type='text'>
+      </div>
+      <div class="row">
+        <label for='user-email-field'>Email</label>
+        <input name='email' class="u-full-width" placeholder='johnd@gmail.com' type='email'>
+      </div>
+      <div class="row">
+        <div class="six columns">
+          <label for='user-cell-field'>Cell Phone Number</label>
+          <input name='cell' class="u-full-width" placeholder='415-555-5555' type='tel'>
+         </div>
+      </div>
+      <div class="row">
+        <div class="six columns">
+          <label for='user-password-field'>Choose a Password</label>
+          <input name='password' class="u-full-width" placeholder='password' type='password'>
+         </div>
+      </div>
+      <input type='submit' value="Sign Up">
+    </form>
+  </div>
+
+
+  <div class="six columns col-right">
+    <h2>Log In</h2>
+    <form method='post', action='/users/login'>
+      <div class="row">
+        <label for='user-email-field'>Email</label>
+        <input name='email' class="u-full-width" placeholder='johnd@gmail.com' type='email'>
+      </div>
+      <div class="row">
+        <div class="six columns">
+          <label for='user-password-field'>Password</label>
+          <input name='password' class="u-full-width" placeholder='password' type='password' >
+        </div>
+      </div>
+        <input type='submit' value="Login">
+    </form>
+  </div>
+</div> -->
+
+
 
 <% include ../partials/footer %>

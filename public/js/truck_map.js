@@ -1,11 +1,8 @@
-var truckLocation = null;
-
 function initTruckMap() {
   var map = new google.maps.Map(document.getElementById('truckmap'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 17
   });
-  var infoWindow = new google.maps.InfoWindow({map: map});
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -19,15 +16,42 @@ function initTruckMap() {
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
-        title: 'YOU!',
-        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+        title: "I'm here!",
+        icon: 'http://maps.google.com/mapfiles/ms/micons/bus.png',
+        // icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
         draggable: true
       });
 
-      truckLocation = marker.getPosition();
+      var truckLocation = {lat: marker.position.lat(), lng: marker.position.lng()};
 
       google.maps.event.addListener(marker, 'dragend',function(){
-        truckLocation = marker.getPosition();
+        truckLocation = {lat: marker.position.lat(), lng: marker.position.lng()};
+        map.setCenter(truckLocation);
+      });
+
+      $('form').on('submit', function(event){
+        event.preventDefault();
+
+        var url = $(this).attr('action');
+        var id = $(this).attr('id')
+        
+        var truckData = {
+          location: JSON.stringify(truckLocation),
+          closingTime: $('#truck-time-input').val(),
+          promo: $('#truck-promo').val()
+        };
+
+        $.ajax({
+          method: 'put',
+          url: url,
+          data: JSON.stringify(truckData),
+          contentType: "application/json"
+        })
+
+        .done(function(response){
+          console.log(response);
+          window.location.replace('/sendmsg/'+id);
+        });
       });
 
     }, function() {
@@ -49,3 +73,5 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function getTruckLocation(){
   return truckLocation;
 }
+
+

@@ -1,19 +1,72 @@
 <% include ../partials/header %>
 
-  <h1>Register a Truck</h1>
-  <form method='post', action='/trucks'>
-    <input name='yelpUrl' placeholder='www.yelp.com/biz/tacotuesdays'>
-    <input name='password' placeholder='password' type='password'>
-    <input name='name' placeholder='Taco Tuesdays'>
-    <input name='description' placeholder='All the tacos on all the days' type='text'>
-    <input type='submit'>
-  </form>
 
-  <h1>Truck Login</h1>
-  <form method='post', action='/trucks/login'>
-    <input name='yelpUrl' placeholder='www.yelp.com/biz/tacotuesdays'>
-    <input name='password' placeholder='password' type='password'>
-    <input type='submit'>
-  </form>
+<!-- Sidebar content -->
+      <div class='eight columns offset-by-two' id='truckpitch'>
+        <div class="panel truckpanel" id="login-panel"><p>Register your food truck with TrackmyTruck! It's free and allows customers throughout the city to find you and receive notifications about your daily deals and location changes. Let us help you drive your growth!</p></div>
+      </div>
+  </div> <!-- Any content in sidebar goes ABOVE this div closure-->
+
+
+<div class='eight columns' id='content'>
+
+<div id='tabbed-content'>
+  <h1>Trucks</h1>
+  <ul id='tabs'>
+    <li class='active'><a href="#tabs-1">Log In</a></li>
+    <li><a href="#tabs-2">Register</a></li>
+  </ul>
+  <div id='tabs-1' class='tab clearfix'>
+    <div class='panel eight columns offset-by-two'>
+      <h2>Log In</h2>
+      <form method='post', action='/trucks/login'>
+      <div class="row">
+        <label for='truck-url-field'>Email</label>
+        <input name='email' class="u-full-width" placeholder='tacotuesdays@gmail.com' id="truck-email-field" type='text'>
+      </div>
+      <div class="row">
+        <div class="six columns">
+          <label for='truck-password-field'>Password</label>
+          <input name='password' class="u-full-width" placeholder='password' type='password' id="truck-password-field">
+        </div>
+      </div>
+        <input type='submit' value="Login">
+      </form>
+    </div>
+  </div>
+
+  <div id='tabs-2' class='tab'>
+    <div class='panel eight columns offset-by-two'>
+      <h2>Register</h2>
+      <form method='post', action='/trucks'>
+        <div class="row">
+          <label for='name'>Truck Name</label>
+          <input name='name' class="u-full-width" placeholder='Taco Tuesdays' type='text'>
+        </div>
+        <div class="row">
+          <label for='truck-email-field'>Email</label>
+          <input name='email' class="u-full-width" placeholder='tacotuesdays@gmail.com' id="truck-url-field" type='email'>
+        </div>
+        <div class="row">
+          <div class="six columns">
+            <label for='truck-password-field'>Choose a Password</label>
+            <input name='password' class="u-full-width" placeholder='password' type='password' id="truck-password-field">
+           </div>
+        </div>
+        <div class="row">
+          <label for='name'>Description</label>
+          <textarea name='description' placeholder='All the tacos on all the days' class="u-full-width"></textarea>
+        </div>
+        <div class="row">
+          <label for='truck-url-field'>Yelp URL</label>
+          <input name='yelpUrl' class="u-full-width" placeholder='www.yelp.com/biz/tacotuesdays' id="truck-url-field" type='text'>
+        </div>
+        <input type='submit' value="Sign Up">
+      </form>
+    </div>
+  </div>
+</div>
+
+
 
 <% include ../partials/footer %>

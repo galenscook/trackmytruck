@@ -5,9 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var rdb = require('./lib/rethink');
+
 var dotenv = require('dotenv');
 
 dotenv.load();
+
+
+
 // Require Sessions
 var http = require("http"),
     Sessions = require("sessions"),
@@ -29,7 +33,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var trucks = require('./routes/trucks');
 var favorites = require('./routes/favorites');
-
+var sessions = require('./routes/sessions');
 var app = express();
 
 // view engine setup
@@ -43,6 +47,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+
 // app.use(express.session({secret: '1234567890QWERTY'}));
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -52,6 +57,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/trucks', trucks);
 app.use('/favorites', favorites);
+app.use('/sessions', sessions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,20 +4,100 @@
     <title><%=title%></title>
     <link rel='stylesheet' href="/stylesheets/skeleton.css" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light|Bangers|Special+Elite|Bad+Script|Finger+Paint|The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src='/js/application.js'></script>
   </head>
   <body>
-    <div class='container'>
-    <!-- INSERT NAVBAR HERE -->
-      <div id='logo'><a href = '/'>home</a></div>
-      <% if (session.userID){ %>
-        <div id='logged-in'>
-          <% console.log(session.userID) %>
-          <a href = '/users/<%= session.userID %>'>Profile</a>
-          <a href = '/users/logout'>Logout</a>
-        </div>
-      <% } else{ %>
-        <div id='logged-out'>
-          <a href = '/trucks/new'>I'm A Truck</a>
-          <a href = '/users/new'>Login / Sign-up</a>
-        </div>
-      <% } %>
+
+  <div class='container full'>
+
+  <div class='row'>
+    <div id='sidebar' class='four columns'>
+      <div class='container header'>
+        <nav class='row navbar'>
+          <div class='navbar-list'>
+            <div id='logo'>
+              <a href = '/'>TRACK<span id='my'>my</span>TRUCK</a>
+            </div>
+            <div id='menu'>
+            <% if (session.userID){ %>
+              <% if (session.userType == 'user'){ %>
+                <a href = '/users/<%= session.userID %>' role='button' class='navbar-item button'>Profile</a>
+                <a href = '/users/logout' role='button' class='navbar-item button'>Log Out</a>
+           
+              <% } else { %>
+                <a href = '/trucks/<%= session.userID %>/setlocation' role='button' class='navbar-item button'>Set Location</a>
+                <a href = '/trucks/<%= session.userID %>' role='button' class='navbar-item button'>Profile</a>
+                <a href = '/trucks/logout' role='button' class='navbar-item button'>Log Out</a>
+                
+              <% } %>
+            <% } else{ %>
+              <a href = '/trucks/new' role='button' class='navbar-item button'>I'm A Truck</a>
+              <a href = '/users/new' role='button' class='navbar-item button'>Log In / Sign Up</a>
+              
+            <% } %>
+            <div id='searchbox' class='row'>
+            <% if (session.userID){ %>
+            <div id="logged-in-greeting">
+              <% if (session.userType == 'user'){ %>
+                <p>Welcome back, <%= currentUser.name %>!</p>
+              <% } %>
+            </div>
+            <% } %>
+            <form id="search-form" action='/trucks/search' method="get">
+              <div class='input-group' class='row'>
+                <div id='searchfield'>
+                  <input name="searchvalue" class="u-full-width" type="search" placeholder="i.e. Thai food" id="search-box">
+                  <!-- <button type='submit' class='icon' id='searchbutton'><i class='fa fa-search fa-2x'></i></button> -->
+                <span id='searchbutton'>
+                  <button type='submit' class='icon'><i class='fa fa-search fa-2x'></i></button>
+                </span>
+                </div>
+              </div>
+            </form>
+
+
+              </div>
+            </div>
+          </div>
+          
+          <!-- Options for Mobile Views -->
+          <div class='mobile-nav'>
+            <span class='navbar-item' id='logo'><a href = '/'>TrackMyTruck</a></span>
+            <select class='navbar-list'>
+              <% if (session.userID){ %>
+                <% if (session.userType == 'user'){ %>
+                  <div id='user-logged-in'>
+                    <option value = '/users/<%= session.userID%>' selected='selected'>Profile</option>
+                    <li class='navbar-item'><a href = '/users/logout'>Log Out</a></li>
+                  </div>
+                <% } else { %>
+                  <div id='truck-logged-in'>
+                    <option value = '/trucks/<%= session.userID %>/setlocation' selected='selected'>Set Location</option>
+                    <option value = '/trucks/<%= session.userID %>'>Profile</option>
+                    <option value = '/trucks/logout'>Log Out</option>
+                  </div>
+                <% } %>
+              <% } else{ %>
+                <div id='logged-out'>
+                  <option value='' selected='selected'>Menu</option>
+                  <option value = '/trucks/new'>I'm A Truck</option>
+                  <option value= '/users/new'>Login / Sign Up</option>
+                </div>
+              <% } %>
+            </ul>
+            </select>
+          </div>
+        </nav>
+
+      </div>
+  <!-- 'sidebar' div ends in specific page view to allow for content to be included in sidebar -->
+
+
+
+

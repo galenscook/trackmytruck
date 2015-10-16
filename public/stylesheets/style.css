@@ -1,8 +1,450 @@
+/** {
+  outline: 1px red solid;
+}*/
+
+html, body {
+    /*background-image: url('http://tomsfoodieblog.com/wp-content/uploads/2013/03/palm-desert-food-and-wine-festival-1024x768.jpg');*/
+    overflow: hidden;
+    height: 100%;
+    background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+             /*   background-color: green;*/
+            }
+            #container {
+                width: inherit;
+                height: inherit;
+                margin: 0;
+                padding: 0;
+               /* background-color: pink;*/
+            }
+
 body {
-  padding: 50px;
+  position: fixed;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+#truck-popup {
+  color: #63BFDB;
+}
+
+#truck-popup a {
+  color: #E65601;
+  font-size: 1.5em;
+}
+h3 {
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 1.5em;
+}
+.right {
+  float: right;
+}
+
+#loginprompt {
+  display: none;
+  position: absolute;
+  left: 32%;
+  top: 30em;
+  z-index: 99;
+  border: 1px black solid;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.right-border {
+  border-right: 1px solid black;
+  margin-right: 2%;
+  padding-right: 4%;
+}
+
+.edit {
+  padding-top: 2.5em;
+  margin-left: 0;
+}
+.col-left {
+  margin-left: 6%;
+}
+
+.six.columns.col-right {
+  margin-left: 2%;
+  width: 48%;
+  float: right;
+}
+
+.container.full{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.clearfix:after {
+   content: " ";
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+.scrollablecontent {
+  overflow-y: scroll;
+  position: relative;
+}
+
+/* Main Content Area */
+#content {
+  margin: 0;
+  width: 66.3333333333%;;
+}
+
+#tabbed-content {
+  margin: 5%;
+}
+
+.tab {
+    display: none;
+}
+#tabs {
+    float: left;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 16px;
+    list-style: none;
+    text-align: center;
+}
+#tabs li {
+    /*float: left;*/
+    display: inline-block;
+    /*margin: 0 auto;*/
+    margin-right: 5%;
+    padding: 3% 5%;
+    height: 8%;
+    line-height: 10%;
+    margin-bottom: 0;
+}
+#tabs li a {
+    color: #666;
+    font-family: Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    margin: 3% auto;
+}
+
+
+#tabs li.active {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 3px solid white;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom: -1px;
+    height: 9%;
+    /*padding: 9px 14px;*/
+}
+
+#tabs li.active a {
+    color: black;
+    text-decoration: none;
+    border-bottom: none;
+}
+/* Sidebar */
+#sidebar {
+  border: 1px solid transparent;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: #1C5C8C;
+  width:33.6666666667%;
+  border-right: 1px solid black;
+
+}
+
+
+.yelp_logo {
+  margin: 0 auto;
+  text-align: center;
+  position: fixed;
+  bottom: 2%;
+  clear: both;
+}
+
+/* Navbar */
+.container.header {
+  width: 100%;
+  margin:0;
+  margin: 4% auto;
+}
+
+.navbar-list {
+  list-style: none;
+  margin-bottom: 0;
+  text-align: center;
+  padding: 0;
+}
+
+.navbar-item {
+  display: inline-block;
+  position: relative;
+  float:none;
+  margin: 0 1%;
+  padding: 0;
+  width: 30%;
+}
+
+.navbar-item a {
+  text-decoration: none;
+}
+
+
+
+#logo {
+  width: 100%;
+  margin-bottom: 4%;
+}
+
+#logo a {
+  text-decoration: none;
+  font-size: 4em;
+  color: white;
+  text-shadow: #E65601 2px 2px 4px;
+  font-family: 'Special Elite', cursive;
+}
+.button {
+  border: 1px solid black;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-bottom: 4%;
+}
+
+a.button {
+  /*color:#8ABB21;*/
+  background-color: #63bfdb;
+}
+
+#my {
+  font-family: 'Shadows Into Light', cursive;
+}
+
+#search-form {
+  margin-bottom: 0;
+  border: 1px solid black;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+#search-box {
+  margin-bottom: 0;
+}
+#searchbox {
+  border: 1px solid transparent;
+  margin: 0 2%;
+}
+
+
+/*#searchfield {
+  margin-right: -1%;
+  border: none;
+}*/
+
+#searchbutton {
+  position: absolute;
+  right: 1%;
+  top: 1.5%;
+  border: none;
+  z-index: 999999;
+}
+
+/*#searchbutton button {
+  margin-left: 0;
+  float: left;
+}*/
+
+.input-group {
+    display: inline-table;
+    vertical-align: middle;
+    width: 100%;
+    position: relative;
+    display: table;
+    border-collapse: separate;
+  }
+
+#logged-in-greeting {
+  margin-bottom: 2%;
+}
+
+#logged-in-greeting p{
+  margin-bottom: 0;
+  color: #fff;
+}
+
+
+nav .mobile-nav {
+  display: none;
+}
+
+#login-panel {
+  text-align: center;
+}
+
+#login-panel p{
+  margin-bottom: 1%;
+  margin-top: 1%;
+  padding: 2%
+}
+
+/* Truck List */
+#trucklist {
+  background: #fff;
+  overflow-y: scroll;
+  margin: 0 2%;
+  border: 1px solid black;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.panel {
+  margin: 2%;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.truckpanel {
+  text-align: top;
+}
+
+.panel-heading {
+  padding: 2%;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.panel-body {
+  padding: 2%;
+}
+
+.panel-body p {
+  margin-bottom: 0;
+}
+
+.panel-body img {
+  vertical-align: sub;
+}
+
+.panel h1 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+button.icon {
+  background: none;
+  border: none;
+  height: auto;
+  padding: 0;
+  line-height: auto;
+  border-radius: 0px;
+  margin: 0;
+  max-height: 1.4em;
+}
+
+i {
+  color: #F09D16;
+}
+
+.truckpanel form {
+  margin: 0;
+  max-height: 1.5em;
+}
+
+.truckpanel span {
+  max-height: 1.5em;
+}
+
+.list-icon {
+  max-width: 40%;
+  /*object-fit: contain;*/
+}
+
+/* Map */
+
+/*.map {
+  position: relative;
+}
+*/
+/*#truckmap {
+  position:fixed;
+  width: 100%;
+}*/
+
+.truck-name a {
+  text-decoration: none;
+}
+
+/* MOBILE */
+@media screen and (max-width: 1120px){
+  .navbar-item{
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
+  #logo a {
+    font-size: 3em;
+  }
+
+  .button {
+    margin-left: 2%;
+    margin-right: 4%;
+  }
+}
+
+@media screen and (max-width: 750px){
+  body {
+    position: static;
+  }
+  #trucklist {
+    position: static;
+    display: block;
+    width: 100%;
+    min-height: 20em;
+  }
+
+  #truckmap {
+    position: static;
+    display: block;
+  }
+
+  .columns {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  h1 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem;}
+  h2 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
+  h3 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
+  h4 { font-size: 1.5rem; line-height: 1.6; letter-spacing: 0rem; }
+  h5 { font-size: 1.2rem; line-height: 1.7;  letter-spacing: -.05rem; }
+  h6 { font-size: 1rem; line-height: 1.7;  letter-spacing: 0; }
+  nav ul {
+    display: none;
+  }
+
+  nav .mobile-nav {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .mobile-nav .navbar-list {
+    float: right;
+    margin: 1.2rem auto;
+  }
 }
