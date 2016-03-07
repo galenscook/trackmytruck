@@ -10,8 +10,6 @@ var dotenv = require('dotenv');
 
 dotenv.load();
 
-
-
 // Require Sessions
 var http = require("http"),
     Sessions = require("sessions"),
@@ -94,5 +92,9 @@ app.use(function(err, req, res, next) {
 // .then(function(user){
 //   currentUser = user;
 // });
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});
 
 module.exports = app;
